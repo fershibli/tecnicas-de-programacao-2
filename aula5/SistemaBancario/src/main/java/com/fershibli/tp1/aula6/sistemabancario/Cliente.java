@@ -9,5 +9,6 @@ package com.fershibli.tp1.aula6.sistemabancario;
  * @author Alunos
  */
 public class Cliente {
+    private String tableName = "clientes";
     
 }
