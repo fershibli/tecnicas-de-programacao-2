@@ -22,6 +22,27 @@ public class ContaCorrente {
         this.saldo = saldo;
     }
 
+    public void Sacar(int valor){
+        if (this.saldo >= valor){
+            this.saldo -= valor;
+        }
+    }
+
+    public void Depositar(int valor){
+        if (valor > 0){
+            this.saldo += valor;
+        }
+    }
+
+    public boolean Transferir(ContaCorrente contaDestino, int valor){
+        if (this.saldo >= valor){
+            this.saldo -= valor;
+            contaDestino.Depositar(valor);
+            return true;
+        }
+        return false;
+    }
+
     public String getNumConta() {
         return numConta;
     }
