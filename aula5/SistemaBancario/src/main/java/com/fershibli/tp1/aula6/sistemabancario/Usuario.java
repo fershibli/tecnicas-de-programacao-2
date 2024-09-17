@@ -9,5 +9,7 @@ package com.fershibli.tp1.aula6.sistemabancario;
  * @author Alunos
  */
 public class Usuario {
-    
+    private String login;
+    private String senha;
+    private int id_cli;
 }
