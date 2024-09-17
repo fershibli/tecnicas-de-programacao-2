@@ -12,5 +12,37 @@ public class Usuario {
     private String tableName = "usuarios";
     private String login;
     private String senha;
-    private int id_cli;
+    private int idCli;
+
+    public Usuario(String login, String senha, int idCli) {
+        this.login = login;
+        this.senha = senha;
+        this.idCli = idCli;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public int getIdCli() {
+        return idCli;
+    }
+
+    public void setIdCli(int idCli) {
+        this.idCli = idCli;
+    }
+    
+    
 }
