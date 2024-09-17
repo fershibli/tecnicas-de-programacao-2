@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.fershibli.tp1.aula6.sistemabancario;
+import java.util.Date;
 
 /**
  *
