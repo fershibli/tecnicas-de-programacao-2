@@ -13,6 +13,7 @@ public class Cliente {
     private int idCli;
     private String nome;
     private String cpf;
+    private String cnpj;
     private String endereco;
     private String numero;
     private String complemento;
@@ -22,14 +23,18 @@ public class Cliente {
     private String cep;
     private String email;
     private String telefone;
-    private String cnpj;
     private String sexo;
     private boolean status;
+    
+    public Cliente(){
+        
+    }
 
-    public Cliente(int idCli, String nome, String cpf, String endereco, String numero, String complemento, String bairro, String cidade, String uf, String cep, String email, String telefone, String cnpj, String sexo, boolean status) {
+    public Cliente(int idCli, String nome, String cpf, String cnpj, String endereco, String numero, String complemento, String bairro, String cidade, String uf, String cep, String email, String telefone, String sexo, boolean status) {
         this.idCli = idCli;
         this.nome = nome;
         this.cpf = cpf;
+        this.cnpj = cnpj;
         this.endereco = endereco;
         this.numero = numero;
         this.complemento = complemento;
@@ -38,7 +43,30 @@ public class Cliente {
         this.uf = uf;
         this.cep = cep;
         this.email = email;
+        this.telefone = telefone;
+        this.sexo = sexo;
+        this.status = status;
     }
+    
+    public void cadastrarTudo(int idCli, String nome, String cpf, String cnpj, String endereco, String numero, String complemento, String bairro, String cidade, String uf, String cep, String email, String telefone, String sexo, boolean status) {
+        this.idCli = idCli;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.cnpj = cnpj;
+        this.endereco = endereco;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.cep = cep;
+        this.email = email;
+        this.telefone = telefone;
+        this.sexo = sexo;
+        this.status = status;
+    }
+    
+    
     
     public int getIdCli() {
         return idCli;
