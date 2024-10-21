@@ -203,7 +203,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_abreCadastrarCliente
 
     private void abreCadastrarUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarUsuario
-        Usuarios telaNovoUsuario = new Usuarios();
+        TelaCadastrarUsuario telaNovoUsuario = new TelaCadastrarUsuario();
         telaNovoUsuario.setVisible(true);
         
         this.setVisible(false);
