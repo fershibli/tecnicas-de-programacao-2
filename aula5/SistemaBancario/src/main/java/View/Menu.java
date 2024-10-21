@@ -197,11 +197,17 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Clientes telaNovoCliente = new Clientes();
         telaNovoCliente.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_abreCadastrarCliente
 
     private void abreCadastrarUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarUsuario
         Usuarios telaNovoUsuario = new Usuarios();
         telaNovoUsuario.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_abreCadastrarUsuario
 
     /**
