@@ -3,7 +3,7 @@
  */
 
 package com.fershibli.tp1.aula6.sistemabancario;
-import View.Menu;
+import View.TelaMenu;
 
 /**
  *
@@ -12,7 +12,7 @@ import View.Menu;
 public class SistemaBancario {
 
     public static void main(String[] args) {
-        Menu telaInicial = new Menu();
+        TelaMenu telaInicial = new TelaMenu();
         telaInicial.setVisible(true);
     }
 }

@@ -148,7 +148,7 @@ public class Usuarios extends javax.swing.JFrame {
         );
         JOptionPane.showMessageDialog(this, "Usuário Cadastrado!");
         
-        Menu telaMenu = new Menu();
+        TelaMenu telaMenu = new TelaMenu();
         telaMenu.setVisible(true);
         this.setVisible(false);
         this.dispose();

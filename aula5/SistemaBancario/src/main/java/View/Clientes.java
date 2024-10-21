@@ -309,7 +309,7 @@ public class Clientes extends javax.swing.JFrame {
        );
         JOptionPane.showMessageDialog(this, "Cliente Cadastrado!");
         
-        Menu telaMenu = new Menu();
+        TelaMenu telaMenu = new TelaMenu();
         telaMenu.setVisible(true);
         this.setVisible(false);
         this.dispose();
