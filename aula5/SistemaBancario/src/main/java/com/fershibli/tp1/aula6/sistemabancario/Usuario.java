@@ -13,8 +13,18 @@ public class Usuario {
     private String login;
     private String senha;
     private int idCli;
+    
+    public Usuario() {
+        
+    }
 
     public Usuario(String login, String senha, int idCli) {
+        this.login = login;
+        this.senha = senha;
+        this.idCli = idCli;
+    }
+    
+    public void cadastrarTudo(String login, String senha, int idCli) {
         this.login = login;
         this.senha = senha;
         this.idCli = idCli;
