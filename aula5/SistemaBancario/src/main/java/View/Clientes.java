@@ -5,6 +5,7 @@
 package View;
 
 import com.fershibli.tp1.aula6.sistemabancario.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -306,6 +307,12 @@ public class Clientes extends javax.swing.JFrame {
                 this.generoCliente.getText(),
                 this.statusCliente.isSelected()
        );
+        JOptionPane.showMessageDialog(this, "Cliente Cadastrado!");
+        
+        Menu telaMenu = new Menu();
+        telaMenu.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparActionPerformed
