@@ -4,6 +4,9 @@
  */
 package View;
 
+import com.fershibli.tp1.aula6.sistemabancario.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alunos
@@ -16,6 +19,8 @@ public class Usuarios extends javax.swing.JFrame {
     public Usuarios() {
         initComponents();
     }
+    
+    Usuario novoUsuario = new Usuario();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +43,6 @@ public class Usuarios extends javax.swing.JFrame {
         confirmaSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(540, 300));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel1.setText("ID do Cliente:");
@@ -59,7 +63,7 @@ public class Usuarios extends javax.swing.JFrame {
         jToggleButton1.setText("Cadastrar");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrarUsuario(evt);
+                cadastrarActionPerformed(evt);
             }
         });
 
@@ -136,9 +140,19 @@ public class Usuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cadastrarUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarUsuario
-
-    }//GEN-LAST:event_cadastrarUsuario
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+        this.novoUsuario.cadastrarTudo(
+                this.loginUsuario.getText(), 
+                new String(this.senhaUsuario.getPassword()), 
+                Integer.parseInt(this.idCliente.getText())
+        );
+        JOptionPane.showMessageDialog(this, "Usuário Cadastrado!");
+        
+        Menu telaMenu = new Menu();
+        telaMenu.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_cadastrarActionPerformed
 
     private void verificaSenha(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificaSenha
         String strSenha = new String(this.senhaUsuario.getPassword());
