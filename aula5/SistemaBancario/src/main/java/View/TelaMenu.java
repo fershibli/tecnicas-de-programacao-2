@@ -195,7 +195,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void abreCadastrarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarCliente
         // TODO add your handling code here:
-        Clientes telaNovoCliente = new Clientes();
+        TelaCadastraCliente telaNovoCliente = new TelaCadastraCliente();
         telaNovoCliente.setVisible(true);
         
         this.setVisible(false);
