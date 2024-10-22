@@ -21,6 +21,9 @@ public class Agencia {
     private String cnpj;
     private String gerente;
 
+    public Agencia() {
+    }
+
     public Agencia(String numAgencia, String nome, String endereco, String numero, String bairro, String cidade, String uf, String cep, String cnpj, String gerente) {
         if (!validaAgencia(numAgencia, nome, endereco, numero, bairro, cidade, uf, cep, cnpj, gerente)){
             return;
