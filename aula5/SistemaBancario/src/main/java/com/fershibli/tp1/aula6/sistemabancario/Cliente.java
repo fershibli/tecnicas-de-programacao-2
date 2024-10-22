@@ -47,24 +47,6 @@ public class Cliente {
         this.status = status;
     }
 
-    public void cadastrarTudo(int idCli, String nome, String cpf, String cnpj, String endereco, String numero, String complemento, String bairro, String cidade, String uf, String cep, String email, String telefone, String sexo, boolean status) {
-        this.idCli = idCli;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.cnpj = cnpj;
-        this.endereco = endereco;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.uf = uf;
-        this.cep = cep;
-        this.email = email;
-        this.telefone = telefone;
-        this.sexo = sexo;
-        this.status = status;
-    }
-
     private boolean validaNome(String nome) {
         return nome != null && nome.trim().length() > 2;
     }
