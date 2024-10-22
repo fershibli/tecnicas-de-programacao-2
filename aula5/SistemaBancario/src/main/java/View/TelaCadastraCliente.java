@@ -290,23 +290,26 @@ public class TelaCadastraCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_complementoClienteActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        this.clienteTela.cadastrarTudo(
-                Integer.parseInt(this.idCliente.getText()),
-                this.nomeCliente.getText(),
-                this.cpfCliente.getText(),
-                this.cnpjCliente.getText(),
-                this.enderecoCliente.getText(),
-                this.numeroCliente.getText(),
-                this.complementoCliente.getText(),
-                this.bairroCliente.getText(),
-                this.cidadeCliente.getText(),
-                this.ufCliente.getSelectedItem().toString(),
-                this.cepCliente.getText(),
-                this.emailCliente.getText(),
-                this.telefoneCliente.getText(),
-                this.generoCliente.getText(),
-                this.statusCliente.isSelected()
-       );
+        try {
+            this.clienteTela.setIdCli(Integer.parseInt(this.idCliente.getText()));
+            this.clienteTela.setNome(this.nomeCliente.getText());
+            this.clienteTela.setCpf(this.cpfCliente.getText());
+            this.clienteTela.setCnpj(this.cnpjCliente.getText());
+            this.clienteTela.setEndereco(this.enderecoCliente.getText());
+            this.clienteTela.setNumero(this.numeroCliente.getText());
+            this.clienteTela.setComplemento(this.complementoCliente.getText());
+            this.clienteTela.setBairro(this.bairroCliente.getText());
+            this.clienteTela.setCidade(this.cidadeCliente.getText());
+            this.clienteTela.setUf(this.ufCliente.getSelectedItem().toString());
+            this.clienteTela.setCep(this.cepCliente.getText());
+            this.clienteTela.setEmail(this.emailCliente.getText());
+            this.clienteTela.setTelefone(this.telefoneCliente.getText());
+            this.clienteTela.setSexo(this.generoCliente.getText());
+            this.clienteTela.setStatus(this.statusCliente.isSelected());
+        } catch (IllegalArgumentException err) {        
+            JOptionPane.showMessageDialog(this, err.getMessage());
+            return;
+        }
         JOptionPane.showMessageDialog(this, "Cliente Cadastrado!");
         
         TelaMenu telaMenu = new TelaMenu();
