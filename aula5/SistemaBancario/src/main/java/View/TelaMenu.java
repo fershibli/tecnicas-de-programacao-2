@@ -122,7 +122,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItem5.setText("Cadastrar nova");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                abreCadastroContaCorrente(evt);
             }
         });
         jMenu6.add(jMenuItem5);
@@ -194,9 +194,13 @@ public class TelaMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    private void abreCadastroContaCorrente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastroContaCorrente
+        TelaCadastrarContaCorrente telaNovaContaCorrente = new TelaCadastrarContaCorrente();
+        telaNovaContaCorrente.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreCadastroContaCorrente
 
     private void abreCadastrarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarCliente
         // TODO add your handling code here:
