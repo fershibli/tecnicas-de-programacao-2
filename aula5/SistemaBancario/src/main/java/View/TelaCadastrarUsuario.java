@@ -141,9 +141,15 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        this.novoUsuario.setLogin(this.loginUsuario.getText());
-        this.novoUsuario.setSenha(new String(this.senhaUsuario.getPassword()));
-        this.novoUsuario.setIdCli(Integer.parseInt(this.idCliente.getText()));
+        try {
+            this.novoUsuario.setLogin(this.loginUsuario.getText());
+            this.novoUsuario.setSenha(new String(this.senhaUsuario.getPassword()));
+            this.novoUsuario.setIdCli(Integer.parseInt(this.idCliente.getText()));
+        } catch (IllegalArgumentException err) {        
+            JOptionPane.showMessageDialog(this, err.getMessage());
+            return;
+        }
+
         JOptionPane.showMessageDialog(this, "Usuário Cadastrado!");
         
         TelaMenu telaMenu = new TelaMenu();
