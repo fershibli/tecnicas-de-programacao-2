@@ -15,6 +15,10 @@ public class ContaCorrente {
     private int idCli;
     private int saldo;
 
+    public ContaCorrente() {
+        
+    }
+    
     public ContaCorrente(String numConta, String numAgencia, int idCli, int saldo) {
         this.numConta = numConta;
         this.numAgencia = numAgencia;
