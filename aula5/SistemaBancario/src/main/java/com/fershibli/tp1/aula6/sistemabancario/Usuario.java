@@ -23,12 +23,6 @@ public class Usuario {
         this.idCli = idCli;
     }
 
-    public void cadastrarTudo(String login, String senha, int idCli) {
-        this.login = login;
-        this.senha = senha;
-        this.idCli = idCli;
-    }
-
     private boolean validaLogin(String login) {
         return login != null && login.trim().length() > 3;
     }
