@@ -47,11 +47,26 @@ public class ContaCorrente {
         return false;
     }
 
+    private boolean validaNumConta(String numConta) {
+        return numConta != null && numConta.trim().length() > 0;
+    }
+
+    private boolean validaNumAgencia(String numAgencia) {
+        return numAgencia != null && numAgencia.trim().length() > 0;
+    }
+
+    private boolean validaIdCli(int idCli) {
+        return idCli > 0;
+    }
+
     public String getNumConta() {
         return numConta;
     }
 
     public void setNumConta(String numConta) {
+        if (!validaNumConta(numConta)) {
+            throw new IllegalArgumentException("Número da conta inválido. Deve ter pelo menos 1 caractere.");
+        }
         this.numConta = numConta;
     }
 
@@ -60,6 +75,9 @@ public class ContaCorrente {
     }
 
     public void setNumAgencia(String numAgencia) {
+        if (!validaNumAgencia(numAgencia)) {
+            throw new IllegalArgumentException("Número da agência inválido. Deve ter pelo menos 1 caractere.");
+        }
         this.numAgencia = numAgencia;
     }
 
@@ -68,6 +86,9 @@ public class ContaCorrente {
     }
 
     public void setIdCli(int idCli) {
+        if (!validaIdCli(idCli)) {
+            throw new IllegalArgumentException("ID do cliente inválido. Deve ser maior que 0.");
+        }
         this.idCli = idCli;
     }
 
@@ -78,7 +99,4 @@ public class ContaCorrente {
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
-    
-    
-    
 }
