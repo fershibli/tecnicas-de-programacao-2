@@ -21,6 +21,7 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
     }
     
     Usuario novoUsuario = new Usuario();
+    boolean senhasIguais = false;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -141,6 +142,9 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+        if (senhasIguais == false) {
+            JOptionPane.showMessageDialog(this, "As senhas precisam ser iguais");
+        }
         try {
             this.novoUsuario.setLogin(this.loginUsuario.getText());
             this.novoUsuario.setSenha(new String(this.senhaUsuario.getPassword()));
@@ -163,8 +167,10 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
         String strConfirma = new String(this.confirmaSenha.getPassword());
         if (strSenha.equals(strConfirma) || strConfirma.equals("")) {
             this.errorLabel.setText("");
+            this.senhasIguais = true;
         } else {
             this.errorLabel.setText("As senhas não conferem.");
+            this.senhasIguais = false;
         }
     }//GEN-LAST:event_verificaSenha
 
