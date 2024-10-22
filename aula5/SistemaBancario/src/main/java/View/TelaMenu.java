@@ -217,7 +217,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void abreCadastroAgencia(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastroAgencia
         TelaCadastrarAgencia telaNovaAgencia = new TelaCadastrarAgencia();
-        telaNovaAgencia.setVisible(true);
+        telaNovaAgencia.setVisible(true);   
         
         this.setVisible(false);
         this.dispose();
