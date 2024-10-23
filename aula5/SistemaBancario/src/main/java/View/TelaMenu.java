@@ -160,14 +160,14 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenu8.setText("Extrato");
         jMenu8.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jMenu8.addActionListener(new java.awt.event.ActionListener() {
+
+        jMenuItem7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem7.setText("Cadastrar novo");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 abreCadastrarExtrato(evt);
             }
         });
-
-        jMenuItem7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jMenuItem7.setText("Cadastrar novo");
         jMenu8.add(jMenuItem7);
 
         jMenuBar1.add(jMenu8);
