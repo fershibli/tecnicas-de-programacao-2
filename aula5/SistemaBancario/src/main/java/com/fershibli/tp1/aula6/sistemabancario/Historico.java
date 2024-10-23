@@ -13,6 +13,10 @@ public class Historico {
     private int id_his;
     private String historico;
 
+    public Historico() {
+        
+    }
+
     public Historico(int id_his, String historico) {
         this.id_his = id_his;
         this.historico = historico;
