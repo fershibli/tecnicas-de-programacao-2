@@ -21,6 +21,10 @@ public class ExtratoMovimentacao {
     private int valor;
     private int saldo;
 
+    public ExtratoMovimentacao() {
+    }
+    
+
     public ExtratoMovimentacao(String numConta, String numAgencia, String documento, Date dataMovimento, String creditoDebito, int id_his, String complHist, int valor, int saldo) {
         this.numConta = numConta;
         this.numAgencia = numAgencia;
