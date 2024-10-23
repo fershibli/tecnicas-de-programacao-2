@@ -18,11 +18,22 @@ public class Historico {
         this.historico = historico;
     }
 
+    private boolean validaId_his(int id_his) {
+        return id_his > 0;
+    }
+
+    private boolean validaHistorico(String historico) {
+        return historico != null && historico.trim().length() > 0;
+    }
+
     public int getId_his() {
         return id_his;
     }
 
     public void setId_his(int id_his) {
+        if (!validaId_his(id_his)) {
+            throw new IllegalArgumentException("ID histórico inválido");
+        }
         this.id_his = id_his;
     }
 
@@ -31,7 +42,9 @@ public class Historico {
     }
 
     public void setHistorico(String historico) {
+        if (!validaHistorico(historico)) {
+            throw new IllegalArgumentException("Histórico inválido");
+        }
         this.historico = historico;
     }
-    
 }
