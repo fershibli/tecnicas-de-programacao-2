@@ -4,6 +4,9 @@
  */
 package View;
 
+import com.fershibli.tp1.aula6.sistemabancario.Historico;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alunos
@@ -16,6 +19,8 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
     public TelaCadastrarHistorico() {
         initComponents();
     }
+    
+    Historico historicoTela = new Historico();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +31,123 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        idHis = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        historico = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("← Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaMenu(evt);
+            }
+        });
+
+        jLabel1.setText("ID Histórico:");
+
+        historico.setColumns(20);
+        historico.setRows(5);
+        jScrollPane1.setViewportView(historico);
+
+        jLabel2.setText("Histórico:");
+
+        jButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jButton2.setText("Cadastrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2cadastrarActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jButton3.setText("Limpar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3limparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idHis))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(380, 380, 380)
+                        .addComponent(jButton3)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idHis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenu
+        TelaMenu telaMenu = new TelaMenu();
+        telaMenu.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_voltarTelaMenu
+
+    private void jButton2cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2cadastrarActionPerformed
+        try {
+            this.historicoTela.setId_his(Integer.parseInt(this.idHis.getText()));
+            this.historicoTela.setHistorico(this.historico.getText());
+        } catch (IllegalArgumentException err) {
+            JOptionPane.showMessageDialog(this, err.getMessage());
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Histórico Cadastrado!");
+
+        TelaMenu telaMenu = new TelaMenu();
+        telaMenu.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_jButton2cadastrarActionPerformed
+
+    private void jButton3limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3limparActionPerformed
+        this.idHis.setText("");
+        this.historico.setText("");
+    }//GEN-LAST:event_jButton3limparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +185,13 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea historico;
+    private javax.swing.JTextField idHis;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
