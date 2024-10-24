@@ -1,11 +1,11 @@
-com\fershibli\tp1\aula6\sistemabancario\SistemaBancario.class
 View\TelaCadastrarAgencia$3.class
 com\fershibli\tp1\aula6\sistemabancario\Usuario.class
-View\TelaCadastrarAgencia$1.class
 com\fershibli\tp1\aula6\sistemabancario\ContaCorrente.class
 com\fershibli\tp1\aula6\sistemabancario\Agencia.class
-com\fershibli\tp1\aula6\sistemabancario\Historico.class
 com\fershibli\tp1\aula6\sistemabancario\ExtratoMovimentacao.class
+com\fershibli\tp1\aula6\sistemabancario\SistemaBancario.class
+View\TelaCadastrarAgencia$1.class
+com\fershibli\tp1\aula6\sistemabancario\Historico.class
 com\fershibli\tp1\aula6\sistemabancario\Cliente.class
 View\TelaCadastrarAgencia$2.class
 View\TelaCadastrarAgencia.class

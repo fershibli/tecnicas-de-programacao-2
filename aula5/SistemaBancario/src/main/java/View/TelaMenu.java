@@ -177,6 +177,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem8.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem8.setText("Cadastrar novo");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreCadastrarHistorico(evt);
+            }
+        });
         jMenu9.add(jMenuItem8);
 
         jMenuBar1.add(jMenu9);
@@ -239,6 +244,14 @@ public class TelaMenu extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_abreCadastrarExtrato
+
+    private void abreCadastrarHistorico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarHistorico
+        TelaCadastrarHistorico telaNovoHistorico = new TelaCadastrarHistorico();
+        telaNovoHistorico.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreCadastrarHistorico
 
     /**
      * @param args the command line arguments
