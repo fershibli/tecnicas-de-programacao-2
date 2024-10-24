@@ -106,6 +106,11 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         });
 
         jButton3.setText("← Voltar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaMenu(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,6 +248,13 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         this.saldo.setText("");
         this.histCompleto.setText("");
     }//GEN-LAST:event_jButton1limparActionPerformed
+
+    private void voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenu
+        TelaMenu telaMenu = new TelaMenu();
+        telaMenu.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_voltarTelaMenu
 
     /**
      * @param args the command line arguments

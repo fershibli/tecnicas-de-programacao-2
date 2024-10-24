@@ -174,7 +174,7 @@
         <Property name="text" type="java.lang.String" value="&#x2190; Voltar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1voltarTelaMenu"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltarTelaMenu"/>
       </Events>
     </Component>
   </SubComponents>

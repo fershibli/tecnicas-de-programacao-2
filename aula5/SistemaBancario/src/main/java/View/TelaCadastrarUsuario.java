@@ -85,7 +85,7 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
         jButton1.setText("← Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1voltarTelaMenu(evt);
+                voltarTelaMenu(evt);
             }
         });
 
@@ -187,12 +187,12 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verificaSenha
 
-    private void jButton1voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1voltarTelaMenu
+    private void voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenu
         TelaMenu telaMenu = new TelaMenu();
         telaMenu.setVisible(true);
         this.setVisible(false);
         this.dispose();
-    }//GEN-LAST:event_jButton1voltarTelaMenu
+    }//GEN-LAST:event_voltarTelaMenu
 
     /**
      * @param args the command line arguments
