@@ -32,20 +32,33 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem23 = new javax.swing.JMenuItem();
+        jMenuItem24 = new javax.swing.JMenuItem();
+        jMenuItem25 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(540, 300));
@@ -92,7 +105,22 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItem1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem1.setText("Alterar existente");
         jMenuItem1.setEnabled(false);
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem1);
+
+        jMenuItem2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem2.setText("Apagar existente");
+        jMenuItem2.setEnabled(false);
+        jMenu4.add(jMenuItem2);
+
+        jMenuItem9.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem9.setText("Consultar");
+        jMenuItem9.setEnabled(false);
+        jMenu4.add(jMenuItem9);
 
         jMenuBar1.add(jMenu4);
 
@@ -113,6 +141,16 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItem10.setEnabled(false);
         jMenu5.add(jMenuItem10);
 
+        jMenuItem14.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem14.setText("Apagar existente");
+        jMenuItem14.setEnabled(false);
+        jMenu5.add(jMenuItem14);
+
+        jMenuItem15.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem15.setText("Consultar");
+        jMenuItem15.setEnabled(false);
+        jMenu5.add(jMenuItem15);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Conta");
@@ -131,6 +169,16 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItem11.setText("Alterar existente");
         jMenuItem11.setEnabled(false);
         jMenu6.add(jMenuItem11);
+
+        jMenuItem16.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem16.setText("Apagar existente");
+        jMenuItem16.setEnabled(false);
+        jMenu6.add(jMenuItem16);
+
+        jMenuItem17.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem17.setText("Consultar");
+        jMenuItem17.setEnabled(false);
+        jMenu6.add(jMenuItem17);
 
         jMenuBar1.add(jMenu6);
 
@@ -151,10 +199,15 @@ public class TelaMenu extends javax.swing.JFrame {
         jMenuItem12.setEnabled(false);
         jMenu7.add(jMenuItem12);
 
-        jMenuItem13.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jMenuItem13.setText("Listar todas");
-        jMenuItem13.setEnabled(false);
-        jMenu7.add(jMenuItem13);
+        jMenuItem18.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem18.setText("Apagar existente");
+        jMenuItem18.setEnabled(false);
+        jMenu7.add(jMenuItem18);
+
+        jMenuItem19.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem19.setText("Consultar");
+        jMenuItem19.setEnabled(false);
+        jMenu7.add(jMenuItem19);
 
         jMenuBar1.add(jMenu7);
 
@@ -170,6 +223,21 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         jMenu8.add(jMenuItem7);
 
+        jMenuItem20.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem20.setText("Alterar existente");
+        jMenuItem20.setEnabled(false);
+        jMenu8.add(jMenuItem20);
+
+        jMenuItem21.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem21.setText("Apagar existente");
+        jMenuItem21.setEnabled(false);
+        jMenu8.add(jMenuItem21);
+
+        jMenuItem22.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem22.setText("Consultar");
+        jMenuItem22.setEnabled(false);
+        jMenu8.add(jMenuItem22);
+
         jMenuBar1.add(jMenu8);
 
         jMenu9.setText("Histórico");
@@ -183,6 +251,21 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
         jMenu9.add(jMenuItem8);
+
+        jMenuItem23.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem23.setText("Alterar existente");
+        jMenuItem23.setEnabled(false);
+        jMenu9.add(jMenuItem23);
+
+        jMenuItem24.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem24.setText("Apagar existente");
+        jMenuItem24.setEnabled(false);
+        jMenu9.add(jMenuItem24);
+
+        jMenuItem25.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jMenuItem25.setText("Consultar");
+        jMenuItem25.setEnabled(false);
+        jMenu9.add(jMenuItem25);
 
         jMenuBar1.add(jMenu9);
 
@@ -253,6 +336,10 @@ public class TelaMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_abreCadastrarHistorico
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,13 +388,26 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
+    private javax.swing.JMenuItem jMenuItem23;
+    private javax.swing.JMenuItem jMenuItem24;
+    private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
