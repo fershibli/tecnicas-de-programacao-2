@@ -99,4 +99,12 @@ public class ContaCorrente {
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
+
+    public String dadosSQLValues(){
+        return "'"
+            + this.getNumConta() + "', '"
+            + this.getNumAgencia() + "', "
+            + this.getIdCli() + ", "
+            + this.getSaldo() + "'";
+    }
 }

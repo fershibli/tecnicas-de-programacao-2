@@ -171,4 +171,17 @@ public class ExtratoMovimentacao {
         }
         this.saldo = saldo;
     }
+
+    public String dadosSQLValues() {
+        return "'"
+            + this.getNumConta() + "', '"
+            + this.getNumAgencia() + "', '"
+            + this.getDocumento() + "', '"
+            + this.getDataMovimento() + "', '"
+            + this.getCreditoDebito() + "', "
+            + this.getId_his() + ", '"
+            + this.getComplHist() + "', "
+            + this.getValor() + ", "
+            + this.getSaldo() + "'";
+    }
 }

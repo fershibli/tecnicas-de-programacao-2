@@ -224,4 +224,18 @@ public class Agencia {
         }
         this.gerente = gerente;
     }
+
+    public String dadosSQLValues() {
+        return "'" 
+            + this.getNumAgencia() + "', '"
+            + this.getNome() + "', '"
+            + this.getEndereco() + "', '"
+            + this.getNumero() + "', '"
+            + this.getBairro() + "', '"
+            + this.getCidade() + "', '"
+            + this.getUf() + "', '"
+            + this.getCep() + "', '"
+            + this.getCnpj() + "', '"
+            + this.getGerente() + "'";
+    }
 }

@@ -67,4 +67,11 @@ public class Usuario {
         }
         this.idCli = idCli;
     }
+
+    public String dadosSQLValues() {
+        return "'"
+            + this.getLogin() + "', '"
+            + this.getSenha() + "', "
+            + this.getIdCli() + "'";
+    }
 }
