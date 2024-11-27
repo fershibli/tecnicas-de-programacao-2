@@ -9,7 +9,7 @@ package DAO;
  * @author Alunos
  */
 public class Cliente {
-    private String tableName = "clientes";
+    private String tableName = "CLIENTES";
     private int idCli;
     private String nome;
     private String cpf;
@@ -276,6 +276,10 @@ public class Cliente {
             throw new IllegalArgumentException("Data de nascimento inválida.");
         }
         this.dataNascimento = dataNascimento;
+    }
+
+    public getTableName() {
+        return tableName;
     }
     
     public String dadosSQLValues() {
