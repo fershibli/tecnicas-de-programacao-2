@@ -9,7 +9,7 @@ package DAO;
  * @author Alunos
  */
 public class Agencia {
-    private String tableName = "agencias";
+    private String tableName = "AGENCIAS";
     private String numAgencia;
     private String nome;
     private String endereco;
@@ -257,6 +257,10 @@ public class Agencia {
             throw new IllegalArgumentException("Telefone inválido");
         }
         this.telefone = telefone;
+    }
+
+    public String getTableName() {
+        return tableName;
     }
 
     public String dadosSQLValues() {
