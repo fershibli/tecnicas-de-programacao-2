@@ -25,6 +25,7 @@ public class Cliente {
     private String telefone;
     private String sexo;
     private boolean status;
+    private Date dataNascimento;
 
     public Cliente() {
     }
@@ -47,8 +48,12 @@ public class Cliente {
         this.status = status;
     }
 
+    private boolean validaIdCli(int idCli) {
+        return idCli > 0;
+    }
+
     private boolean validaNome(String nome) {
-        return nome != null && nome.trim().length() > 2;
+        return nome != null && nome.trim().length() > 2 && nome.length() <= 50;
     }
 
     private boolean validaCpf(String cpf) {
@@ -60,23 +65,23 @@ public class Cliente {
     }
 
     private boolean validaEndereco(String endereco) {
-        return endereco != null && endereco.trim().length() > 5;
+        return endereco != null && endereco.trim().length() > 5 && endereco.length() <= 50;
     }
 
     private boolean validaNumero(String numero) {
-        return numero != null && numero.trim().length() > 0;
+        return numero == null || (numero.trim().length() > 0 && numero.length() <= 8);
     }
 
     private boolean validaComplemento(String complemento) {
-        return complemento != null && complemento.trim().length() > 0;
+        return complemento == null || (complemento.length() <= 20 && complemento.trim().length() > 0);
     }
 
     private boolean validaBairro(String bairro) {
-        return bairro != null && bairro.trim().length() > 2;
+        return bairro == null || (bairro.length() <= 20 && bairro.trim().length() > 2);
     }
 
     private boolean validaCidade(String cidade) {
-        return cidade != null && cidade.trim().length() > 2;
+        return cidade != null && cidade.trim().length() > 2 && cidade.length() <= 30;
     }
 
     private boolean validaUf(String uf) {
@@ -92,11 +97,15 @@ public class Cliente {
     }
 
     private boolean validaTelefone(String telefone) {
-        return telefone != null && telefone.trim().replaceAll("[^0-9]", "").length() >= 10;
+        return telefone == null || telefone.length() <= 13;
     }
 
     private boolean validaSexo(String sexo) {
         return sexo != null && sexo.trim().length() > 0;
+    }
+    
+    private boolean validaDataNascimento(Date dataNascimento) {
+        return dataNascimento != null;
     }
 
     public int getIdCli() {
@@ -257,13 +266,23 @@ public class Cliente {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        if (!validaDataNascimento(dataNascimento)) {
+            throw new IllegalArgumentException("Data de nascimento inválida.");
+        }
+        this.dataNascimento = dataNascimento;
+    }
     
     public String dadosSQLValues() {
         String dadosClientes;
         
         dadosClientes = "'"
-            + this.getCpf() + "', '"
-            + this.getCnpj() + "', '"
+            + this.getIdCli() + "', '"
             + this.getNome() + "', '"
             + this.getEndereco() + "', '"
             + this.getNumero() + "', '"
@@ -272,10 +291,10 @@ public class Cliente {
             + this.getCidade() + "', '"
             + this.getUf() + "', '"
             + this.getCep() + "', '"
-            + this.getEmail() + "', '"
             + this.getTelefone() + "', '"
-            + this.getSexo() + "', "
-            + this.isStatus();
+            + this.getCpf() + "', '"
+            + this.getDataNascimento() + "', '"
+            + this.getCnpj() + "'";
         
         return dadosClientes;
     }
