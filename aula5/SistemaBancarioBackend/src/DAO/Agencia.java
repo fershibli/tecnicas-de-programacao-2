@@ -14,12 +14,14 @@ public class Agencia {
     private String nome;
     private String endereco;
     private String numero;
+    private String complemento;
     private String bairro;
     private String cidade;
     private String uf;
     private String cep;
     private String cnpj;
     private String gerente;
+    private String telefone;
 
     public Agencia() {
     }
@@ -51,35 +53,41 @@ public class Agencia {
     private boolean validaNome(String nome){
         return (
             nome != null &&
-            nome.trim().replaceAll("\\s+", " ").length() > 4
+            nome.trim().replaceAll("\\s+", " ").length() > 4 &&
+            nome.length() <= 30
         );
     }
 
     private boolean validaEndereco(String endereco){
         return (
             endereco != null && 
-            endereco.trim().replaceAll("\\s+", "").length() > 5
+            endereco.trim().replaceAll("\\s+", "").length() > 5 &&
+            endereco.length() <= 50
         );
     }
 
     private boolean validaNumero(String numero){
         return (
-            numero != null && 
-            numero.trim().replaceAll("\\s+", "").length() > 0
+            numero == null ||
+            numero.length() <= 8
         );
+    }
+
+    private boolean validaComplemento(String complemento) {
+        return complemento == null || complemento.length() <= 20;
     }
 
     private boolean validaBairro(String bairro){
         return (
-            bairro != null && 
-            bairro.trim().replaceAll("\\s+", "").length() > 3
+            bairro == null || bairro.length() <= 20
         );
     }
 
     private boolean validaCidade(String cidade){
         return (
             cidade  != null &&
-            cidade.trim().replaceAll("\\s+", "").length() > 3
+            cidade.trim().replaceAll("\\s+", "").length() > 3 && 
+            cidade.length() <= 30
         );
     }
 
@@ -110,9 +118,13 @@ public class Agencia {
             gerente.trim().replaceAll("\\s+", "").length() > 5
         );
     }
+    
+    private boolean validaTelefone(String telefone) {
+        return telefone == null || telefone.length() <= 13;
+    }
 
-    public boolean validaAgencia(String numAgencia, String nome, String endereco, String numero, String bairro, String cidade, String uf, String cep, String cnpj, String gerente){
-        return validaNumAgencia(numAgencia) && validaNome(nome) && validaEndereco(endereco) && validaNumero(numero) && validaBairro(bairro) && validaCidade(cidade) && validaUf(uf) && validaCep(cep) && validaCnpj(cnpj) && validaGerente(gerente);
+    private boolean validaAgencia(String numAgencia, String nome, String endereco, String numero, String complemento, String bairro, String cidade, String uf, String cep, String telefone) {
+        return validaNumAgencia(numAgencia) && validaNome(nome) && validaEndereco(endereco) && validaNumero(numero) && validaComplemento(complemento) && validaBairro(bairro) && validaCidade(cidade) && validaUf(uf) && validaCep(cep) && validaTelefone(telefone);
     }
 
     public String getNumAgencia() {
@@ -157,6 +169,17 @@ public class Agencia {
             throw new IllegalArgumentException("Número inválido");
         }
         this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        if (!validaComplemento(complemento)) {
+            throw new IllegalArgumentException("Complemento inválido");
+        }
+        this.complemento = complemento;
     }
 
     public String getBairro() {
@@ -225,17 +248,28 @@ public class Agencia {
         this.gerente = gerente;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        if (!validaTelefone(telefone)) {
+            throw new IllegalArgumentException("Telefone inválido");
+        }
+        this.telefone = telefone;
+    }
+
     public String dadosSQLValues() {
         return "'" 
             + this.getNumAgencia() + "', '"
             + this.getNome() + "', '"
             + this.getEndereco() + "', '"
             + this.getNumero() + "', '"
+            + this.getComplemento() + "', '"
             + this.getBairro() + "', '"
             + this.getCidade() + "', '"
             + this.getUf() + "', '"
             + this.getCep() + "', '"
-            + this.getCnpj() + "', '"
-            + this.getGerente() + "'";
+            + this.getTelefone() + "'";
     }
 }
