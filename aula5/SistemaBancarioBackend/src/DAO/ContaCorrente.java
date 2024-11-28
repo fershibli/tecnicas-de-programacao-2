@@ -9,7 +9,7 @@ package DAO;
  * @author Alunos
  */
 public class ContaCorrente {
-    private String tableName = "conta_corrente";
+    private String tableName = "CONTACORRENTE";
     private String numConta;
     private String numAgencia;
     private int idCli;
@@ -106,6 +106,10 @@ public class ContaCorrente {
             throw new IllegalArgumentException("Saldo inválido");
         }
         this.saldo = saldo;
+    }
+
+    public String getTableName() {
+        return tableName;
     }
 
     public String dadosSQLValues(){
