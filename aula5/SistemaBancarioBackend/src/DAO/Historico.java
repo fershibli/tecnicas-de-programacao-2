@@ -27,7 +27,7 @@ public class Historico {
     }
 
     private boolean validaHistorico(String historico) {
-        return historico != null && historico.trim().length() > 0;
+        return historico != null && historico.trim().length() > 0 && des_his.length() <= 30;
     }
 
     public int getId_his() {
@@ -54,6 +54,7 @@ public class Historico {
 
     public String dadosSQLValues() {
         return "'"
+            + this.getId_his() + "', '"
             + this.getHistorico() + "'";
     }
 }
