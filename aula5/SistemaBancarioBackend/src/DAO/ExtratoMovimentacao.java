@@ -18,8 +18,8 @@ public class ExtratoMovimentacao {
     private String creditoDebito;
     private int id_his;
     private String complHist;
-    private int valor;
-    private int saldo;
+    private double valor;
+    private double saldo;
 
     public ExtratoMovimentacao() {
     }
@@ -38,15 +38,15 @@ public class ExtratoMovimentacao {
     }
     
     private boolean validaNumConta(String numConta) {
-        return numConta != null && numConta.trim().length() > 0;
+        return numConta != null && numConta.trim().length() > 0 && numConta.length() <= 10;
     }
 
     private boolean validaNumAgencia(String numAgencia) {
-        return numAgencia != null && numAgencia.trim().length() > 0;
+        return numAgencia != null && numAgencia.trim().length() > 0 && numAgencia.length() <= 5;
     }
 
     private boolean validaDocumento(String documento) {
-        return documento != null && documento.trim().length() > 0;
+        return documento != null && documento.trim().length() > 0 && documento.length() <= 6;
     }
 
     private boolean validaDataMovimento(Date dataMovimento) {
@@ -62,7 +62,7 @@ public class ExtratoMovimentacao {
     }
 
     private boolean validaComplHist(String complHist) {
-        return complHist != null && complHist.trim().length() > 0;
+        return complHist == null || complHist.length() <= 30;
     }
 
     private boolean validaValor(int valor) {
@@ -174,10 +174,10 @@ public class ExtratoMovimentacao {
 
     public String dadosSQLValues() {
         return "'"
-            + this.getNumConta() + "', '"
             + this.getNumAgencia() + "', '"
-            + this.getDocumento() + "', '"
+            + this.getNumConta() + "', '"
             + this.getDataMovimento() + "', '"
+            + this.getDocumento() + "', '"
             + this.getCreditoDebito() + "', "
             + this.getId_his() + ", '"
             + this.getComplHist() + "', "
