@@ -10,7 +10,7 @@ import java.util.Date;
  * @author Alunos
  */
 public class ExtratoMovimentacao {
-    private String tableName = "extrato_movimentacao";
+    private String tableName = "MOVIMENTACAO";
     private String numConta;
     private String numAgencia;
     private String documento;
@@ -170,6 +170,10 @@ public class ExtratoMovimentacao {
             throw new IllegalArgumentException("Saldo inválido");
         }
         this.saldo = saldo;
+    }
+
+    public String getTableName() {
+        return tableName;
     }
 
     public String dadosSQLValues() {
