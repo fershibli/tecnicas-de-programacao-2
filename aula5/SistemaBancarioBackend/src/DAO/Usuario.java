@@ -9,7 +9,7 @@ package DAO;
  * @author Alunos
  */
 public class Usuario {
-    private String tableName = "usuarios";
+    private String tableName = "USUARIOS";
     private String login;
     private String senha;
     private int idCli;
@@ -98,6 +98,10 @@ public class Usuario {
             throw new IllegalArgumentException("Número da conta inválido");
         }
         this.numConta = numConta;
+    }
+
+    public String getTableName() {
+        return tableName;
     }
 
     public String dadosSQLValues() {
