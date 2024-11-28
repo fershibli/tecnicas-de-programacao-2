@@ -47,12 +47,17 @@ public class ContaCorrente {
         return false;
     }
 
+    
+    private boolean validaSaldo(double saldo) {
+        return saldo >= 0;
+    }
+
     private boolean validaNumConta(String numConta) {
-        return numConta != null && numConta.trim().length() > 0;
+        return numConta != null && numConta.trim().length() > 0 && numConta.length() <= 10;
     }
 
     private boolean validaNumAgencia(String numAgencia) {
-        return numAgencia != null && numAgencia.trim().length() > 0;
+        return numAgencia != null && numAgencia.trim().length() > 0 && numAgencia.length() <= 5;
     }
 
     private boolean validaIdCli(int idCli) {
@@ -97,13 +102,16 @@ public class ContaCorrente {
     }
 
     public void setSaldo(int saldo) {
+        if (!validaSaldo(saldo)) {
+            throw new IllegalArgumentException("Saldo inválido");
+        }
         this.saldo = saldo;
     }
 
     public String dadosSQLValues(){
         return "'"
-            + this.getNumConta() + "', '"
-            + this.getNumAgencia() + "', "
+            + this.getNumAgencia() + "', '"
+            + this.getNumConta() + "', "
             + this.getIdCli() + ", "
             + this.getSaldo() + "'";
     }
