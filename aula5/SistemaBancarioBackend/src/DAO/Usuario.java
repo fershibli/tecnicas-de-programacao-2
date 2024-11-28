@@ -13,6 +13,8 @@ public class Usuario {
     private String login;
     private String senha;
     private int idCli;
+    private String numAgencia;
+    private String numConta;
 
     public Usuario() {
     }
@@ -24,15 +26,23 @@ public class Usuario {
     }
 
     private boolean validaLogin(String login) {
-        return login != null && login.trim().length() > 3;
+        return login != null && login.trim().length() > 3 && login.length() <= 20;
     }
 
     private boolean validaSenha(String senha) {
-        return senha != null && senha.trim().length() > 5;
+        return senha != null && senha.trim().length() > 5 && senha.length() <= 20;
     }
 
     private boolean validaIdCli(int idCli) {
         return idCli > 0;
+    }
+    
+    private boolean validaNumAgencia(String numAgencia) {
+        return numAgencia != null && numAgencia.trim().length() > 0 && numAgencia.length() <= 5;
+    }
+
+    private boolean validaNumConta(String numConta) {
+        return numConta != null && numConta.trim().length() > 0 && numConta.length() <= 10;
     }
 
     public String getLogin() {
@@ -67,11 +77,34 @@ public class Usuario {
         }
         this.idCli = idCli;
     }
+    
+    public String getNumAgencia() {
+        return numAgencia;
+    }
+
+    public void setNumAgencia(String numAgencia) {
+        if (!validaNumAgencia(numAgencia)) {
+            throw new IllegalArgumentException("Número da agência inválido");
+        }
+        this.numAgencia = numAgencia;
+    }
+
+    public String getNumConta() {
+        return numConta;
+    }
+
+    public void setNumConta(String numConta) {
+        if (!validaNumConta(numConta)) {
+            throw new IllegalArgumentException("Número da conta inválido");
+        }
+        this.numConta = numConta;
+    }
 
     public String dadosSQLValues() {
         return "'"
-            + this.getLogin() + "', '"
-            + this.getSenha() + "', "
-            + this.getIdCli() + "'";
+            + this.getIdCli() + "'"
+            + this.getSenha() + "', '"
+            + this.getNumAgencia() + "', '"
+            + this.getNumConta() + "'";
     }
 }
