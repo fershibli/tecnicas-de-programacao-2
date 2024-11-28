@@ -9,7 +9,7 @@ package DAO;
  * @author Alunos
  */
 public class Historico {
-    private String tableName = "historicos";
+    private String tableName = "HISTORICOS";
     private int id_his;
     private String historico;
 
@@ -50,6 +50,10 @@ public class Historico {
             throw new IllegalArgumentException("Histórico inválido");
         }
         this.historico = historico;
+    }
+    
+    public String getTableName() {
+        return tableName;
     }
 
     public String dadosSQLValues() {
