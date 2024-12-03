@@ -5,6 +5,7 @@
 package View;
 
 import DAO.Cliente;
+import DAO.connectDAO;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
@@ -306,6 +307,11 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             Date dataNascClienteFormatada = dateFormater.parse(this.dataNascCliente.getText());
             this.clienteTela.setDataNascimento(dataNascClienteFormatada);
             this.clienteTela.setStatus(this.statusCliente.isSelected());
+            
+            connectDAO connDAO = new connectDAO();
+            connDAO.connectDB();
+            connDAO.insereRegistroJFBD(this.clienteTela.getTableName(), this.clienteTela.dadosSQLValues());
+
         } catch (IllegalArgumentException | ParseException err) {        
             JOptionPane.showMessageDialog(this, err.getMessage());
             return;
