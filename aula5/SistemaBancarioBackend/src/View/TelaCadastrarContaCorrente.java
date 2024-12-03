@@ -5,6 +5,7 @@
 package View;
 
 import DAO.ContaCorrente;
+import DAO.connectDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -146,7 +147,11 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
             this.contaCorrenteTela.setNumAgencia(this.numAgencia.getText());
             this.contaCorrenteTela.setIdCli(Integer.parseInt(this.idCli.getText()));
             this.contaCorrenteTela.setSaldo(Integer.parseInt(this.saldo.getText()));
-        } catch (IllegalArgumentException err) {        
+        
+            connectDAO connDAO = new connectDAO();
+            connDAO.connectDB();
+            connDAO.insereRegistroJFBD(this.contaCorrenteTela.getTableName(), this.contaCorrenteTela.dadosSQLValues());
+} catch (IllegalArgumentException err) {        
             JOptionPane.showMessageDialog(this, err.getMessage());
             return;
         }
