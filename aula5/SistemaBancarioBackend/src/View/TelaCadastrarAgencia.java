@@ -4,6 +4,7 @@
  */
 package View;
 import DAO.Agencia;
+import DAO.connectDAO;
 import javax.swing.JOptionPane;
 
 
@@ -41,7 +42,6 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         codAgencia = new javax.swing.JTextField();
         nomeAgencia = new javax.swing.JTextField();
         enderecoAgencia = new javax.swing.JTextField();
@@ -50,11 +50,12 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         cepAgencia = new javax.swing.JTextField();
         cidadeAgencia = new javax.swing.JTextField();
         ufAgencia = new javax.swing.JComboBox<>();
-        cnpjAgencia = new javax.swing.JTextField();
-        gerenteAgencia = new javax.swing.JTextField();
+        telefoneAgencia = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        complementoEndAgencia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,10 +84,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         jLabel8.setText("UF:");
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel9.setText("CNPJ:");
-
-        jLabel10.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel10.setText("Gerente:");
+        jLabel9.setText("Telefone:");
 
         cidadeAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +93,12 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         });
 
         ufAgencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MS", "MT", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+
+        telefoneAgencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefoneAgenciaActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jButton2.setText("Cadastrar");
@@ -116,6 +120,15 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarTelaMenu(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jLabel11.setText("Complemento:");
+
+        complementoEndAgencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                complementoEndAgenciaActionPerformed(evt);
             }
         });
 
@@ -148,34 +161,34 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(nomeAgencia))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(numeroEndAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cidadeAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ufAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(telefoneAgencia))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(21, 21, 21)
                                 .addComponent(bairroAgencia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cepAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cidadeAgencia)
+                                .addComponent(numeroEndAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
+                                .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ufAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cnpjAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(gerenteAgencia)))
+                                .addComponent(complementoEndAgencia)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -194,27 +207,25 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(enderecoAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(numeroEndAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bairroAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel5)
-                        .addComponent(cepAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numeroEndAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel11)
+                    .addComponent(complementoEndAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bairroAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(cepAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telefoneAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cidadeAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(ufAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cnpjAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(gerenteAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ufAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -235,16 +246,18 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
             this.agenciaTela.setNome(this.nomeAgencia.getText());
             this.agenciaTela.setEndereco(this.enderecoAgencia.getText());
             this.agenciaTela.setNumero(this.numeroEndAgencia.getText());
+            this.agenciaTela.setComplemento(this.complementoEndAgencia.getText());
             this.agenciaTela.setBairro(this.bairroAgencia.getText());
             this.agenciaTela.setCidade(this.cidadeAgencia.getText());
             this.agenciaTela.setUf(this.ufAgencia.getSelectedItem().toString());
             this.agenciaTela.setCep(this.cepAgencia.getText());
-            this.agenciaTela.setCnpj(this.cnpjAgencia.getText());
-            this.agenciaTela.setGerente(this.gerenteAgencia.getText());
+            this.agenciaTela.setTelefone(this.telefoneAgencia.getText());
         } catch (IllegalArgumentException err) {        
             JOptionPane.showMessageDialog(this, err.getMessage());
             return;
         }
+        
+        
         JOptionPane.showMessageDialog(this, "Agência Cadastrada!");
         
         TelaMenu telaMenu = new TelaMenu();
@@ -262,8 +275,8 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         this.cidadeAgencia.setText("");
         this.ufAgencia.setSelectedIndex(0);
         this.cepAgencia.setText("");
-        this.cnpjAgencia.setText("");
-        this.gerenteAgencia.setText("");
+        this.telefoneAgencia.setText("");
+        this.complementoEndAgencia.setText("");
     }//GEN-LAST:event_jButton1limparActionPerformed
 
     private void voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenu
@@ -272,6 +285,14 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_voltarTelaMenu
+
+    private void complementoEndAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complementoEndAgenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_complementoEndAgenciaActionPerformed
+
+    private void telefoneAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneAgenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefoneAgenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,15 +333,14 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
     private javax.swing.JTextField bairroAgencia;
     private javax.swing.JTextField cepAgencia;
     private javax.swing.JTextField cidadeAgencia;
-    private javax.swing.JTextField cnpjAgencia;
     private javax.swing.JTextField codAgencia;
+    private javax.swing.JTextField complementoEndAgencia;
     private javax.swing.JTextField enderecoAgencia;
-    private javax.swing.JTextField gerenteAgencia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -331,6 +351,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nomeAgencia;
     private javax.swing.JTextField numeroEndAgencia;
+    private javax.swing.JTextField telefoneAgencia;
     private javax.swing.JComboBox<String> ufAgencia;
     // End of variables declaration//GEN-END:variables
 }
