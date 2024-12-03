@@ -5,6 +5,7 @@
 package View;
 
 import DAO.ExtratoMovimentacao;
+import DAO.connectDAO;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
@@ -225,6 +226,11 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
             this.extratoMovimentacaoTela.setValor(Integer.parseInt(this.valor.getText()));
             this.extratoMovimentacaoTela.setSaldo(Integer.parseInt(this.saldo.getText()));
             this.extratoMovimentacaoTela.setComplHist(this.histCompleto.getText());
+            
+            connectDAO connDAO = new connectDAO();
+            connDAO.connectDB();
+            connDAO.insereRegistroJFBD(this.extratoMovimentacaoTela.getTableName(), this.extratoMovimentacaoTela.dadosSQLValues());
+
         } catch (IllegalArgumentException | ParseException err) {
             JOptionPane.showMessageDialog(this, err.getMessage());
             return;
