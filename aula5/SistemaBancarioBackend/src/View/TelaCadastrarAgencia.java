@@ -257,6 +257,10 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
             return;
         }
         
+        connectDAO connDAO = new connectDAO();
+        connDAO.connectDB();
+        connDAO.insereRegistroJFBD(this.agenciaTela.getTableName(), this.agenciaTela.dadosSQLValues());
+        
         
         JOptionPane.showMessageDialog(this, "Agência Cadastrada!");
         
