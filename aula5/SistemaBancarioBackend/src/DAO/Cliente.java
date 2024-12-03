@@ -4,12 +4,14 @@
  */
 package DAO;
 
+import java.util.Date;
+
 /**
  *
  * @author Alunos
  */
 public class Cliente {
-    private String tableName = "CLIENTES";
+    final String tableName = "CLIENTES";
     private int idCli;
     private String nome;
     private String cpf;
@@ -278,7 +280,7 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
-    public getTableName() {
+    public String getTableName() {
         return tableName;
     }
     

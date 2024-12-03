@@ -9,7 +9,7 @@ package DAO;
  * @author Alunos
  */
 public class ContaCorrente {
-    private String tableName = "CONTACORRENTE";
+    final String tableName = "CONTACORRENTE";
     private String numConta;
     private String numAgencia;
     private int idCli;

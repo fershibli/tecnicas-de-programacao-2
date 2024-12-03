@@ -9,7 +9,7 @@ package DAO;
  * @author Alunos
  */
 public class Historico {
-    private String tableName = "HISTORICOS";
+    final String tableName = "HISTORICOS";
     private int id_his;
     private String historico;
 
@@ -27,7 +27,7 @@ public class Historico {
     }
 
     private boolean validaHistorico(String historico) {
-        return historico != null && historico.trim().length() > 0 && des_his.length() <= 30;
+        return historico != null && historico.trim().length() > 0 && historico.length() <= 30;
     }
 
     public int getId_his() {

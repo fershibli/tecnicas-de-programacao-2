@@ -9,7 +9,7 @@ package DAO;
  * @author Alunos
  */
 public class Usuario {
-    private String tableName = "USUARIOS";
+    final String tableName = "USUARIOS";
     private String login;
     private String senha;
     private int idCli;

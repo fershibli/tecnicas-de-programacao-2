@@ -10,7 +10,7 @@ import java.util.Date;
  * @author Alunos
  */
 public class ExtratoMovimentacao {
-    private String tableName = "MOVIMENTACAO";
+    final String tableName = "MOVIMENTACAO";
     private String numConta;
     private String numAgencia;
     private String documento;
@@ -65,11 +65,11 @@ public class ExtratoMovimentacao {
         return complHist == null || complHist.length() <= 30;
     }
 
-    private boolean validaValor(int valor) {
+    private boolean validaValor(double valor) {
         return valor >= 0;
     }
 
-    private boolean validaSaldo(int saldo) {
+    private boolean validaSaldo(double saldo) {
         return saldo >= 0;
     }
 
@@ -150,22 +150,22 @@ public class ExtratoMovimentacao {
         this.complHist = complHist;
     }
 
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(double valor) {
         if (!validaValor(valor)) {
             throw new IllegalArgumentException("Valor inválido");
         }
         this.valor = valor;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         if (!validaSaldo(saldo)) {
             throw new IllegalArgumentException("Saldo inválido");
         }

@@ -9,7 +9,7 @@ package DAO;
  * @author Alunos
  */
 public class Agencia {
-    private String tableName = "AGENCIAS";
+    final String tableName = "AGENCIAS";
     private String numAgencia;
     private String nome;
     private String endereco;
