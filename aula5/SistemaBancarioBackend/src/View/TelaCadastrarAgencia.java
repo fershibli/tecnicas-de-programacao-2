@@ -252,14 +252,15 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
             this.agenciaTela.setUf(this.ufAgencia.getSelectedItem().toString());
             this.agenciaTela.setCep(this.cepAgencia.getText());
             this.agenciaTela.setTelefone(this.telefoneAgencia.getText());
+            
+            connectDAO connDAO = new connectDAO();
+            connDAO.connectDB();
+            connDAO.insereRegistroJFBD(this.agenciaTela.getTableName(), this.agenciaTela.dadosSQLValues());
         } catch (IllegalArgumentException err) {        
             JOptionPane.showMessageDialog(this, err.getMessage());
             return;
         }
         
-        connectDAO connDAO = new connectDAO();
-        connDAO.connectDB();
-        connDAO.insereRegistroJFBD(this.agenciaTela.getTableName(), this.agenciaTela.dadosSQLValues());
         
         
         JOptionPane.showMessageDialog(this, "Agência Cadastrada!");
