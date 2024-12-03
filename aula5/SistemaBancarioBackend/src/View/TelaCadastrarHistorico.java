@@ -5,6 +5,7 @@
 package View;
 
 import DAO.Historico;
+import DAO.connectDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -132,6 +133,11 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
         try {
             this.historicoTela.setId_his(Integer.parseInt(this.idHis.getText()));
             this.historicoTela.setHistorico(this.historico.getText());
+            
+            connectDAO connDAO = new connectDAO();
+            connDAO.connectDB();
+            connDAO.insereRegistroJFBD(this.historicoTela.getTableName(), this.historicoTela.dadosSQLValues());
+
         } catch (IllegalArgumentException err) {
             JOptionPane.showMessageDialog(this, err.getMessage());
             return;
