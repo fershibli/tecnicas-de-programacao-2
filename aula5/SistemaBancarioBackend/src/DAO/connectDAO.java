@@ -28,7 +28,7 @@ public class connectDAO {
     public Connection connectDB(){
         JOptionPane.showMessageDialog(null, "Inicia a classe para conexão com SQL SERVER!");
  
-        String caminho = "jdbc:sqlserver://localhost:1433;databaseName=VIDEOLOCADORA;"
+        String caminho = "jdbc:sqlserver://localhost:1433;databaseName=MOV_CONTA_CORRENTE;"
                 + "encrypt=true;trustServerCertificate=true;"; 
         String usuario = "sa";
         String senha = ".";
