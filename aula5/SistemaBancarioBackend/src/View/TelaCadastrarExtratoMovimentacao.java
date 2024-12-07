@@ -6,8 +6,8 @@ package View;
 
 import DAO.ExtratoMovimentacao;
 import DAO.connectDAO;
-import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -218,7 +218,7 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
             this.extratoMovimentacaoTela.setId_his(Integer.parseInt(this.idHis.getText()));
             this.extratoMovimentacaoTela.setNumAgencia(this.numAgencia.getText());
             this.extratoMovimentacaoTela.setNumConta(this.numConta.getText());
-            DateFormat dateFormater = DateFormat.getDateInstance();
+            SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
             Date dataMovimentoFormatada = dateFormater.parse(this.dataMovimento.getText());
             this.extratoMovimentacaoTela.setDataMovimento(dataMovimentoFormatada);
             this.extratoMovimentacaoTela.setDocumento(this.documento.getText());
