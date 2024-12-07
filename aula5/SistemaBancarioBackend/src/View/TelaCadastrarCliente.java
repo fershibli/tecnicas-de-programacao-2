@@ -6,8 +6,8 @@ package View;
 
 import DAO.Cliente;
 import DAO.connectDAO;
-import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -303,7 +303,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             this.clienteTela.setUf(this.ufCliente.getSelectedItem().toString());
             this.clienteTela.setCep(this.cepCliente.getText());
             this.clienteTela.setTelefone(this.telefoneCliente.getText());
-            DateFormat dateFormater = DateFormat.getDateInstance();
+            SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
             Date dataNascClienteFormatada = dateFormater.parse(this.dataNascCliente.getText());
             this.clienteTela.setDataNascimento(dataNascClienteFormatada);
             this.clienteTela.setStatus(this.statusCliente.isSelected());
