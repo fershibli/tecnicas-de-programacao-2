@@ -59,11 +59,11 @@ public class Cliente {
     }
 
     private boolean validaCpf(String cpf) {
-        return cpf != null && cpf.trim().replaceAll("[^0-9]", "").length() == 11;
+        return cpf == null || cpf.isEmpty() || cpf.isBlank() || cpf.trim().replaceAll("[^0-9]", "").length() == 11;
     }
 
     private boolean validaCnpj(String cnpj) {
-        return cnpj != null && cnpj.trim().replaceAll("[^0-9]", "").length() == 14;
+        return cnpj == null || cnpj.isEmpty() || cnpj.isBlank() || cnpj.trim().replaceAll("[^0-9]", "").length() == 14;
     }
 
     private boolean validaEndereco(String endereco) {
