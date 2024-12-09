@@ -106,9 +106,9 @@ public class Usuario {
 
     public String dadosSQLValues() {
         return "'"
-            + this.getIdCli() + "'"
-            + this.getSenha() + "', '"
-            + this.getNumAgencia() + "', '"
-            + this.getNumConta() + "'";
+            + this.getIdCli() + "','"
+            + this.getSenha() + "', "
+            + this.getNumAgencia() + ","
+            + this.getNumConta();
     }
 }
