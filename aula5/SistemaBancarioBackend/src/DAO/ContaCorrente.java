@@ -113,10 +113,9 @@ public class ContaCorrente {
     }
 
     public String dadosSQLValues(){
-        return "'"
-            + this.getNumAgencia() + "', '"
-            + this.getNumConta() + "', "
+        return this.getNumAgencia() + ", "
+            + this.getNumConta() + ", "
             + this.getIdCli() + ", "
-            + this.getSaldo() + "'";
+            + this.getSaldo() + "";
     }
 }
