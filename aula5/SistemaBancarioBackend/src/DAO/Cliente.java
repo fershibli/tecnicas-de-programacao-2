@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -71,11 +72,11 @@ public class Cliente {
     }
 
     private boolean validaNumero(String numero) {
-        return numero == null || (numero.trim().length() > 0 && numero.length() <= 8);
+        return numero == null || numero.length() <= 8;
     }
 
     private boolean validaComplemento(String complemento) {
-        return complemento == null || (complemento.length() <= 20 && complemento.trim().length() > 0);
+        return complemento == null || complemento.length() <= 20;
     }
 
     private boolean validaBairro(String bairro) {
@@ -287,6 +288,11 @@ public class Cliente {
     public String dadosSQLValues() {
         String dadosClientes;
         
+        SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+        
+        String dataNascimentoFormatada = dateFormater.format(this.getDataNascimento());
+        System.out.println(dataNascimentoFormatada);
+        
         dadosClientes = "'"
             + this.getIdCli() + "', '"
             + this.getNome() + "', '"
@@ -299,7 +305,7 @@ public class Cliente {
             + this.getCep() + "', '"
             + this.getTelefone() + "', '"
             + this.getCpf() + "', '"
-            + this.getDataNascimento() + "', '"
+            + dataNascimentoFormatada + "', '"
             + this.getCnpj() + "'";
         
         return dadosClientes;
