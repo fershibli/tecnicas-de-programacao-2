@@ -57,8 +57,7 @@ public class Historico {
     }
 
     public String dadosSQLValues() {
-        return "'"
-            + this.getId_his() + "', '"
+        return this.getId_his() + ", '"
             + this.getHistorico() + "'";
     }
 }
