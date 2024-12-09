@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -177,15 +178,20 @@ public class ExtratoMovimentacao {
     }
 
     public String dadosSQLValues() {
-        return "'"
-            + this.getNumAgencia() + "', '"
-            + this.getNumConta() + "', '"
-            + this.getDataMovimento() + "', '"
+        
+        SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+        
+        String dataMovimentoFormatada = dateFormater.format(this.getDataMovimento());
+        System.out.println(dataMovimentoFormatada);
+        
+        return this.getNumAgencia() + ", "
+            + this.getNumConta() + ", '"
+            + dataMovimentoFormatada + "', '"
             + this.getDocumento() + "', '"
             + this.getCreditoDebito() + "', "
             + this.getId_his() + ", '"
             + this.getComplHist() + "', "
             + this.getValor() + ", "
-            + this.getSaldo() + "'";
+            + this.getSaldo() + "";
     }
 }
