@@ -24,6 +24,123 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         initComponents();
     }
     
+    String operacaoAtivaGlobal = "Nenhum";
+    
+    public TelaCadastrarCliente(String operacaoAtiva){
+        operacaoAtivaGlobal = operacaoAtiva;
+        
+        String operacao = "Incluir";
+        if (operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            statusCliente.setVisible(true);
+            nomeCliente.setVisible(true);
+            jLabel7.setVisible(true);
+            idCliente.setVisible(true);
+            enderecoCliente.setVisible(true);
+            numeroCliente.setVisible(true);
+            jLabel8.setVisible(true);
+            complementoCliente.setVisible(true);
+            bairroCliente.setVisible(true);
+            jLabel9.setVisible(true);
+            cepCliente.setVisible(true);
+            cidadeCliente.setVisible(true);
+            jLabel10.setVisible(true);
+            cpfCliente.setVisible(true);
+            jLabel12.setVisible(true);
+            cnpjCliente.setVisible(true);
+            jLabel13.setVisible(true);
+            dataNascCliente.setVisible(true);
+            jButton1.setVisible(true);
+            ButtonCadastrar.setVisible(true);
+            jButton3.setVisible(true);
+            jLabel14.setVisible(true);
+            telefoneCliente.setVisible(true);
+            ufCliente.setVisible(true);
+            jButton4.setVisible(true);
+        }
+        
+        operacao = "Alterar";
+        if (operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            statusCliente.setVisible(false);
+            nomeCliente.setVisible(false);
+            jLabel7.setVisible(true); // label ID
+            idCliente.setVisible(true); // field ID
+            enderecoCliente.setVisible(false);
+            numeroCliente.setVisible(false);
+            jLabel8.setVisible(false);
+            complementoCliente.setVisible(false);
+            bairroCliente.setVisible(false);
+            jLabel9.setVisible(false);
+            cepCliente.setVisible(false);
+            cidadeCliente.setVisible(false);
+            jLabel10.setVisible(false);
+            cpfCliente.setVisible(false);
+            jLabel12.setVisible(false);
+            cnpjCliente.setVisible(false);
+            jLabel13.setVisible(false);
+            dataNascCliente.setVisible(false);
+            jButton1.setVisible(false);
+            ButtonCadastrar.setVisible(false);
+            jButton3.setVisible(false);
+            jLabel14.setVisible(false);
+            telefoneCliente.setVisible(false);
+            ufCliente.setVisible(false);
+            jButton4.setVisible(false);
+            
+            ButtonCadastrar.setText("Pesquisar");
+        }
+        
+        operacao = "Excluir";
+        if (operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            statusCliente.setVisible(false);
+            nomeCliente.setVisible(false);
+            jLabel7.setVisible(true); // label ID
+            idCliente.setVisible(true); // field ID
+            enderecoCliente.setVisible(false);
+            numeroCliente.setVisible(false);
+            jLabel8.setVisible(false);
+            complementoCliente.setVisible(false);
+            bairroCliente.setVisible(false);
+            jLabel9.setVisible(false);
+            cepCliente.setVisible(false);
+            cidadeCliente.setVisible(false);
+            jLabel10.setVisible(false);
+            cpfCliente.setVisible(false);
+            jLabel12.setVisible(false);
+            cnpjCliente.setVisible(false);
+            jLabel13.setVisible(false);
+            dataNascCliente.setVisible(false);
+            jButton1.setVisible(false);
+            ButtonCadastrar.setVisible(false);
+            jButton3.setVisible(false);
+            jLabel14.setVisible(false);
+            telefoneCliente.setVisible(false);
+            ufCliente.setVisible(false);
+            jButton4.setVisible(false);
+            
+            ButtonCadastrar.setText("Excluir");
+        }
+        
+        
+    }
+    
     Cliente clienteTela = new Cliente();
 
     /**
@@ -60,7 +177,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         dataNascCliente = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ButtonCadastrar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         telefoneCliente = new javax.swing.JTextField();
@@ -128,9 +245,9 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCadastrar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        ButtonCadastrar.setText("Cadastrar");
+        ButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarActionPerformed(evt);
             }
@@ -159,7 +276,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(ButtonCadastrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -273,7 +390,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(ButtonCadastrar)
                     .addComponent(jButton3))
                 .addContainerGap())
         );
@@ -290,38 +407,48 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_complementoClienteActionPerformed
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        try {
-            this.clienteTela.setIdCli(Integer.parseInt(this.idCliente.getText()));
-            this.clienteTela.setNome(this.nomeCliente.getText());
-            this.clienteTela.setCpf(this.cpfCliente.getText());
-            this.clienteTela.setCnpj(this.cnpjCliente.getText());
-            this.clienteTela.setEndereco(this.enderecoCliente.getText());
-            this.clienteTela.setNumero(this.numeroCliente.getText());
-            this.clienteTela.setComplemento(this.complementoCliente.getText());
-            this.clienteTela.setBairro(this.bairroCliente.getText());
-            this.clienteTela.setCidade(this.cidadeCliente.getText());
-            this.clienteTela.setUf(this.ufCliente.getSelectedItem().toString());
-            this.clienteTela.setCep(this.cepCliente.getText());
-            this.clienteTela.setTelefone(this.telefoneCliente.getText());
-            SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
-            Date dataNascClienteFormatada = dateFormater.parse(this.dataNascCliente.getText());
-            this.clienteTela.setDataNascimento(dataNascClienteFormatada);
-            this.clienteTela.setStatus(this.statusCliente.isSelected());
-            
-            connectDAO connDAO = new connectDAO();
-            connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.clienteTela.getTableName(), this.clienteTela.dadosSQLValues());
-
-        } catch (IllegalArgumentException | ParseException err) {        
-            JOptionPane.showMessageDialog(this, err.getMessage());
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Cliente Cadastrado!");
         
-        TelaMenu telaMenu = new TelaMenu();
-        telaMenu.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
+        String operacao = "Incluir";
+        if(operacaoAtivaGlobal.equals(operacao)){
+            try {
+                this.clienteTela.setIdCli(Integer.parseInt(this.idCliente.getText()));
+                this.clienteTela.setNome(this.nomeCliente.getText());
+                this.clienteTela.setCpf(this.cpfCliente.getText());
+                this.clienteTela.setCnpj(this.cnpjCliente.getText());
+                this.clienteTela.setEndereco(this.enderecoCliente.getText());
+                this.clienteTela.setNumero(this.numeroCliente.getText());
+                this.clienteTela.setComplemento(this.complementoCliente.getText());
+                this.clienteTela.setBairro(this.bairroCliente.getText());
+                this.clienteTela.setCidade(this.cidadeCliente.getText());
+                this.clienteTela.setUf(this.ufCliente.getSelectedItem().toString());
+                this.clienteTela.setCep(this.cepCliente.getText());
+                this.clienteTela.setTelefone(this.telefoneCliente.getText());
+                SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+                Date dataNascClienteFormatada = dateFormater.parse(this.dataNascCliente.getText());
+                this.clienteTela.setDataNascimento(dataNascClienteFormatada);
+                this.clienteTela.setStatus(this.statusCliente.isSelected());
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.insereRegistroJFBD(this.clienteTela.getTableName(), this.clienteTela.dadosSQLValues());
+
+            } catch (IllegalArgumentException | ParseException err) {        
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Cliente Cadastrado!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
+        operacao = "Alterar";
+        if(operacaoAtivaGlobal.equals(operacao)){
+            // TODO: botão alterar
+        }
+        
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparActionPerformed
@@ -387,6 +514,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonCadastrar;
     private javax.swing.JTextField bairroCliente;
     private javax.swing.JTextField cepCliente;
     private javax.swing.JTextField cidadeCliente;
@@ -397,7 +525,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField enderecoCliente;
     private javax.swing.JTextField idCliente;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
