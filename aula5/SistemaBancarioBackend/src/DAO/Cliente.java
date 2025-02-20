@@ -310,4 +310,29 @@ public class Cliente {
         
         return dadosClientes;
     }
+    
+    public String alteraDadosSQLValues() {
+        String dadosClientes;
+        
+        SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+        
+        String dataNascimentoFormatada = dateFormater.format(this.getDataNascimento());
+        System.out.println(dataNascimentoFormatada);
+        
+        dadosClientes = "NOME_CLI='"
+            + this.getNome() + "', ENDE_CLI='"
+            + this.getEndereco() + "', NUME_CLI='"
+            + this.getNumero() + "', COMPL_CLI='"
+            + this.getComplemento() + "', BAIR_CLI='"
+            + this.getBairro() + "', CIDA_CLI='"
+            + this.getCidade() + "', UF_CLI='"
+            + this.getUf() + "', CEP_CLI='"
+            + this.getCep() + "', FONE_CLI='"
+            + this.getTelefone() + "', CPF_CLI='"
+            + this.getCpf() + "', DATA_NASC='"
+            + dataNascimentoFormatada + "', CNPJ_CLI='"
+            + this.getCnpj() + "'";
+        
+        return dadosClientes;
+    }
 }
