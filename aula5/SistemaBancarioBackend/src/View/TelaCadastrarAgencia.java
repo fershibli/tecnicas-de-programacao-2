@@ -21,6 +21,69 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         initComponents();
     }
     
+    String operacaoAtivaGlobal = "Nenhum";
+    
+    public TelaCadastrarAgencia(String operacaoAtiva) {
+        operacaoAtivaGlobal = operacaoAtiva;
+        
+        String operacao = "Incluir";
+        
+        if (operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            codAgencia.setVisible(true);
+            nomeAgencia.setVisible(true);
+            enderecoAgencia.setVisible(true);
+            numeroEndAgencia.setVisible(true);
+            bairroAgencia.setVisible(true);
+            cepAgencia.setVisible(true);
+            cidadeAgencia.setVisible(true);
+            ufAgencia.setVisible(true);
+            telefoneAgencia.setVisible(true);
+            jButton2.setVisible(true);
+            jButton1.setVisible(true);
+            jButton3.setVisible(true);
+            jLabel11.setVisible(true);
+            complementoEndAgencia.setVisible(true);
+        }
+        
+        operacao = "Alterar";
+        
+        if (operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel9.setVisible(false);
+            codAgencia.setVisible(false);
+            nomeAgencia.setVisible(false);
+            enderecoAgencia.setVisible(false);
+            numeroEndAgencia.setVisible(false);
+            bairroAgencia.setVisible(false);
+            cepAgencia.setVisible(false);
+            cidadeAgencia.setVisible(false);
+            ufAgencia.setVisible(false);
+            telefoneAgencia.setVisible(false);
+            jButton2.setVisible(false);
+            jButton1.setVisible(false);
+            jButton3.setVisible(false);
+            jLabel11.setVisible(false);
+            complementoEndAgencia.setVisible(false);
+        }
+        
+    }
+    
     Agencia agenciaTela = new Agencia();
 
 
