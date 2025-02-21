@@ -444,9 +444,98 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             this.dispose();
         }
         
-        operacao = "Alterar";
+        operacao = "Alteração";
         if(operacaoAtivaGlobal.equals(operacao)){
-            // TODO: botão alterar
+            try {
+                // this.clienteTela.setIdCli(Integer.parseInt(this.idCliente.getText()));
+                this.clienteTela.setNome(this.nomeCliente.getText());
+                this.clienteTela.setCpf(this.cpfCliente.getText());
+                this.clienteTela.setCnpj(this.cnpjCliente.getText());
+                this.clienteTela.setEndereco(this.enderecoCliente.getText());
+                this.clienteTela.setNumero(this.numeroCliente.getText());
+                this.clienteTela.setComplemento(this.complementoCliente.getText());
+                this.clienteTela.setBairro(this.bairroCliente.getText());
+                this.clienteTela.setCidade(this.cidadeCliente.getText());
+                this.clienteTela.setUf(this.ufCliente.getSelectedItem().toString());
+                this.clienteTela.setCep(this.cepCliente.getText());
+                this.clienteTela.setTelefone(this.telefoneCliente.getText());
+                SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+                Date dataNascClienteFormatada = dateFormater.parse(this.dataNascCliente.getText());
+                this.clienteTela.setDataNascimento(dataNascClienteFormatada);
+                this.clienteTela.setStatus(this.statusCliente.isSelected());
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.alteraRegistroJFBD(this.clienteTela.getTableName(), this.clienteTela.alteraDadosSQLValues(), "ID_CLI='"+this.clienteTela.getIdCli()+"'");
+
+            } catch (IllegalArgumentException | ParseException err) {        
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Cliente Alterado!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
+        operacao = "Alterar";
+        if (operacaoAtivaGlobal.equals(operacao)){
+            connectDAO connDAO = new connectDAO();
+            
+            clienteTela = connDAO.consultaRegistroJFBD(this.clienteTela.getTableName(), this.clienteTela.consultaSQLValues(), "ID_CLI='"+this.clienteTela.getIdCli()+"'");
+            
+            this.nomeCliente.setText(clienteTela.getNome());
+            this.cpfCliente.setText(clienteTela.getCpf());
+            this.cnpjCliente.setText(clienteTela.getCnpj());
+            this.enderecoCliente.setText(clienteTela.getEndereco());
+            this.numeroCliente.setText(clienteTela.getNumero());
+            this.complementoCliente.setText(clienteTela.getComplemento());
+            this.bairroCliente.setText(clienteTela.getBairro());
+            this.cidadeCliente.setText(clienteTela.getCidade());
+            this.ufCliente.setSelectedItem(clienteTela.getUf());
+            this.cepCliente.setText(clienteTela.getCep());
+            this.telefoneCliente.setText(clienteTela.getTelefone());
+            SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+            String dataNascClienteString = dateFormater.format(clienteTela.getDataNascimento());
+            this.dataNascCliente.setText(dataNascClienteString);
+            
+            
+            jLabel1.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            statusCliente.setVisible(true);
+            nomeCliente.setVisible(true);
+            jLabel7.setVisible(false); // LABEL ID_CLI
+            idCliente.setVisible(false); // FIELD ID_CLI
+            enderecoCliente.setVisible(true);
+            numeroCliente.setVisible(true);
+            jLabel8.setVisible(true);
+            complementoCliente.setVisible(true);
+            bairroCliente.setVisible(true);
+            jLabel9.setVisible(true);
+            cepCliente.setVisible(true);
+            cidadeCliente.setVisible(true);
+            jLabel10.setVisible(true);
+            cpfCliente.setVisible(true);
+            jLabel12.setVisible(true);
+            cnpjCliente.setVisible(true);
+            jLabel13.setVisible(true);
+            dataNascCliente.setVisible(true);
+            jButton1.setVisible(true);
+            ButtonCadastrar.setVisible(true);
+            jButton3.setVisible(true);
+            jLabel14.setVisible(true);
+            telefoneCliente.setVisible(true);
+            ufCliente.setVisible(true);
+            jButton4.setVisible(true);
+            
+            ButtonCadastrar.setText("Alterar");
+            operacaoAtivaGlobal = "Alteração";
         }
         
     }//GEN-LAST:event_cadastrarActionPerformed
