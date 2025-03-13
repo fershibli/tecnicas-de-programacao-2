@@ -9,6 +9,7 @@ import DAO.connectDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -99,43 +100,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             jButton4.setVisible(false);
             
             ButtonCadastrar.setText("Pesquisar");
-        }
-        
-        operacao = "Excluir";
-        if (operacaoAtiva.equals(operacao)) {
-            jLabel1.setVisible(false);
-            jLabel2.setVisible(false);
-            jLabel3.setVisible(false);
-            jLabel4.setVisible(false);
-            jLabel5.setVisible(false);
-            jLabel6.setVisible(false);
-            statusCliente.setVisible(false);
-            nomeCliente.setVisible(false);
-            jLabel7.setVisible(true); // label ID
-            idCliente.setVisible(true); // field ID
-            enderecoCliente.setVisible(false);
-            numeroCliente.setVisible(false);
-            jLabel8.setVisible(false);
-            complementoCliente.setVisible(false);
-            bairroCliente.setVisible(false);
-            jLabel9.setVisible(false);
-            cepCliente.setVisible(false);
-            cidadeCliente.setVisible(false);
-            jLabel10.setVisible(false);
-            cpfCliente.setVisible(false);
-            jLabel12.setVisible(false);
-            cnpjCliente.setVisible(false);
-            jLabel13.setVisible(false);
-            dataNascCliente.setVisible(false);
-            jButton1.setVisible(false);
-            ButtonCadastrar.setVisible(false);
-            jButton3.setVisible(false);
-            jLabel14.setVisible(false);
-            telefoneCliente.setVisible(false);
-            ufCliente.setVisible(false);
-            jButton4.setVisible(false);
-            
-            ButtonCadastrar.setText("Excluir");
         }
         
         
@@ -484,7 +448,14 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals(operacao)){
             connectDAO connDAO = new connectDAO();
             
-            clienteTela = connDAO.consultaRegistroJFBD(this.clienteTela.getTableName(), this.clienteTela.consultaSQLValues(), "ID_CLI='"+this.clienteTela.getIdCli()+"'");
+            List<String> dadosSQL = connDAO.consultaRegistroJFBD(
+                    this.clienteTela.getTableName(), 
+                    this.clienteTela.consultaSQLValues(), 
+                    "ID_CLI='"+this.clienteTela.getIdCli()+"'"
+            );
+            
+            this.clienteTela.importaSQLValues(dadosSQL);
+            
             
             this.nomeCliente.setText(clienteTela.getNome());
             this.cpfCliente.setText(clienteTela.getCpf());
