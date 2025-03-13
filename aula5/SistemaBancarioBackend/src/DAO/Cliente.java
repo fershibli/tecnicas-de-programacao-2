@@ -4,8 +4,12 @@
  */
 package DAO;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -338,5 +342,27 @@ public class Cliente {
     
     public String consultaSQLValues() {
         return "ID_CLI, NOME_CLI, ENDE_CLI, NUME_CLI, COMPL_CLI, BAIR_CLI, CIDA_CLI, UF_CLI, CEP_CLI, FONE_CLI, CPF_CLI, DATA_NASC, CNPJ_CLI";
+    }
+
+    public void importaSQLValues(List<String> dados) {
+        try {
+            SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+            
+            this.setIdCli(Integer.parseInt(dados.get(0)));
+            this.setNome(dados.get(1));
+            this.setEndereco(dados.get(2));
+            this.setNumero(dados.get(3));
+            this.setComplemento(dados.get(4));
+            this.setBairro(dados.get(5));
+            this.setCidade(dados.get(6));
+            this.setUf(dados.get(7));
+            this.setCep(dados.get(8));
+            this.setTelefone(dados.get(9));
+            this.setCpf(dados.get(10));
+            this.setDataNascimento(dateFormater.parse(dados.get(11)));
+            this.setCnpj(dados.get(12));
+        } catch (ParseException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
