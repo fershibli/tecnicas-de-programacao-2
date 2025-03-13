@@ -129,8 +129,10 @@ public class connectDAO {
             
             try {
                 rs = stmt.executeQuery(sql);
+                int index = 1;
                 while (rs.next()) {
-                    lista.add(rs.getString(1));
+                    lista.add(rs.getString(index));
+                    index += 1;
                 }
             } catch (SQLException erro) {
                 JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
