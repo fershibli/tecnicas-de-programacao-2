@@ -137,6 +137,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem10.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem10.setText("Alterar existente");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreAlterarUsuario(evt);
+            }
+        });
         jMenu5.add(jMenuItem10);
 
         jMenuItem14.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -304,7 +309,8 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_abreCadastrarCliente
 
     private void abreCadastrarUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarUsuario
-        TelaCadastrarUsuario telaNovoUsuario = new TelaCadastrarUsuario();
+        String operacao = "Incluir";
+        TelaCadastrarUsuario telaNovoUsuario = new TelaCadastrarUsuario(operacao);
         telaNovoUsuario.setVisible(true);
         
         this.setVisible(false);
@@ -345,6 +351,16 @@ public class TelaMenu extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_abreAlterarCliente
+
+    private void abreAlterarUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreAlterarUsuario
+        // TODO add your handling code here:
+        String operacao = "Alterar";
+        TelaCadastrarUsuario telaNovoUsuario = new TelaCadastrarUsuario(operacao);
+        telaNovoUsuario.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreAlterarUsuario
 
     /**
      * @param args the command line arguments
