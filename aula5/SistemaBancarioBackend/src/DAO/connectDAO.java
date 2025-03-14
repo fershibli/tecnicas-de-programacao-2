@@ -119,7 +119,7 @@ public class connectDAO {
     public List<String> consultaRegistroJFBD(String tabela, String campos, String condicao) {
         conn = connectDB();
         Statement stmt;
-        ResultSet rs;
+        ResultSet dados;
         List<String> lista = new ArrayList<>();
         try {
             stmt = conn.createStatement();
@@ -128,11 +128,15 @@ public class connectDAO {
             JOptionPane.showMessageDialog(null, "String de select: "+sql);
             
             try {
-                rs = stmt.executeQuery(sql);
-                int index = 1;
-                while (rs.next()) {
-                    lista.add(rs.getString(index));
-                    index += 1;
+                dados = stmt.executeQuery(sql);
+                
+                if (!dados.next()) {
+                    JOptionPane.showMessageDialog(null, "Registro não encontrado!");
+                }
+
+                int columnCount = dados.getMetaData().getColumnCount();
+                for (int index = 1; index <= columnCount; index++) {
+                    lista.add(dados.getString(index));
                 }
             } catch (SQLException erro) {
                 JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
