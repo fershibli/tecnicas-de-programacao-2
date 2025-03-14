@@ -4,6 +4,8 @@
  */
 package DAO;
 
+import java.util.List;
+
 /**
  *
  * @author Alunos
@@ -110,5 +112,21 @@ public class Usuario {
             + this.getSenha() + "', "
             + this.getNumAgencia() + ","
             + this.getNumConta();
+    }
+
+    public String alteraDadosSQLValues() {
+        return "SENHA = '" + this.getSenha() + "', "
+            + "NUM_AGE = " + this.getNumAgencia() + ", "
+            + "NUM_CC = " + this.getNumConta();
+    }
+
+    public String consultaSQLValues() {
+        return "SENHA, NUM_AGE, NUM_CC";
+    }
+
+    public void importaSQLValues(List<String> dados) {
+        this.setSenha(dados.get(0));
+        this.setNumAgencia(dados.get(1));
+        this.setNumConta(dados.get(2));
     }
 }
