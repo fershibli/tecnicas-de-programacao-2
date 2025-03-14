@@ -346,7 +346,7 @@ public class Cliente {
 
     public void importaSQLValues(List<String> dados) {
         try {
-            SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dateFormaterFromDB = new SimpleDateFormat("yyyy-MM-dd");
             
             this.setIdCli(Integer.parseInt(dados.get(0)));
             this.setNome(dados.get(1));
@@ -359,7 +359,7 @@ public class Cliente {
             this.setCep(dados.get(8));
             this.setTelefone(dados.get(9));
             this.setCpf(dados.get(10));
-            this.setDataNascimento(dateFormater.parse(dados.get(11)));
+            this.setDataNascimento(dateFormaterFromDB.parse(dados.get(11)));
             this.setCnpj(dados.get(12));
         } catch (ParseException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
