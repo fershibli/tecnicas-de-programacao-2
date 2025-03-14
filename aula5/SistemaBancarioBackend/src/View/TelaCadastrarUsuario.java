@@ -21,6 +21,25 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
         initComponents();
     }
     
+    String operacaoAtivaGlobal = "Nenhum";
+
+    public TelaCadastrarUsuario(String operacaoAtiva){
+        initComponents();
+        operacaoAtivaGlobal = operacaoAtiva;
+        
+        String operacao = "Incluir";
+        if (operacaoAtiva.equals(operacao)) {
+            //TODO
+        }
+        
+        operacao = "Alterar";
+        if (operacaoAtiva.equals(operacao)) {
+            //TODO
+        }
+        
+        
+    }
+    
     Usuario novoUsuario = new Usuario();
     boolean senhasIguais = false;
 
