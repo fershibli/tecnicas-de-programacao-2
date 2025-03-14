@@ -104,10 +104,9 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem1.setText("Alterar existente");
-        jMenuItem1.setEnabled(false);
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                abreAlterarCliente(evt);
             }
         });
         jMenu4.add(jMenuItem1);
@@ -138,7 +137,6 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem10.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem10.setText("Alterar existente");
-        jMenuItem10.setEnabled(false);
         jMenu5.add(jMenuItem10);
 
         jMenuItem14.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -297,7 +295,8 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void abreCadastrarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarCliente
         // TODO add your handling code here:
-        TelaCadastrarCliente telaNovoCliente = new TelaCadastrarCliente();
+        String operacao = "Incluir";
+        TelaCadastrarCliente telaNovoCliente = new TelaCadastrarCliente(operacao);
         telaNovoCliente.setVisible(true);
         
         this.setVisible(false);
@@ -337,9 +336,15 @@ public class TelaMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_abreCadastrarHistorico
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void abreAlterarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreAlterarCliente
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        String operacao = "Alterar";
+        TelaCadastrarCliente telaNovoCliente = new TelaCadastrarCliente(operacao);
+        telaNovoCliente.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreAlterarCliente
 
     /**
      * @param args the command line arguments
