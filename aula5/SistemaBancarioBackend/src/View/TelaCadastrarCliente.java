@@ -28,6 +28,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     String operacaoAtivaGlobal = "Nenhum";
     
     public TelaCadastrarCliente(String operacaoAtiva){
+        initComponents();
         operacaoAtivaGlobal = operacaoAtiva;
         
         String operacao = "Incluir";
@@ -92,7 +93,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             jLabel13.setVisible(false);
             dataNascCliente.setVisible(false);
             jButton1.setVisible(false);
-            ButtonCadastrar.setVisible(false);
+            ButtonCadastrar.setVisible(true); // button
             jButton3.setVisible(false);
             jLabel14.setVisible(false);
             telefoneCliente.setVisible(false);
@@ -451,7 +452,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             List<String> dadosSQL = connDAO.consultaRegistroJFBD(
                     this.clienteTela.getTableName(), 
                     this.clienteTela.consultaSQLValues(), 
-                    "ID_CLI='"+this.clienteTela.getIdCli()+"'"
+                    "ID_CLI='"+idCliente.getText()+"'"
             );
             
             this.clienteTela.importaSQLValues(dadosSQL);
