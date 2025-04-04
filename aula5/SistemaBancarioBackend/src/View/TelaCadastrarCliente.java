@@ -33,74 +33,18 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         
         String operacao = "Incluir";
         if (operacaoAtiva.equals(operacao)) {
-            jLabel1.setVisible(true);
-            jLabel2.setVisible(true);
-            jLabel3.setVisible(true);
-            jLabel4.setVisible(true);
-            jLabel5.setVisible(true);
-            jLabel6.setVisible(true);
-            statusCliente.setVisible(true);
-            nomeCliente.setVisible(true);
-            jLabel7.setVisible(true);
-            idCliente.setVisible(true);
-            enderecoCliente.setVisible(true);
-            numeroCliente.setVisible(true);
-            jLabel8.setVisible(true);
-            complementoCliente.setVisible(true);
-            bairroCliente.setVisible(true);
-            jLabel9.setVisible(true);
-            cepCliente.setVisible(true);
-            cidadeCliente.setVisible(true);
-            jLabel10.setVisible(true);
-            cpfCliente.setVisible(true);
-            jLabel12.setVisible(true);
-            cnpjCliente.setVisible(true);
-            jLabel13.setVisible(true);
-            dataNascCliente.setVisible(true);
-            jButton1.setVisible(true);
-            ButtonCadastrar.setVisible(true);
-            jButton3.setVisible(true);
-            jLabel14.setVisible(true);
-            telefoneCliente.setVisible(true);
-            ufCliente.setVisible(true);
-            jButton4.setVisible(true);
+            this.setAllVisible(true);
         }
         
         operacao = "Alterar";
-        if (operacaoAtiva.equals(operacao)) {
-            jLabel1.setVisible(false);
-            jLabel2.setVisible(false);
-            jLabel3.setVisible(false);
-            jLabel4.setVisible(false);
-            jLabel5.setVisible(false);
-            jLabel6.setVisible(false);
-            statusCliente.setVisible(false);
-            nomeCliente.setVisible(false);
-            jLabel7.setVisible(true); // label ID
-            idCliente.setVisible(true); // field ID
-            enderecoCliente.setVisible(false);
-            numeroCliente.setVisible(false);
-            jLabel8.setVisible(false);
-            complementoCliente.setVisible(false);
-            bairroCliente.setVisible(false);
-            jLabel9.setVisible(false);
-            cepCliente.setVisible(false);
-            cidadeCliente.setVisible(false);
-            jLabel10.setVisible(false);
-            cpfCliente.setVisible(false);
-            jLabel12.setVisible(false);
-            cnpjCliente.setVisible(false);
-            jLabel13.setVisible(false);
-            dataNascCliente.setVisible(false);
-            jButton1.setVisible(false);
-            ButtonCadastrar.setVisible(true); // button
-            jButton3.setVisible(false);
-            jLabel14.setVisible(false);
-            telefoneCliente.setVisible(false);
-            ufCliente.setVisible(false);
-            jButton4.setVisible(false);
+        String operacaoExcluir = "Excluir";
+        if (operacaoAtiva.equals(operacao) || operacaoAtiva.equals(operacaoExcluir)) {
+            this.setAllVisible(false);
+            labelIdCliente.setVisible(true); 
+            idCliente.setVisible(true);
             
-            ButtonCadastrar.setText("Pesquisar");
+            buttonCadastrar.setVisible(true);
+            buttonCadastrar.setText("Pesquisar");
         }
         
         
@@ -108,6 +52,74 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     
     Cliente clienteTela = new Cliente();
 
+    private void setAllVisible(Boolean visible) {
+            jLabel1.setVisible(visible);
+            jLabel2.setVisible(visible);
+            jLabel3.setVisible(visible);
+            jLabel4.setVisible(visible);
+            jLabel5.setVisible(visible);
+            jLabel6.setVisible(visible);
+            statusCliente.setVisible(visible);
+            nomeCliente.setVisible(visible);
+            labelIdCliente.setVisible(visible); 
+            idCliente.setVisible(visible);
+            enderecoCliente.setVisible(visible);
+            numeroCliente.setVisible(visible);
+            jLabel8.setVisible(visible);
+            complementoCliente.setVisible(visible);
+            bairroCliente.setVisible(visible);
+            jLabel9.setVisible(visible);
+            cepCliente.setVisible(visible);
+            cidadeCliente.setVisible(visible);
+            jLabel10.setVisible(visible);
+            cpfCliente.setVisible(visible);
+            jLabel12.setVisible(visible);
+            cnpjCliente.setVisible(visible);
+            jLabel13.setVisible(visible);
+            dataNascCliente.setVisible(visible);
+            buttonLimpar.setVisible(visible);
+            buttonCadastrar.setVisible(visible); 
+            buttonDetalhes.setVisible(visible);
+            jLabel14.setVisible(visible);
+            telefoneCliente.setVisible(visible);
+            ufCliente.setVisible(visible);
+            buttonVoltar.setVisible(visible);
+    }
+    
+    private void setAllEnabled(Boolean enabled) {
+            jLabel1.setEnabled(enabled);
+            jLabel2.setEnabled(enabled);
+            jLabel3.setEnabled(enabled);
+            jLabel4.setEnabled(enabled);
+            jLabel5.setEnabled(enabled);
+            jLabel6.setEnabled(enabled);
+            statusCliente.setEnabled(enabled);
+            nomeCliente.setEnabled(enabled);
+            labelIdCliente.setEnabled(enabled); 
+            idCliente.setEnabled(enabled);
+            enderecoCliente.setEnabled(enabled);
+            numeroCliente.setEnabled(enabled);
+            jLabel8.setEnabled(enabled);
+            complementoCliente.setEnabled(enabled);
+            bairroCliente.setEnabled(enabled);
+            jLabel9.setEnabled(enabled);
+            cepCliente.setEnabled(enabled);
+            cidadeCliente.setEnabled(enabled);
+            jLabel10.setEnabled(enabled);
+            cpfCliente.setEnabled(enabled);
+            jLabel12.setEnabled(enabled);
+            cnpjCliente.setEnabled(enabled);
+            jLabel13.setEnabled(enabled);
+            dataNascCliente.setEnabled(enabled);
+            buttonLimpar.setEnabled(enabled);
+            buttonCadastrar.setEnabled(enabled); 
+            buttonDetalhes.setEnabled(enabled);
+            jLabel14.setEnabled(enabled);
+            telefoneCliente.setEnabled(enabled);
+            ufCliente.setEnabled(enabled);
+            buttonVoltar.setEnabled(enabled);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,7 +137,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         statusCliente = new javax.swing.JCheckBox();
         nomeCliente = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        labelIdCliente = new javax.swing.JLabel();
         idCliente = new javax.swing.JTextField();
         enderecoCliente = new javax.swing.JTextField();
         numeroCliente = new javax.swing.JTextField();
@@ -141,13 +153,13 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         cnpjCliente = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         dataNascCliente = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        ButtonCadastrar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        buttonLimpar = new javax.swing.JButton();
+        buttonCadastrar = new javax.swing.JButton();
+        buttonDetalhes = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         telefoneCliente = new javax.swing.JTextField();
         ufCliente = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
+        buttonVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,8 +184,8 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         statusCliente.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         statusCliente.setText("Status ativo?");
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel7.setText("ID:");
+        labelIdCliente.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        labelIdCliente.setText("ID:");
 
         idCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,32 +214,32 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel13.setText("Data de Nascimento:");
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton1.setText("Limpar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonLimpar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonLimpar.setText("Limpar");
+        buttonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparActionPerformed(evt);
             }
         });
 
-        ButtonCadastrar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        ButtonCadastrar.setText("Cadastrar");
-        ButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        buttonCadastrar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonCadastrar.setText("Cadastrar");
+        buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrarActionPerformed(evt);
+                buttonCadastrarActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton3.setText("Detalhes");
+        buttonDetalhes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonDetalhes.setText("Detalhes");
 
         jLabel14.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jLabel14.setText("Telefone:");
 
         ufCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MS", "MT", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
-        jButton4.setText("← Voltar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonVoltar.setText("← Voltar");
+        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarTelaMenu(evt);
             }
@@ -241,11 +253,11 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(ButtonCadastrar)
+                        .addComponent(buttonCadastrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(buttonDetalhes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(buttonLimpar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -283,7 +295,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(enderecoCliente))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(labelIdCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -292,7 +304,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                         .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4)
+                            .addComponent(buttonVoltar)
                             .addComponent(statusCliente))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -309,12 +321,12 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton4)
+                .addComponent(buttonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
+                    .addComponent(labelIdCliente)
                     .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -354,9 +366,9 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 .addComponent(statusCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(ButtonCadastrar)
-                    .addComponent(jButton3))
+                    .addComponent(buttonLimpar)
+                    .addComponent(buttonCadastrar)
+                    .addComponent(buttonDetalhes))
                 .addContainerGap())
         );
 
@@ -371,8 +383,8 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_complementoClienteActionPerformed
 
-    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        
+    private void buttonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarActionPerformed
+        String operacaoExcluir;
         String operacao = "Incluir";
         if(operacaoAtivaGlobal.equals(operacao)){
             try {
@@ -446,7 +458,8 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         }
         
         operacao = "Alterar";
-        if (operacaoAtivaGlobal.equals(operacao)){
+        operacaoExcluir = "Excluir";
+        if (operacaoAtivaGlobal.equals(operacao) || operacaoAtivaGlobal.equals(operacaoExcluir)){
             connectDAO connDAO = new connectDAO();
             
             List<String> dadosSQL = connDAO.consultaRegistroJFBD(
@@ -474,43 +487,23 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             this.dataNascCliente.setText(dataNascClienteString);
             
             
-            jLabel1.setVisible(true);
-            jLabel2.setVisible(true);
-            jLabel3.setVisible(true);
-            jLabel4.setVisible(true);
-            jLabel5.setVisible(true);
-            jLabel6.setVisible(true);
-            statusCliente.setVisible(true);
-            nomeCliente.setVisible(true);
-            jLabel7.setVisible(false); // LABEL ID_CLI
-            idCliente.setVisible(false); // FIELD ID_CLI
-            enderecoCliente.setVisible(true);
-            numeroCliente.setVisible(true);
-            jLabel8.setVisible(true);
-            complementoCliente.setVisible(true);
-            bairroCliente.setVisible(true);
-            jLabel9.setVisible(true);
-            cepCliente.setVisible(true);
-            cidadeCliente.setVisible(true);
-            jLabel10.setVisible(true);
-            cpfCliente.setVisible(true);
-            jLabel12.setVisible(true);
-            cnpjCliente.setVisible(true);
-            jLabel13.setVisible(true);
-            dataNascCliente.setVisible(true);
-            jButton1.setVisible(true);
-            ButtonCadastrar.setVisible(true);
-            jButton3.setVisible(true);
-            jLabel14.setVisible(true);
-            telefoneCliente.setVisible(true);
-            ufCliente.setVisible(true);
-            jButton4.setVisible(true);
+            this.setAllVisible(true);
             
-            ButtonCadastrar.setText("Alterar");
-            operacaoAtivaGlobal = "Alteração";
+            if (operacaoAtivaGlobal.equals(operacaoExcluir)) {
+                buttonCadastrar.setText("Excluir");
+                operacaoAtivaGlobal = "Exclusão";
+                this.setAllEnabled(false);
+                this.buttonVoltar.setEnabled(true);
+                this.buttonCadastrar.setEnabled(true);
+                this.buttonLimpar.setEnabled(true);
+                this.buttonDetalhes.setEnabled(true);
+            } else {
+                buttonCadastrar.setText("Alterar");
+                operacaoAtivaGlobal = "Alteração";
+            }
         }
         
-    }//GEN-LAST:event_cadastrarActionPerformed
+    }//GEN-LAST:event_buttonCadastrarActionPerformed
 
     private void limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparActionPerformed
         this.idCliente.setText("");
@@ -575,8 +568,11 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonCadastrar;
     private javax.swing.JTextField bairroCliente;
+    private javax.swing.JButton buttonCadastrar;
+    private javax.swing.JButton buttonDetalhes;
+    private javax.swing.JButton buttonLimpar;
+    private javax.swing.JButton buttonVoltar;
     private javax.swing.JTextField cepCliente;
     private javax.swing.JTextField cidadeCliente;
     private javax.swing.JTextField cnpjCliente;
@@ -585,9 +581,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField dataNascCliente;
     private javax.swing.JTextField enderecoCliente;
     private javax.swing.JTextField idCliente;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -598,9 +591,9 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel labelIdCliente;
     private javax.swing.JTextField nomeCliente;
     private javax.swing.JTextField numeroCliente;
     private javax.swing.JCheckBox statusCliente;
