@@ -462,11 +462,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals(operacao) || operacaoAtivaGlobal.equals(operacaoExcluir)){
             connectDAO connDAO = new connectDAO();
             
-            List<String> dadosSQL = connDAO.consultaRegistroJFBD(
-                    this.clienteTela.getTableName(), 
-                    this.clienteTela.consultaSQLValues(), 
-                    "ID_CLI='"+idCliente.getText()+"'"
-            );
+            List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.clienteTela, false);
             
             this.clienteTela.importaSQLValues(dadosSQL);
             

@@ -121,7 +121,10 @@ public class connectDAO {
         }
     }
 
-    public List<String> consultaRegistroJFBD(String tabela, String campos, String condicao) {
+    public List<String> consultaRegistroJFBD(BaseDAO obj, Boolean consultaTodos) {
+        String tabela = obj.getTableName();
+        String campos = obj.consultaSQLValues();
+        String condicao = obj.termoSQLWhereById();
         conn = connectDB();
         Statement stmt;
         ResultSet dados;
@@ -129,7 +132,12 @@ public class connectDAO {
         try {
             stmt = conn.createStatement();
             
-            String sql = "SELECT "+campos+" FROM dbo."+tabela+" WHERE "+condicao;
+            String sql; 
+            if (consultaTodos) {
+                sql = "SELECT "+campos+" FROM dbo."+tabela;
+            } else {
+                sql = "SELECT "+campos+" FROM dbo."+tabela+" WHERE "+condicao;
+            }
             JOptionPane.showMessageDialog(null, "String de select: "+sql);
             
             try {
