@@ -4,11 +4,13 @@
  */
 package DAO;
 
+import java.util.List;
+
 /**
  *
  * @author Alunos
  */
-public class ContaCorrente {
+public class ContaCorrente implements BaseDAO {
     final String tableName = "CONTACORRENTE";
     private String numConta;
     private String numAgencia;
@@ -107,15 +109,41 @@ public class ContaCorrente {
         }
         this.saldo = saldo;
     }
-
+    
+    @Override
     public String getTableName() {
         return tableName;
     }
 
+    @Override
     public String dadosSQLValues(){
         return this.getNumAgencia() + ", "
             + this.getNumConta() + ", "
             + this.getIdCli() + ", "
             + this.getSaldo() + "";
+    }
+
+    @Override
+    public String alteraDadosSQLValues() {
+        return "numAgencia = " + this.getNumAgencia() + ", "
+            + "numConta = " + this.getNumConta() + ", "
+            + "idCli = " + this.getIdCli() + ", "
+            + "saldo = " + this.getSaldo() + "";
+    }
+
+    @Override
+    public String consultaSQLValues() {
+        return "numAgencia, numConta, idCli, saldo";
+    }
+
+    @Override
+    public void importaSQLValues(List<String> dados) {
+        if (dados.size() != 4) {
+            throw new IllegalArgumentException("Número de dados inválido");
+        }
+        this.setNumAgencia(dados.get(0));
+        this.setNumConta(dados.get(1));
+        this.setIdCli(Integer.parseInt(dados.get(2)));
+        this.setSaldo(Integer.parseInt(dados.get(3)));
     }
 }
