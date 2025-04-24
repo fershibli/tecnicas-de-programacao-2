@@ -342,6 +342,11 @@ public class Cliente implements BaseDAO {
         
         return dadosClientes;
     }
+
+    @Override
+    public String termoSQLWhereById() {
+        return "ID_CLI = " + this.getIdCli();
+    }
     
     @Override
     public String consultaSQLValues() {

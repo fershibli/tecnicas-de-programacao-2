@@ -297,6 +297,11 @@ public class Agencia implements BaseDAO {
     }
 
     @Override
+    public String termoSQLWhereById() {
+        return "NUM_AGENCIA = " + this.getNumAgencia();
+    }
+
+    @Override
     public String consultaSQLValues() {
         return "NUM_AGENCIA, NOME, ENDERECO, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, UF, CEP, CNPJ, GERENTE";
     }

@@ -17,6 +17,8 @@ public interface BaseDAO {
     public String dadosSQLValues();
     // gets all data from object in SQL format to be used in an update statement
     public String alteraDadosSQLValues();
+    // gets where statement in SQL format by ID
+    public String termoSQLWhereById();
     // gets select order by statement in SQL format
     public String consultaSQLValues();
     // sets all data from List<String> to object

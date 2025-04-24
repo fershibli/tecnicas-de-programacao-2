@@ -132,6 +132,10 @@ public class ContaCorrente implements BaseDAO {
     }
 
     @Override
+    public String termoSQLWhereById() {
+        return "numAgencia = " + this.getNumAgencia();
+
+    @Override
     public String consultaSQLValues() {
         return "numAgencia, numConta, idCli, saldo";
     }

@@ -67,6 +67,11 @@ public class Historico implements BaseDAO {
 
     @Override
     public String alteraDadosSQLValues() {
+        return "HISTORICO = " + this.getHistorico();
+    }
+
+    @Override
+    public String alteraDadosSQLValues() {
         return "ID_HISTORICO = " + this.getId_his() + ", "
             + "HISTORICO = '" + this.getHistorico() + "'";
     }

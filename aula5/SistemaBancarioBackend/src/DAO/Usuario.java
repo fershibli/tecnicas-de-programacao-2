@@ -124,6 +124,11 @@ public class Usuario implements BaseDAO {
     }
 
     @Override
+    public String termoSQLWhereById() {
+        return "ID_CLI = " + this.getIdCli();
+    }
+
+    @Override
     public String consultaSQLValues() {
         return "SENHA, NUM_AGE, NUM_CC";
     }
