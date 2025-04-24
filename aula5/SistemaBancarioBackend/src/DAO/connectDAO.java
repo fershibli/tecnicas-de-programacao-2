@@ -72,7 +72,10 @@ public class connectDAO {
         }
     }
 
-    public void alteraRegistroJFBD(String tabela, String strDados, String condicao) {
+    public void alteraRegistroJFBD(BaseDAO obj) {
+        String tabela = obj.getTableName();
+        String strDados = obj.alteraDadosSQLValues();
+        String condicao = obj.termoSQLWhereById();
         conn = connectDB();
         Statement stmt;
         try {

@@ -443,7 +443,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
                 connectDAO connDAO = new connectDAO();
                 connDAO.connectDB();
-                connDAO.alteraRegistroJFBD(this.clienteTela.getTableName(), this.clienteTela.alteraDadosSQLValues(), "ID_CLI='"+this.clienteTela.getIdCli()+"'");
+                connDAO.alteraRegistroJFBD(this.clienteTela);
 
             } catch (IllegalArgumentException | ParseException err) {        
                 JOptionPane.showMessageDialog(this, err.getMessage());
