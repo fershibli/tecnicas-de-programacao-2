@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author Alunos
  */
-public class Cliente {
+public class Cliente implements BaseDAO {
     final String tableName = "CLIENTES";
     private int idCli;
     private String nome;
@@ -285,10 +285,12 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
+    @Override
     public String getTableName() {
         return tableName;
     }
     
+    @Override
     public String dadosSQLValues() {
         String dadosClientes;
         
@@ -315,6 +317,7 @@ public class Cliente {
         return dadosClientes;
     }
     
+    @Override
     public String alteraDadosSQLValues() {
         String dadosClientes;
         
@@ -340,10 +343,12 @@ public class Cliente {
         return dadosClientes;
     }
     
+    @Override
     public String consultaSQLValues() {
         return "ID_CLI, NOME_CLI, ENDE_CLI, NUME_CLI, COMPL_CLI, BAIR_CLI, CIDA_CLI, UF_CLI, CEP_CLI, FONE_CLI, CPF_CLI, DATA_NASC, CNPJ_CLI";
     }
 
+    @Override
     public void importaSQLValues(List<String> dados) {
         try {
             SimpleDateFormat dateFormaterFromDB = new SimpleDateFormat("yyyy-MM-dd");
