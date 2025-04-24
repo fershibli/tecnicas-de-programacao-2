@@ -4,11 +4,13 @@
  */
 package DAO;
 
+import java.util.List;
+
 /**
  *
  * @author Alunos
  */
-public class Agencia {
+public class Agencia implements BaseDAO {
     final String tableName = "AGENCIAS";
     private String numAgencia;
     private String nome;
@@ -259,10 +261,12 @@ public class Agencia {
         this.telefone = telefone;
     }
 
+    @Override
     public String getTableName() {
         return tableName;
     }
 
+    @Override
     public String dadosSQLValues() {
         return "'" 
             + this.getNumAgencia() + "', '"
@@ -275,5 +279,43 @@ public class Agencia {
             + this.getUf() + "', '"
             + this.getCep() + "', '"
             + this.getTelefone() + "'";
+    }
+
+    @Override
+    public String alteraDadosSQLValues() {
+        return "NUM_AGENCIA = '" + this.getNumAgencia() + "', "
+            + "NOME = '" + this.getNome() + "', "
+            + "ENDERECO = '" + this.getEndereco() + "', "
+            + "NUMERO = '" + this.getNumero() + "', "
+            + "COMPLEMENTO = '" + this.getComplemento() + "', "
+            + "BAIRRO = '" + this.getBairro() + "', "
+            + "CIDADE = '" + this.getCidade() + "', "
+            + "UF = '" + this.getUf() + "', "
+            + "CEP = '" + this.getCep() + "', "
+            + "CNPJ = '" + this.getCnpj() + "', "
+            + "GERENTE = '" + this.getGerente() + "'";
+    }
+
+    @Override
+    public String consultaSQLValues() {
+        return "NUM_AGENCIA, NOME, ENDERECO, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, UF, CEP, CNPJ, GERENTE";
+    }
+
+    @Override
+    public void importaSQLValues(List<String> dados) {
+        if (dados.size() != 11) {
+            throw new IllegalArgumentException("Número de dados inválido");
+        }
+        this.setNumAgencia(dados.get(0));
+        this.setNome(dados.get(1));
+        this.setEndereco(dados.get(2));
+        this.setNumero(dados.get(3));
+        this.setComplemento(dados.get(4));
+        this.setBairro(dados.get(5));
+        this.setCidade(dados.get(6));
+        this.setUf(dados.get(7));
+        this.setCep(dados.get(8));
+        this.setCnpj(dados.get(9));
+        this.setGerente(dados.get(10));
     }
 }
