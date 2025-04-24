@@ -5,12 +5,13 @@
 package DAO;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Alunos
  */
-public class ExtratoMovimentacao {
+public class ExtratoMovimentacao implements BaseDAO {
     final String tableName = "MOVIMENTACAO";
     private String numConta;
     private String numAgencia;
@@ -173,10 +174,12 @@ public class ExtratoMovimentacao {
         this.saldo = saldo;
     }
 
+    @Override
     public String getTableName() {
         return tableName;
     }
 
+    @Override
     public String dadosSQLValues() {
         
         SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
@@ -193,5 +196,44 @@ public class ExtratoMovimentacao {
             + this.getComplHist() + "', "
             + this.getValor() + ", "
             + this.getSaldo() + "";
+    }
+
+    @Override
+    public String alteraDadosSQLValues() {
+        SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+        
+        String dataMovimentoFormatada = dateFormater.format(this.getDataMovimento());
+        
+        return "numAgencia = " + this.getNumAgencia() + ", "
+            + "numConta = " + this.getNumConta() + ", "
+            + "dataMovimento = '" + dataMovimentoFormatada + "', "
+            + "documento = '" + this.getDocumento() + "', "
+            + "creditoDebito = '" + this.getCreditoDebito() + "', "
+            + "id_his = " + this.getId_his() + ", "
+            + "complHist = '" + this.getComplHist() + "', "
+            + "valor = " + this.getValor() + ", "
+            + "saldo = " + this.getSaldo() + "";
+    }
+
+    @Override
+    public String consultaSQLValues() {
+        return "numAgencia, numConta, dataMovimento, documento, creditoDebito, id_his, complHist, valor, saldo";
+    }
+
+    @Override
+    public void importaSQLValues(List<String> dados) {
+        if (dados.size() != 9) {
+            throw new IllegalArgumentException("Número de dados inválido. Esperado 9 dados.");
+        }
+        
+        this.setNumAgencia(dados.get(0));
+        this.setNumConta(dados.get(1));
+        this.setDataMovimento(new Date(dados.get(2)));
+        this.setDocumento(dados.get(3));
+        this.setCreditoDebito(dados.get(4));
+        this.setId_his(Integer.parseInt(dados.get(5)));
+        this.setComplHist(dados.get(6));
+        this.setValor(Double.parseDouble(dados.get(7)));
+        this.setSaldo(Double.parseDouble(dados.get(8)));
     }
 }
