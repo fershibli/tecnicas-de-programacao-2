@@ -207,7 +207,7 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
             
             connectDAO connDAO = new connectDAO();
             connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.novoUsuario.getTableName(), this.novoUsuario.dadosSQLValues());
+            connDAO.insereRegistroJFBD(this.novoUsuario);
 
         } catch (IllegalArgumentException err) {        
             JOptionPane.showMessageDialog(this, err.getMessage());

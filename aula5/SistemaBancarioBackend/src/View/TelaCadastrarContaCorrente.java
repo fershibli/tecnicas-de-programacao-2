@@ -150,7 +150,7 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
         
             connectDAO connDAO = new connectDAO();
             connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.contaCorrenteTela.getTableName(), this.contaCorrenteTela.dadosSQLValues());
+            connDAO.insereRegistroJFBD(this.contaCorrenteTela);
 } catch (IllegalArgumentException err) {        
             JOptionPane.showMessageDialog(this, err.getMessage());
             return;

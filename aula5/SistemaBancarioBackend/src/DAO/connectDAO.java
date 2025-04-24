@@ -47,7 +47,9 @@ public class connectDAO {
     /*
     * Rotina para inserir um registro novo no banco de dados
     */
-    public void insereRegistroJFBD(String tabela, String strDados) {
+    public void insereRegistroJFBD(BaseDAO obj) {
+        String tabela = obj.getTableName();
+        String strDados = obj.dadosSQLValues();
         conn = connectDB();
         Statement stmt;
         try {

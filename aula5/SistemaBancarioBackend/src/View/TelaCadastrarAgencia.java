@@ -304,7 +304,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
             
             connectDAO connDAO = new connectDAO();
             connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.agenciaTela.getTableName(), this.agenciaTela.dadosSQLValues());
+            connDAO.insereRegistroJFBD(this.agenciaTela);
         } catch (IllegalArgumentException err) {        
             JOptionPane.showMessageDialog(this, err.getMessage());
             return;

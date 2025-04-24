@@ -407,7 +407,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
                 connectDAO connDAO = new connectDAO();
                 connDAO.connectDB();
-                connDAO.insereRegistroJFBD(this.clienteTela.getTableName(), this.clienteTela.dadosSQLValues());
+                connDAO.insereRegistroJFBD(this.clienteTela);
 
             } catch (IllegalArgumentException | ParseException err) {        
                 JOptionPane.showMessageDialog(this, err.getMessage());

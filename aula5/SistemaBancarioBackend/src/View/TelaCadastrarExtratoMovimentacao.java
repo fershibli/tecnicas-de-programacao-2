@@ -229,7 +229,7 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
             
             connectDAO connDAO = new connectDAO();
             connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.extratoMovimentacaoTela.getTableName(), this.extratoMovimentacaoTela.dadosSQLValues());
+            connDAO.insereRegistroJFBD(this.extratoMovimentacaoTela);
 
         } catch (IllegalArgumentException | ParseException err) {
             JOptionPane.showMessageDialog(this, err.getMessage());

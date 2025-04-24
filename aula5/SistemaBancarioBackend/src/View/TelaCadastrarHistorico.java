@@ -136,7 +136,7 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
             
             connectDAO connDAO = new connectDAO();
             connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.historicoTela.getTableName(), this.historicoTela.dadosSQLValues());
+            connDAO.insereRegistroJFBD(this.historicoTela);
 
         } catch (IllegalArgumentException err) {
             JOptionPane.showMessageDialog(this, err.getMessage());
