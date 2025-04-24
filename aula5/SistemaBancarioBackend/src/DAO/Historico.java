@@ -4,11 +4,13 @@
  */
 package DAO;
 
+import java.util.List;
+
 /**
  *
  * @author Alunos
  */
-public class Historico {
+public class Historico implements BaseDAO {
     final String tableName = "HISTORICOS";
     private int id_his;
     private String historico;
@@ -52,12 +54,34 @@ public class Historico {
         this.historico = historico;
     }
     
+    @Override
     public String getTableName() {
         return tableName;
     }
 
+    @Override
     public String dadosSQLValues() {
         return this.getId_his() + ", '"
             + this.getHistorico() + "'";
+    }
+
+    @Override
+    public String alteraDadosSQLValues() {
+        return "ID_HISTORICO = " + this.getId_his() + ", "
+            + "HISTORICO = '" + this.getHistorico() + "'";
+    }
+
+    @Override
+    public String consultaSQLValues() {
+        return "ID_HISTORICO, HISTORICO";
+    }
+
+    @Override
+    public void importaSQLValues(List<String> dados) {
+        if (dados.size() != 2) {
+            throw new IllegalArgumentException("Dados inválidos para importação");
+        }
+        this.setId_his(Integer.parseInt(dados.get(0)));
+        this.setHistorico(dados.get(1));
     }
 }
