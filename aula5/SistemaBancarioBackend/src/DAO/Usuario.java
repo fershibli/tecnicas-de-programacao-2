@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Alunos
  */
-public class Usuario {
+public class Usuario implements BaseDAO {
     final String tableName = "USUARIOS";
     private String login;
     private String senha;
@@ -102,10 +102,12 @@ public class Usuario {
         this.numConta = numConta;
     }
 
+    @Override
     public String getTableName() {
         return tableName;
     }
 
+    @Override
     public String dadosSQLValues() {
         return "'"
             + this.getIdCli() + "','"
@@ -114,17 +116,23 @@ public class Usuario {
             + this.getNumConta();
     }
 
+    @Override
     public String alteraDadosSQLValues() {
         return "SENHA = '" + this.getSenha() + "', "
             + "NUM_AGE = " + this.getNumAgencia() + ", "
             + "NUM_CC = " + this.getNumConta();
     }
 
+    @Override
     public String consultaSQLValues() {
         return "SENHA, NUM_AGE, NUM_CC";
     }
 
+    @Override
     public void importaSQLValues(List<String> dados) {
+        if (dados.size() != 3) {
+            throw new IllegalArgumentException("Número de dados inválido. Esperado 3 dados.");
+        }
         this.setSenha(dados.get(0));
         this.setNumAgencia(dados.get(1));
         this.setNumConta(dados.get(2));
