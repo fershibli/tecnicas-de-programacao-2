@@ -73,6 +73,32 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         complementoEndAgencia.setVisible(visible);
     }
     
+    private void setAllEnabled(Boolean enabled) {
+        labelCodAgencia.setEnabled(enabled);
+        jLabel2.setEnabled(enabled);
+        jLabel3.setEnabled(enabled);
+        jLabel4.setEnabled(enabled);
+        jLabel5.setEnabled(enabled);
+        jLabel6.setEnabled(enabled);
+        jLabel7.setEnabled(enabled);
+        jLabel8.setEnabled(enabled);
+        jLabel9.setEnabled(enabled);
+        codAgencia.setEnabled(enabled);
+        nomeAgencia.setEnabled(enabled);
+        enderecoAgencia.setEnabled(enabled);
+        numeroEndAgencia.setEnabled(enabled);
+        bairroAgencia.setEnabled(enabled);
+        cepAgencia.setEnabled(enabled);
+        cidadeAgencia.setEnabled(enabled);
+        ufAgencia.setEnabled(enabled);
+        telefoneAgencia.setEnabled(enabled);
+        buttonCadastrar.setEnabled(enabled);
+        jButton1.setEnabled(enabled);
+        jButton3.setEnabled(enabled);
+        jLabel11.setEnabled(enabled);
+        complementoEndAgencia.setEnabled(enabled);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
