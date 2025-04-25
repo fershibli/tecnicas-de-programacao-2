@@ -45,6 +45,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             
             buttonCadastrar.setVisible(true);
             buttonCadastrar.setText("Pesquisar");
+            buttonVoltar.setVisible(true);
         }
         
         
@@ -457,10 +458,26 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             this.dispose();
         }
         
+        operacaoExcluir = "Exclusão";
+        if (operacaoAtivaGlobal.equals(operacaoExcluir)) {
+            connectDAO connDAO = new connectDAO();
+            connDAO.connectDB();
+            connDAO.excluiRegistroJFBD(this.clienteTela);
+            
+            JOptionPane.showMessageDialog(this, "Cliente Excluído!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
         operacao = "Alterar";
         operacaoExcluir = "Excluir";
         if (operacaoAtivaGlobal.equals(operacao) || operacaoAtivaGlobal.equals(operacaoExcluir)){
             connectDAO connDAO = new connectDAO();
+            
+            this.clienteTela.setIdCli(Integer.parseInt(this.idCliente.getText()));
             
             List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.clienteTela, false);
             
