@@ -98,7 +98,9 @@ public class connectDAO {
         }
     }
 
-    public void excluiRegistroJFBD(String tabela, String condicao) {
+    public void excluiRegistroJFBD(BaseDAO obj) {
+        String tabela = obj.getTableName();
+        String condicao = obj.termoSQLWhereById();
         conn = connectDB();
         Statement stmt;
         try {
