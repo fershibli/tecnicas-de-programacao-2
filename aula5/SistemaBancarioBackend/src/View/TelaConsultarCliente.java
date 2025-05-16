@@ -29,9 +29,18 @@ public class TelaConsultarCliente extends javax.swing.JFrame {
         initComponents();
         connectDAO connDAO = new connectDAO();
         List<List<String>> listaRegistros = connDAO.consultaTodoRegistroJFBD(clienteTela);
-        registrosClientes = listaRegistros.toArray(new String[listaRegistros.size()][]);
-        String[] colunasClientes = {};
+
+        // Converte manualmente para String[][]
+        registrosClientes = new String[listaRegistros.size()][];
+        for (int i = 0; i < listaRegistros.size(); i++) {
+            List<String> linha = listaRegistros.get(i);
+            registrosClientes[i] = linha.toArray(new String[0]);
+        }
+
+        // Defina os nomes das colunas conforme necessário
+        String[] colunasClientes = {"ID", "Nome", "CPF", "CNPJ", "Endereço", "Número", "Complemento", "Bairro", "Cidade", "UF", "CEP", "Telefone", "Data Nasc.", "Status"};
         tabelaCliente = new JTable(registrosClientes, colunasClientes);
+        scrollArea.setViewportView(tabelaCliente);
     }
     
     /**
