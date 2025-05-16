@@ -123,7 +123,7 @@ public class connectDAO {
         }
     }
 
-    public List<String> consultaRegistroJFBD(BaseDAO obj, Boolean consultaTodos) {
+    public List<String> consultaRegistroJFBD(BaseDAO obj) {
         String tabela = obj.getTableName();
         String campos = obj.consultaSQLValues();
         String condicao = obj.termoSQLWhereById();
@@ -134,12 +134,8 @@ public class connectDAO {
         try {
             stmt = conn.createStatement();
             
-            String sql; 
-            if (consultaTodos) {
-                sql = "SELECT "+campos+" FROM dbo."+tabela;
-            } else {
-                sql = "SELECT "+campos+" FROM dbo."+tabela+" WHERE "+condicao;
-            }
+            String sql;
+            sql = "SELECT "+campos+" FROM dbo."+tabela+" WHERE "+condicao;
             JOptionPane.showMessageDialog(null, "String de select: "+sql);
             
             try {
@@ -152,6 +148,42 @@ public class connectDAO {
                 int columnCount = dados.getMetaData().getColumnCount();
                 for (int index = 1; index <= columnCount; index++) {
                     lista.add(dados.getString(index));
+                }
+            } catch (SQLException erro) {
+                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+            }
+            conn.close();
+        } catch (SQLException erro) {
+            Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, erro);
+        }
+        return lista;
+    }
+    
+    public List<List<String>> consultaTodoRegistroJFBD(BaseDAO obj) {
+        String tabela = obj.getTableName();
+        String campos = obj.consultaSQLValues();
+        conn = connectDB();
+        Statement stmt;
+        ResultSet dados;
+        List<List<String>> lista = new ArrayList<>();
+        try {
+            stmt = conn.createStatement();
+            
+            String sql = "SELECT "+campos+" FROM dbo."+tabela;
+            JOptionPane.showMessageDialog(null, "String de select: "+sql);
+            
+            try {
+                dados = stmt.executeQuery(sql);
+                
+                while (dados.next()) {
+                    List<String> linha = new ArrayList<>();
+                    int columnCount = dados.getMetaData().getColumnCount();
+                    for (int index = 1; index <= columnCount; index++) {
+                        linha.add(dados.getString(index));
+                    }
+                    lista.add(linha);
                 }
             } catch (SQLException erro) {
                 JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());

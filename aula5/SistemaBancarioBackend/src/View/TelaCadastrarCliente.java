@@ -479,7 +479,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             
             this.clienteTela.setIdCli(Integer.parseInt(this.idCliente.getText()));
             
-            List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.clienteTela, false);
+            List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.clienteTela);
             
             this.clienteTela.importaSQLValues(dadosSQL);
             
