@@ -11,114 +11,27 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
  * @author Alunos
  */
-public class TelaCadastrarCliente extends javax.swing.JFrame {
-
+public class TelaConsultarCliente extends javax.swing.JFrame {    
+    Cliente clienteTela = new Cliente();
+    String[][] registrosClientes;
+    JTable tabelaCliente;
+            
     /**
      * Creates new form Clientes
      */
-    public TelaCadastrarCliente() {
+    public TelaConsultarCliente() {
         initComponents();
-    }
-    
-    String operacaoAtivaGlobal = "Nenhum";
-    
-    public TelaCadastrarCliente(String operacaoAtiva){
-        initComponents();
-        operacaoAtivaGlobal = operacaoAtiva;
-        
-        String operacao = "Incluir";
-        if (operacaoAtiva.equals(operacao)) {
-            this.setAllVisible(true);
-        }
-        
-        operacao = "Alterar";
-        String operacaoExcluir = "Excluir";
-        if (operacaoAtiva.equals(operacao) || operacaoAtiva.equals(operacaoExcluir)) {
-            this.setAllVisible(false);
-            labelIdCliente.setVisible(true); 
-            idCliente.setVisible(true);
-            
-            buttonCadastrar.setVisible(true);
-            buttonCadastrar.setText("Pesquisar");
-            buttonVoltar.setVisible(true);
-        }
-        
-        
-    }
-    
-    Cliente clienteTela = new Cliente();
-
-    private void setAllVisible(Boolean visible) {
-            jLabel1.setVisible(visible);
-            jLabel2.setVisible(visible);
-            jLabel3.setVisible(visible);
-            jLabel4.setVisible(visible);
-            jLabel5.setVisible(visible);
-            jLabel6.setVisible(visible);
-            statusCliente.setVisible(visible);
-            nomeCliente.setVisible(visible);
-            labelIdCliente.setVisible(visible); 
-            idCliente.setVisible(visible);
-            enderecoCliente.setVisible(visible);
-            numeroCliente.setVisible(visible);
-            jLabel8.setVisible(visible);
-            complementoCliente.setVisible(visible);
-            bairroCliente.setVisible(visible);
-            jLabel9.setVisible(visible);
-            cepCliente.setVisible(visible);
-            cidadeCliente.setVisible(visible);
-            jLabel10.setVisible(visible);
-            cpfCliente.setVisible(visible);
-            jLabel12.setVisible(visible);
-            cnpjCliente.setVisible(visible);
-            jLabel13.setVisible(visible);
-            dataNascCliente.setVisible(visible);
-            buttonLimpar.setVisible(visible);
-            buttonCadastrar.setVisible(visible); 
-            buttonDetalhes.setVisible(visible);
-            jLabel14.setVisible(visible);
-            telefoneCliente.setVisible(visible);
-            ufCliente.setVisible(visible);
-            buttonVoltar.setVisible(visible);
-    }
-    
-    private void setAllEnabled(Boolean enabled) {
-            jLabel1.setEnabled(enabled);
-            jLabel2.setEnabled(enabled);
-            jLabel3.setEnabled(enabled);
-            jLabel4.setEnabled(enabled);
-            jLabel5.setEnabled(enabled);
-            jLabel6.setEnabled(enabled);
-            statusCliente.setEnabled(enabled);
-            nomeCliente.setEnabled(enabled);
-            labelIdCliente.setEnabled(enabled); 
-            idCliente.setEnabled(enabled);
-            enderecoCliente.setEnabled(enabled);
-            numeroCliente.setEnabled(enabled);
-            jLabel8.setEnabled(enabled);
-            complementoCliente.setEnabled(enabled);
-            bairroCliente.setEnabled(enabled);
-            jLabel9.setEnabled(enabled);
-            cepCliente.setEnabled(enabled);
-            cidadeCliente.setEnabled(enabled);
-            jLabel10.setEnabled(enabled);
-            cpfCliente.setEnabled(enabled);
-            jLabel12.setEnabled(enabled);
-            cnpjCliente.setEnabled(enabled);
-            jLabel13.setEnabled(enabled);
-            dataNascCliente.setEnabled(enabled);
-            buttonLimpar.setEnabled(enabled);
-            buttonCadastrar.setEnabled(enabled); 
-            buttonDetalhes.setEnabled(enabled);
-            jLabel14.setEnabled(enabled);
-            telefoneCliente.setEnabled(enabled);
-            ufCliente.setEnabled(enabled);
-            buttonVoltar.setEnabled(enabled);
+        connectDAO connDAO = new connectDAO();
+        List<List<String>> listaRegistros = connDAO.consultaTodoRegistroJFBD(clienteTela);
+        registrosClientes = listaRegistros.toArray(new String[listaRegistros.size()][]);
+        String[] colunasClientes = {};
+        tabelaCliente = new JTable(registrosClientes, colunasClientes);
     }
     
     /**
@@ -130,114 +43,10 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        statusCliente = new javax.swing.JCheckBox();
-        nomeCliente = new javax.swing.JTextField();
-        labelIdCliente = new javax.swing.JLabel();
-        idCliente = new javax.swing.JTextField();
-        enderecoCliente = new javax.swing.JTextField();
-        numeroCliente = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        complementoCliente = new javax.swing.JTextField();
-        bairroCliente = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        cepCliente = new javax.swing.JTextField();
-        cidadeCliente = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        cpfCliente = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        cnpjCliente = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        dataNascCliente = new javax.swing.JTextField();
-        buttonLimpar = new javax.swing.JButton();
-        buttonCadastrar = new javax.swing.JButton();
-        buttonDetalhes = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
-        telefoneCliente = new javax.swing.JTextField();
-        ufCliente = new javax.swing.JComboBox<>();
         buttonVoltar = new javax.swing.JButton();
+        scrollArea = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel1.setText("Nome:");
-
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel2.setText("Endereço:");
-
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel3.setText("Número:");
-
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel4.setText("Bairro:");
-
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel5.setText("Cidade:");
-
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel6.setText("CPF:");
-
-        statusCliente.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        statusCliente.setText("Status ativo?");
-
-        labelIdCliente.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        labelIdCliente.setText("ID:");
-
-        idCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idClienteActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel8.setText("Complemento:");
-
-        complementoCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                complementoClienteActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel9.setText("CEP:");
-
-        jLabel10.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel10.setText("UF:");
-
-        jLabel12.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel12.setText("CNPJ:");
-
-        jLabel13.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel13.setText("Data de Nascimento:");
-
-        buttonLimpar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        buttonLimpar.setText("Limpar");
-        buttonLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limparActionPerformed(evt);
-            }
-        });
-
-        buttonCadastrar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        buttonCadastrar.setText("Cadastrar");
-        buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCadastrarActionPerformed(evt);
-            }
-        });
-
-        buttonDetalhes.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        buttonDetalhes.setText("Detalhes");
-
-        jLabel14.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel14.setText("Telefone:");
-
-        ufCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MS", "MT", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
         buttonVoltar.setText("← Voltar");
         buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -246,6 +55,8 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             }
         });
 
+        scrollArea.setVerifyInputWhenFocusTarget(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -253,69 +64,10 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonCadastrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonDetalhes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonLimpar))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(complementoCliente))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bairroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cepCliente))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cnpjCliente))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cidadeCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ufCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(enderecoCliente))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(labelIdCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonVoltar)
-                            .addComponent(statusCliente))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dataNascCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(telefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonVoltar)
+                        .addGap(0, 478, Short.MAX_VALUE))
+                    .addComponent(scrollArea))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -324,216 +76,12 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(buttonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelIdCliente)
-                    .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(dataNascCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(telefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(numeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(complementoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(bairroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(cepCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cidadeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(ufCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(cnpjCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(statusCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonLimpar)
-                    .addComponent(buttonCadastrar)
-                    .addComponent(buttonDetalhes))
+                .addComponent(scrollArea, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void idClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idClienteActionPerformed
-
-    private void complementoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complementoClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_complementoClienteActionPerformed
-
-    private void buttonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarActionPerformed
-        String operacaoExcluir;
-        String operacao = "Incluir";
-        if(operacaoAtivaGlobal.equals(operacao)){
-            try {
-                this.clienteTela.setIdCli(Integer.parseInt(this.idCliente.getText()));
-                this.clienteTela.setNome(this.nomeCliente.getText());
-                this.clienteTela.setCpf(this.cpfCliente.getText());
-                this.clienteTela.setCnpj(this.cnpjCliente.getText());
-                this.clienteTela.setEndereco(this.enderecoCliente.getText());
-                this.clienteTela.setNumero(this.numeroCliente.getText());
-                this.clienteTela.setComplemento(this.complementoCliente.getText());
-                this.clienteTela.setBairro(this.bairroCliente.getText());
-                this.clienteTela.setCidade(this.cidadeCliente.getText());
-                this.clienteTela.setUf(this.ufCliente.getSelectedItem().toString());
-                this.clienteTela.setCep(this.cepCliente.getText());
-                this.clienteTela.setTelefone(this.telefoneCliente.getText());
-                SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
-                Date dataNascClienteFormatada = dateFormater.parse(this.dataNascCliente.getText());
-                this.clienteTela.setDataNascimento(dataNascClienteFormatada);
-                this.clienteTela.setStatus(this.statusCliente.isSelected());
-
-                connectDAO connDAO = new connectDAO();
-                connDAO.connectDB();
-                connDAO.insereRegistroJFBD(this.clienteTela);
-
-            } catch (IllegalArgumentException | ParseException err) {        
-                JOptionPane.showMessageDialog(this, err.getMessage());
-                return;
-            }
-            JOptionPane.showMessageDialog(this, "Cliente Cadastrado!");
-
-            TelaMenu telaMenu = new TelaMenu();
-            telaMenu.setVisible(true);
-            this.setVisible(false);
-            this.dispose();
-        }
-        
-        operacao = "Alteração";
-        if(operacaoAtivaGlobal.equals(operacao)){
-            try {
-                // this.clienteTela.setIdCli(Integer.parseInt(this.idCliente.getText()));
-                this.clienteTela.setNome(this.nomeCliente.getText());
-                this.clienteTela.setCpf(this.cpfCliente.getText());
-                this.clienteTela.setCnpj(this.cnpjCliente.getText());
-                this.clienteTela.setEndereco(this.enderecoCliente.getText());
-                this.clienteTela.setNumero(this.numeroCliente.getText());
-                this.clienteTela.setComplemento(this.complementoCliente.getText());
-                this.clienteTela.setBairro(this.bairroCliente.getText());
-                this.clienteTela.setCidade(this.cidadeCliente.getText());
-                this.clienteTela.setUf(this.ufCliente.getSelectedItem().toString());
-                this.clienteTela.setCep(this.cepCliente.getText());
-                this.clienteTela.setTelefone(this.telefoneCliente.getText());
-                SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
-                Date dataNascClienteFormatada = dateFormater.parse(this.dataNascCliente.getText());
-                this.clienteTela.setDataNascimento(dataNascClienteFormatada);
-                this.clienteTela.setStatus(this.statusCliente.isSelected());
-
-                connectDAO connDAO = new connectDAO();
-                connDAO.connectDB();
-                connDAO.alteraRegistroJFBD(this.clienteTela);
-
-            } catch (IllegalArgumentException | ParseException err) {        
-                JOptionPane.showMessageDialog(this, err.getMessage());
-                return;
-            }
-            JOptionPane.showMessageDialog(this, "Cliente Alterado!");
-
-            TelaMenu telaMenu = new TelaMenu();
-            telaMenu.setVisible(true);
-            this.setVisible(false);
-            this.dispose();
-        }
-        
-        operacaoExcluir = "Exclusão";
-        if (operacaoAtivaGlobal.equals(operacaoExcluir)) {
-            connectDAO connDAO = new connectDAO();
-            connDAO.connectDB();
-            connDAO.excluiRegistroJFBD(this.clienteTela);
-            
-            JOptionPane.showMessageDialog(this, "Cliente Excluído!");
-
-            TelaMenu telaMenu = new TelaMenu();
-            telaMenu.setVisible(true);
-            this.setVisible(false);
-            this.dispose();
-        }
-        
-        operacao = "Alterar";
-        operacaoExcluir = "Excluir";
-        if (operacaoAtivaGlobal.equals(operacao) || operacaoAtivaGlobal.equals(operacaoExcluir)){
-            connectDAO connDAO = new connectDAO();
-            
-            this.clienteTela.setIdCli(Integer.parseInt(this.idCliente.getText()));
-            
-            List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.clienteTela, false);
-            
-            this.clienteTela.importaSQLValues(dadosSQL);
-            
-            
-            this.nomeCliente.setText(clienteTela.getNome());
-            this.cpfCliente.setText(clienteTela.getCpf());
-            this.cnpjCliente.setText(clienteTela.getCnpj());
-            this.enderecoCliente.setText(clienteTela.getEndereco());
-            this.numeroCliente.setText(clienteTela.getNumero());
-            this.complementoCliente.setText(clienteTela.getComplemento());
-            this.bairroCliente.setText(clienteTela.getBairro());
-            this.cidadeCliente.setText(clienteTela.getCidade());
-            this.ufCliente.setSelectedItem(clienteTela.getUf());
-            this.cepCliente.setText(clienteTela.getCep());
-            this.telefoneCliente.setText(clienteTela.getTelefone());
-            SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
-            String dataNascClienteString = dateFormater.format(clienteTela.getDataNascimento());
-            this.dataNascCliente.setText(dataNascClienteString);
-            
-            
-            this.setAllVisible(true);
-            
-            if (operacaoAtivaGlobal.equals(operacaoExcluir)) {
-                buttonCadastrar.setText("Excluir");
-                operacaoAtivaGlobal = "Exclusão";
-                this.setAllEnabled(false);
-                this.buttonVoltar.setEnabled(true);
-                this.buttonCadastrar.setEnabled(true);
-                this.buttonLimpar.setEnabled(true);
-                this.buttonDetalhes.setEnabled(true);
-            } else {
-                buttonCadastrar.setText("Alterar");
-                operacaoAtivaGlobal = "Alteração";
-            }
-        }
-        
-    }//GEN-LAST:event_buttonCadastrarActionPerformed
-
-    private void limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparActionPerformed
-        this.idCliente.setText("");
-        this.nomeCliente.setText("");
-        this.cpfCliente.setText("");
-        this.cnpjCliente.setText("");
-        this.enderecoCliente.setText("");
-        this.numeroCliente.setText("");
-        this.complementoCliente.setText("");
-        this.bairroCliente.setText("");
-        this.cidadeCliente.setText("");
-        this.ufCliente.setSelectedIndex(0);
-        this.cepCliente.setText("");
-        this.dataNascCliente.setText("");
-        this.telefoneCliente.setText("");
-        this.statusCliente.setSelected(false);
-    }//GEN-LAST:event_limparActionPerformed
 
     private void voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenu
         TelaMenu telaMenu = new TelaMenu();
@@ -559,14 +107,18 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -575,42 +127,13 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastrarCliente().setVisible(true);
+                new TelaConsultarCliente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bairroCliente;
-    private javax.swing.JButton buttonCadastrar;
-    private javax.swing.JButton buttonDetalhes;
-    private javax.swing.JButton buttonLimpar;
     private javax.swing.JButton buttonVoltar;
-    private javax.swing.JTextField cepCliente;
-    private javax.swing.JTextField cidadeCliente;
-    private javax.swing.JTextField cnpjCliente;
-    private javax.swing.JTextField complementoCliente;
-    private javax.swing.JTextField cpfCliente;
-    private javax.swing.JTextField dataNascCliente;
-    private javax.swing.JTextField enderecoCliente;
-    private javax.swing.JTextField idCliente;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel labelIdCliente;
-    private javax.swing.JTextField nomeCliente;
-    private javax.swing.JTextField numeroCliente;
-    private javax.swing.JCheckBox statusCliente;
-    private javax.swing.JTextField telefoneCliente;
-    private javax.swing.JComboBox<String> ufCliente;
+    private javax.swing.JScrollPane scrollArea;
     // End of variables declaration//GEN-END:variables
 }
