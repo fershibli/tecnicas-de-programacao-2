@@ -161,30 +161,23 @@ public class connectDAO {
         return lista;
     }
     
-    public List<List<String>> consultaTodoRegistroJFBD(BaseDAO obj) {
+    public ResultSet consultaTodoRegistroJFBD(BaseDAO obj) {
         String tabela = obj.getTableName();
         String campos = obj.consultaSQLValues();
         conn = connectDB();
         Statement stmt;
         ResultSet dados;
-        List<List<String>> lista = new ArrayList<>();
         try {
             stmt = conn.createStatement();
             
             String sql = "SELECT "+campos+" FROM dbo."+tabela;
+            System.out.println(sql);
             JOptionPane.showMessageDialog(null, "String de select: "+sql);
             
             try {
                 dados = stmt.executeQuery(sql);
+                return dados;
                 
-                while (dados.next()) {
-                    List<String> linha = new ArrayList<>();
-                    int columnCount = dados.getMetaData().getColumnCount();
-                    for (int index = 1; index <= columnCount; index++) {
-                        linha.add(dados.getString(index));
-                    }
-                    lista.add(linha);
-                }
             } catch (SQLException erro) {
                 JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
                 JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
@@ -194,7 +187,7 @@ public class connectDAO {
         } catch (SQLException erro) {
             Logger.getLogger(connectDAO.class.getName()).log(Level.SEVERE, null, erro);
         }
-        return lista;
+        return null;
     }
 }
 
