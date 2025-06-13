@@ -283,27 +283,26 @@ public class Agencia implements BaseDAO {
 
     @Override
     public String alteraDadosSQLValues() {
-        return "NUM_AGENCIA = '" + this.getNumAgencia() + "', "
-            + "NOME = '" + this.getNome() + "', "
-            + "ENDERECO = '" + this.getEndereco() + "', "
-            + "NUMERO = '" + this.getNumero() + "', "
-            + "COMPLEMENTO = '" + this.getComplemento() + "', "
-            + "BAIRRO = '" + this.getBairro() + "', "
-            + "CIDADE = '" + this.getCidade() + "', "
-            + "UF = '" + this.getUf() + "', "
-            + "CEP = '" + this.getCep() + "', "
-            + "CNPJ = '" + this.getCnpj() + "', "
-            + "GERENTE = '" + this.getGerente() + "'";
+        return "NUM_AGE = '" + this.getNumAgencia() + "', "
+            + "NOME_AGE = '" + this.getNome() + "', "
+            + "ENDE_AGE = '" + this.getEndereco() + "', "
+            + "NUME_AGE = '" + this.getNumero() + "', "
+            + "COMPL_AGE = '" + this.getComplemento() + "', "
+            + "BAIR_AGE = '" + this.getBairro() + "', "
+            + "CIDA_AGE = '" + this.getCidade() + "', "
+            + "UF_AGE = '" + this.getUf() + "', "
+            + "CEP_AGE = '" + this.getCep() + "', "
+            + "FONE_AGE = '" + this.getTelefone() + "'";
     }
 
     @Override
     public String termoSQLWhereById() {
-        return "NUM_AGENCIA = " + this.getNumAgencia();
+        return "NUM_AGE = " + this.getNumAgencia();
     }
 
     @Override
     public String consultaSQLValues() {
-        return "NUM_AGENCIA, NOME, ENDERECO, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, UF, CEP, CNPJ, GERENTE";
+        return "NUM_AGE, NOME_AGE, ENDE_AGE, NUME_AGE, COMPL_AGE, BAIR_AGE, CIDA_AGE, UF_AGE, CEP_AGE, FONE_AGE";
     }
 
     @Override
