@@ -103,8 +103,10 @@
                   <Font name="Calibri" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrirConsultarUsuario"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -151,8 +153,10 @@
                   <Font name="Calibri" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrirConsultarConta"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -199,8 +203,10 @@
                   <Font name="Calibri" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrirConsultarAgencia"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -247,8 +253,10 @@
                   <Font name="Calibri" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrirConsultarExtrato"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -295,8 +303,10 @@
                   <Font name="Calibri" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrirConsultarHistorico"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

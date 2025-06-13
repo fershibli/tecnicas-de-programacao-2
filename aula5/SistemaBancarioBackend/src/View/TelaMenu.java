@@ -159,7 +159,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem15.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem15.setText("Consultar");
-        jMenuItem15.setEnabled(false);
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirConsultarUsuario(evt);
+            }
+        });
         jMenu5.add(jMenuItem15);
 
         jMenuBar1.add(jMenu5);
@@ -188,7 +192,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem17.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem17.setText("Consultar");
-        jMenuItem17.setEnabled(false);
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirConsultarConta(evt);
+            }
+        });
         jMenu6.add(jMenuItem17);
 
         jMenuBar1.add(jMenu6);
@@ -217,7 +225,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem19.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem19.setText("Consultar");
-        jMenuItem19.setEnabled(false);
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirConsultarAgencia(evt);
+            }
+        });
         jMenu7.add(jMenuItem19);
 
         jMenuBar1.add(jMenu7);
@@ -246,7 +258,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem22.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem22.setText("Consultar");
-        jMenuItem22.setEnabled(false);
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirConsultarExtrato(evt);
+            }
+        });
         jMenu8.add(jMenuItem22);
 
         jMenuBar1.add(jMenu8);
@@ -275,7 +291,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem25.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem25.setText("Consultar");
-        jMenuItem25.setEnabled(false);
+        jMenuItem25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirConsultarHistorico(evt);
+            }
+        });
         jMenu9.add(jMenuItem25);
 
         jMenuBar1.add(jMenu9);
@@ -380,12 +400,58 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_abreExcluirCliente
 
     private void abreConsultarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreConsultarCliente
-        TelaConsultarCliente telaConsultaCliente = new TelaConsultarCliente();
+        String tabela = "CLIENTES";
+        TelaConsultarTabela telaConsultaCliente = new TelaConsultarTabela(tabela);
         telaConsultaCliente.setVisible(true);
         
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_abreConsultarCliente
+
+    private void abrirConsultarUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirConsultarUsuario
+        String tabela = "USUARIOS";
+        TelaConsultarTabela telaConsultaUsuario = new TelaConsultarTabela(tabela);
+        telaConsultaUsuario.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abrirConsultarUsuario
+
+    private void abrirConsultarConta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirConsultarConta
+        String tabela = "CONTACORRENTE";
+        TelaConsultarTabela telaConsultaConta = new TelaConsultarTabela(tabela);
+        telaConsultaConta.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abrirConsultarConta
+
+    private void abrirConsultarAgencia(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirConsultarAgencia
+        String tabela = "AGENCIAS";
+        TelaConsultarTabela telaConsultaAgencia = new TelaConsultarTabela(tabela);
+        telaConsultaAgencia.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abrirConsultarAgencia
+
+    private void abrirConsultarExtrato(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirConsultarExtrato
+        String tabela = "MOVIMENTACAO";
+        TelaConsultarTabela telaConsultaExtato = new TelaConsultarTabela(tabela);
+        telaConsultaExtato.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abrirConsultarExtrato
+
+    private void abrirConsultarHistorico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirConsultarHistorico
+        String tabela = "HISTORICOS";
+        TelaConsultarTabela telaConsultaHistorico = new TelaConsultarTabela(tabela);
+        telaConsultaHistorico.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abrirConsultarHistorico
 
     /**
      * @param args the command line arguments
