@@ -204,25 +204,25 @@ public class ExtratoMovimentacao implements BaseDAO {
         
         String dataMovimentoFormatada = dateFormater.format(this.getDataMovimento());
         
-        return "numAgencia = " + this.getNumAgencia() + ", "
-            + "numConta = " + this.getNumConta() + ", "
-            + "dataMovimento = '" + dataMovimentoFormatada + "', "
-            + "documento = '" + this.getDocumento() + "', "
-            + "creditoDebito = '" + this.getCreditoDebito() + "', "
-            + "id_his = " + this.getId_his() + ", "
-            + "complHist = '" + this.getComplHist() + "', "
-            + "valor = " + this.getValor() + ", "
-            + "saldo = " + this.getSaldo() + "";
+        return "NUM_AGE = " + this.getNumAgencia() + ", "
+            + "NUM_CC = " + this.getNumConta() + ", "
+            + "DATA_MOV = '" + dataMovimentoFormatada + "', "
+            + "NUM_DOCTO = '" + this.getDocumento() + "', "
+            + "DEBITO_CREDITO = '" + this.getCreditoDebito() + "', "
+            + "ID_HIS = " + this.getId_his() + ", "
+            + "COMPL_HIS = '" + this.getComplHist() + "', "
+            + "VALOR = " + this.getValor() + ", "
+            + "SALDO = " + this.getSaldo() + "";
     }
 
     @Override
     public String termoSQLWhereById() {
-        return "numAgencia = " + this.getNumAgencia();
+        return "NUM_AGE = " + this.getNumAgencia();
     }
 
     @Override
     public String consultaSQLValues() {
-        return "numAgencia, numConta, dataMovimento, documento, creditoDebito, id_his, complHist, valor, saldo";
+        return "NUM_AGE, NUM_CC, DATA_MOV, NUM_DOCTO, DEBITO_CREDITO, ID_HIS, COMPL_HIS, VALOR, SALDO";
     }
 
     @Override
