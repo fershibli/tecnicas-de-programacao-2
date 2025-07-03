@@ -14,17 +14,17 @@ public class Usuario implements BaseDAO {
     final String tableName = "USUARIOS";
     private String login;
     private String senha;
-    private int idCli;
+    private String idUsuario;
     private String numAgencia;
     private String numConta;
 
     public Usuario() {
     }
 
-    public Usuario(String login, String senha, int idCli) {
+    public Usuario(String login, String senha, String idCli) {
         this.login = login;
         this.senha = senha;
-        this.idCli = idCli;
+        this.idUsuario = idCli;
     }
 
     private boolean validaLogin(String login) {
@@ -35,8 +35,8 @@ public class Usuario implements BaseDAO {
         return senha != null && senha.trim().length() > 5 && senha.length() <= 20;
     }
 
-    private boolean validaIdCli(int idCli) {
-        return idCli > 0;
+    private boolean validaIdCli(String idCli) {
+        return idCli.trim().length() > 0;
     }
     
     private boolean validaNumAgencia(String numAgencia) {
@@ -69,15 +69,15 @@ public class Usuario implements BaseDAO {
         this.senha = senha;
     }
 
-    public int getIdCli() {
-        return idCli;
+    public String getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdCli(int idCli) {
-        if (!validaIdCli(idCli)) {
+    public void setIdUsuario(String idUsuario) {
+        if (!validaIdCli(idUsuario)) {
             throw new IllegalArgumentException("ID do cliente inválido. Deve ser maior que 0.");
         }
-        this.idCli = idCli;
+        this.idUsuario = idUsuario;
     }
     
     public String getNumAgencia() {
@@ -110,7 +110,7 @@ public class Usuario implements BaseDAO {
     @Override
     public String dadosSQLValues() {
         return "'"
-            + this.getIdCli() + "','"
+            + this.getIdUsuario() + "','"
             + this.getSenha() + "', "
             + this.getNumAgencia() + ","
             + this.getNumConta();
@@ -125,7 +125,7 @@ public class Usuario implements BaseDAO {
 
     @Override
     public String termoSQLWhereById() {
-        return "ID = '" + this.getIdCli()+"'";
+        return "ID = '" + this.getIdUsuario()+"'";
     }
 
     @Override
