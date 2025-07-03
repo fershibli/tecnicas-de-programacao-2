@@ -29,12 +29,19 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
         
         String operacao = "Incluir";
         if (operacaoAtiva.equals(operacao)) {
-            //TODO
+            this.setAllVisible(true);
         }
         
         operacao = "Alterar";
-        if (operacaoAtiva.equals(operacao)) {
-            //TODO
+        String operacaoExcluir = "Excluir";
+        if (operacaoAtiva.equals(operacao) || operacaoAtiva.equals(operacaoExcluir)) {
+            this.setAllVisible(false);
+            labelId.setVisible(true); 
+            idCliente.setVisible(true);
+            
+            buttonCadastrar.setVisible(true);
+            buttonCadastrar.setText("Pesquisar");
+            buttonVoltar.setVisible(true);
         }
         
         
@@ -43,6 +50,38 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
     Usuario novoUsuario = new Usuario();
     boolean senhasIguais = false;
 
+    
+    
+    private void setAllVisible(Boolean visible) {
+        agenciaCliente.setVisible(visible);
+        buttonCadastrar.setVisible(visible);
+        buttonVoltar.setVisible(visible);
+        confirmaSenha.setVisible(visible);
+        contaCliente.setVisible(visible);
+        idCliente.setVisible(visible);
+        labelAgencia.setVisible(visible);
+        labelConfirma.setVisible(visible);
+        labelConta.setVisible(visible);
+        labelId.setVisible(visible);
+        labelSenha.setVisible(visible);
+        senhaUsuario.setVisible(visible);
+    }
+    
+    private void setAllEnabled(Boolean enabled) {
+        agenciaCliente.setEnabled(enabled);
+        buttonCadastrar.setEnabled(enabled);
+        buttonVoltar.setEnabled(enabled);
+        confirmaSenha.setEnabled(enabled);
+        contaCliente.setEnabled(enabled);
+        idCliente.setEnabled(enabled);
+        labelAgencia.setEnabled(enabled);
+        labelConfirma.setEnabled(enabled);
+        labelConta.setEnabled(enabled);
+        labelId.setEnabled(enabled);
+        labelSenha.setEnabled(enabled);
+        senhaUsuario.setEnabled(enabled);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,40 +91,40 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        labelId = new javax.swing.JLabel();
+        labelConta = new javax.swing.JLabel();
+        labelSenha = new javax.swing.JLabel();
         idCliente = new javax.swing.JTextField();
         contaCliente = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        labelConfirma = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        buttonCadastrar = new javax.swing.JToggleButton();
         senhaUsuario = new javax.swing.JPasswordField();
         confirmaSenha = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        buttonVoltar = new javax.swing.JButton();
         agenciaCliente = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        labelAgencia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel1.setText("ID do Cliente:");
+        labelId.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        labelId.setText("ID do Cliente:");
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel2.setText("Num. Conta:");
+        labelConta.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        labelConta.setText("Num. Conta:");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel3.setText("Senha:");
+        labelSenha.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        labelSenha.setText("Senha:");
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel4.setText("Confirma:");
+        labelConfirma.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        labelConfirma.setText("Confirma:");
 
         errorLabel.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         errorLabel.setForeground(new java.awt.Color(255, 0, 51));
 
-        jToggleButton1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jToggleButton1.setText("Cadastrar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonCadastrar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonCadastrar.setText("Cadastrar");
+        buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarActionPerformed(evt);
             }
@@ -104,8 +143,8 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("← Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonVoltar.setText("← Voltar");
+        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarTelaMenu(evt);
             }
@@ -117,8 +156,8 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jLabel5.setText("Num. Agencia:");
+        labelAgencia.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        labelAgencia.setText("Num. Agencia:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,33 +169,33 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(labelId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(idCliente))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
                                 .addComponent(senhaUsuario))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(labelConfirma)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(errorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(confirmaSenha)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(buttonVoltar)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(213, 213, 213))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(labelAgencia)
                         .addGap(1, 1, 1)
                         .addComponent(agenciaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(labelConta)
                         .addGap(1, 1, 1)
                         .addComponent(contaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -165,30 +204,31 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(buttonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(labelId)
                     .addComponent(idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(contaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(agenciaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(labelAgencia)
+                        .addComponent(agenciaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelConta)
+                        .addComponent(contaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(senhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(labelSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(labelConfirma))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
+                .addComponent(buttonCadastrar)
                 .addContainerGap())
         );
 
@@ -285,17 +325,17 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField agenciaCliente;
+    private javax.swing.JToggleButton buttonCadastrar;
+    private javax.swing.JButton buttonVoltar;
     private javax.swing.JPasswordField confirmaSenha;
     private javax.swing.JTextField contaCliente;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JTextField idCliente;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel labelAgencia;
+    private javax.swing.JLabel labelConfirma;
+    private javax.swing.JLabel labelConta;
+    private javax.swing.JLabel labelId;
+    private javax.swing.JLabel labelSenha;
     private javax.swing.JPasswordField senhaUsuario;
     // End of variables declaration//GEN-END:variables
 }
