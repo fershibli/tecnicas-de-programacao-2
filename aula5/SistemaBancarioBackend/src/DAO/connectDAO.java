@@ -26,7 +26,7 @@ public class connectDAO {
     Connection conn;
     
     public Connection connectDB(){
-        JOptionPane.showMessageDialog(null, "Inicia a classe para conexão com SQL SERVER!");
+        System.out.println( "Inicia a classe para conexão com SQL SERVER!");
  
         String caminho = "jdbc:sqlserver://localhost:1433;databaseName=MOV_CONTA_CORRENTE;"
                 + "encrypt=true;trustServerCertificate=true;"; 
@@ -34,11 +34,11 @@ public class connectDAO {
         String senha = ".";
         try {
             conn = DriverManager.getConnection(caminho, usuario, senha);
-            JOptionPane.showMessageDialog(null, "Conectado com sucesso!");
+            System.out.println( "Conectado com sucesso!");
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
-            JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
-            JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+            System.out.println( "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+            System.out.println( "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+            System.out.println( "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
         }
         return conn;
         // conn.close();
@@ -56,15 +56,15 @@ public class connectDAO {
             stmt = conn.createStatement();
             
             String sql = "INSERT INTO dbo."+tabela+" VALUES ("+strDados+")";
-            JOptionPane.showMessageDialog(null, "String de insert: "+sql);
+            System.out.println( "String de insert: "+sql);
             
             try {
                 stmt.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Inclusão executada com sucesso!");
+                System.out.println( "Inclusão executada com sucesso!");
             } catch (SQLException erro) {
-                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                System.out.println( "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                System.out.println( "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                System.out.println( "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
             }
             conn.close();
         } catch (SQLException erro) {
@@ -82,15 +82,15 @@ public class connectDAO {
             stmt = conn.createStatement();
             
             String sql = "UPDATE dbo."+tabela+" SET "+strDados+" WHERE "+condicao;
-            JOptionPane.showMessageDialog(null, "String de update: "+sql);
+            System.out.println( "String de update: "+sql);
             
             try {
                 stmt.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Alteração executada com sucesso!");
+                System.out.println( "Alteração executada com sucesso!");
             } catch (SQLException erro) {
-                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                System.out.println( "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                System.out.println( "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                System.out.println( "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
             }
             conn.close();
         } catch (SQLException erro) {
@@ -107,15 +107,15 @@ public class connectDAO {
             stmt = conn.createStatement();
             
             String sql = "DELETE FROM dbo."+tabela+" WHERE "+condicao;
-            JOptionPane.showMessageDialog(null, "String de delete: "+sql);
+            System.out.println( "String de delete: "+sql);
             
             try {
                 stmt.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Exclusão executada com sucesso!");
+                System.out.println( "Exclusão executada com sucesso!");
             } catch (SQLException erro) {
-                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                System.out.println( "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                System.out.println( "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                System.out.println( "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
             }
             conn.close();
         } catch (SQLException erro) {
@@ -136,13 +136,13 @@ public class connectDAO {
             
             String sql;
             sql = "SELECT "+campos+" FROM dbo."+tabela+" WHERE "+condicao;
-            JOptionPane.showMessageDialog(null, "String de select: "+sql);
+            System.out.println( "String de select: "+sql);
             
             try {
                 dados = stmt.executeQuery(sql);
                 
                 if (!dados.next()) {
-                    JOptionPane.showMessageDialog(null, "Registro não encontrado!");
+                    System.out.println( "Registro não encontrado!");
                 }
 
                 int columnCount = dados.getMetaData().getColumnCount();
@@ -150,9 +150,9 @@ public class connectDAO {
                     lista.add(dados.getString(index));
                 }
             } catch (SQLException erro) {
-                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                System.out.println( "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                System.out.println( "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                System.out.println( "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
             }
             conn.close();
         } catch (SQLException erro) {
@@ -172,16 +172,16 @@ public class connectDAO {
             
             String sql = "SELECT "+campos+" FROM dbo."+tabela;
             System.out.println(sql);
-            JOptionPane.showMessageDialog(null, "String de select: "+sql);
+            System.out.println( "String de select: "+sql);
             
             try {
                 dados = stmt.executeQuery(sql);
                 return dados;
                 
             } catch (SQLException erro) {
-                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
-                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                System.out.println( "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                System.out.println( "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                System.out.println( "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
             }
             conn.close();
         } catch (SQLException erro) {
