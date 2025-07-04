@@ -323,7 +323,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void abreCadastroContaCorrente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastroContaCorrente
-        TelaCadastrarContaCorrente telaNovaContaCorrente = new TelaCadastrarContaCorrente();
+        TelaCadastrarContaCorrente telaNovaContaCorrente = new TelaCadastrarContaCorrente("Incluir");
         telaNovaContaCorrente.setVisible(true);
         
         this.setVisible(false);
