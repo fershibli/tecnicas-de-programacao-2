@@ -6,6 +6,7 @@ package View;
 
 import DAO.ContaCorrente;
 import DAO.connectDAO;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -212,6 +213,68 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
             telaMenu.setVisible(true);
             this.setVisible(false);
             this.dispose();
+        }
+        
+        if (operacaoAtivaGlobal.equals("Exclusão")) {
+            connectDAO connDAO = new connectDAO();
+            connDAO.connectDB();
+            connDAO.excluiRegistroJFBD(this.contaCorrenteTela);
+            
+            JOptionPane.showMessageDialog(this, "Conta Corrente Excluída!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
+        if(operacaoAtivaGlobal.equals("Alteração")){
+            try {
+                this.contaCorrenteTela.setNumConta(this.numConta.getText());
+                this.contaCorrenteTela.setNumAgencia(this.numAgencia.getText());
+                this.contaCorrenteTela.setSaldo(Integer.parseInt(this.saldo.getText()));
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.alteraRegistroJFBD(this.contaCorrenteTela);
+
+            } catch (IllegalArgumentException err) {        
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Conta Corrente Alterada!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        if (operacaoAtivaGlobal.equals("Alterar") || operacaoAtivaGlobal.equals("Excluir")){
+            connectDAO connDAO = new connectDAO();
+            
+            this.contaCorrenteTela.setIdCli(Integer.parseInt(this.idCli.getText()));
+            
+            List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.contaCorrenteTela);
+            
+            this.contaCorrenteTela.importaSQLValues(dadosSQL);
+            
+            this.numConta.setText(this.contaCorrenteTela.getNumConta());
+            this.numAgencia.setText(this.contaCorrenteTela.getNumAgencia());
+            this.saldo.setText(String.valueOf(this.contaCorrenteTela.getSaldo()));
+            
+            
+            this.setAllVisible(true);
+            
+            if (operacaoAtivaGlobal.equals("Excluir")) {
+                buttonCadastrar.setText("Excluir");
+                operacaoAtivaGlobal = "Exclusão";
+                this.setAllEnabled(false);
+                this.buttonVoltar.setEnabled(true);
+                this.buttonCadastrar.setEnabled(true);
+            } else {
+                buttonCadastrar.setText("Alterar");
+                operacaoAtivaGlobal = "Alteração";
+            }
         }
     }//GEN-LAST:event_buttonCadastrarcadastrarActionPerformed
 
