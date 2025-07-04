@@ -21,8 +21,50 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
         initComponents();
     }
     
-    Historico historicoTela = new Historico();
+    String operacaoAtivaGlobal = "Nenhum";
+    
+    public TelaCadastrarHistorico(String operacaoAtiva) {
+        initComponents();
+        this.operacaoAtivaGlobal = operacaoAtiva;
+        if (this.operacaoAtivaGlobal.equals("Incluir")){
+            setAllVisible(true);
+            setAllEnabled(true);
+        }
+        
+        if (this.operacaoAtivaGlobal.equals("Alterar") || this.operacaoAtivaGlobal.equals("Excluir")){
+            this.setAllVisible(false);
+            labelIdHis.setVisible(true); 
+            idHis.setVisible(true);
+            
+            buttonCadastrar.setVisible(true);
+            buttonCadastrar.setText("Pesquisar");
+            buttonVoltar.setVisible(true);
+        }
+    }
 
+    
+    Historico historicoTela = new Historico();
+    
+    private void setAllVisible (boolean value){
+        labelIdHis.setVisible(value);
+        idHis.setVisible(value);
+        labelHistorico.setVisible(value);
+        historicoCompleto.setVisible(value);
+        buttonCadastrar.setVisible(value);
+        buttonLimpar.setVisible(value);
+        buttonVoltar.setVisible(value);
+    }
+    
+    private void setAllEnabled (boolean value){
+        labelIdHis.setEnabled(value);
+        idHis.setEnabled(value);
+        labelHistorico.setEnabled(value);
+        historicoCompleto.setEnabled(value);
+        buttonCadastrar.setEnabled(value);
+        buttonLimpar.setEnabled(value);
+        buttonVoltar.setEnabled(value);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,45 +74,45 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        buttonVoltar = new javax.swing.JButton();
         idHis = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        labelIdHis = new javax.swing.JLabel();
+        historicoCompleto = new javax.swing.JScrollPane();
         historico = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        labelHistorico = new javax.swing.JLabel();
+        buttonCadastrar = new javax.swing.JButton();
+        buttonLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("← Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonVoltar.setText("← Voltar");
+        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarTelaMenu(evt);
             }
         });
 
-        jLabel1.setText("ID Histórico:");
+        labelIdHis.setText("ID Histórico:");
 
         historico.setColumns(20);
         historico.setRows(5);
-        jScrollPane1.setViewportView(historico);
+        historicoCompleto.setViewportView(historico);
 
-        jLabel2.setText("Histórico:");
+        labelHistorico.setText("Histórico:");
 
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonCadastrar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonCadastrar.setText("Cadastrar");
+        buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2cadastrarActionPerformed(evt);
+                buttonCadastrarcadastrarActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton3.setText("Limpar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonLimpar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonLimpar.setText("Limpar");
+        buttonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3limparActionPerformed(evt);
+                buttonLimparlimparActionPerformed(evt);
             }
         });
 
@@ -82,40 +124,40 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(buttonVoltar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(labelIdHis)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(idHis))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(labelHistorico)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
+                        .addComponent(historicoCompleto))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(buttonCadastrar)
                         .addGap(380, 380, 380)
-                        .addComponent(jButton3)))
+                        .addComponent(buttonLimpar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(buttonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idHis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(labelIdHis))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(historicoCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(labelHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(buttonLimpar)
+                    .addComponent(buttonCadastrar))
                 .addContainerGap())
         );
 
@@ -129,7 +171,7 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_voltarTelaMenu
 
-    private void jButton2cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2cadastrarActionPerformed
+    private void buttonCadastrarcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarcadastrarActionPerformed
         try {
             this.historicoTela.setId_his(Integer.parseInt(this.idHis.getText()));
             this.historicoTela.setHistorico(this.historico.getText());
@@ -148,12 +190,12 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
         telaMenu.setVisible(true);
         this.setVisible(false);
         this.dispose();
-    }//GEN-LAST:event_jButton2cadastrarActionPerformed
+    }//GEN-LAST:event_buttonCadastrarcadastrarActionPerformed
 
-    private void jButton3limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3limparActionPerformed
+    private void buttonLimparlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLimparlimparActionPerformed
         this.idHis.setText("");
         this.historico.setText("");
-    }//GEN-LAST:event_jButton3limparActionPerformed
+    }//GEN-LAST:event_buttonLimparlimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,13 +233,13 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCadastrar;
+    private javax.swing.JButton buttonLimpar;
+    private javax.swing.JButton buttonVoltar;
     private javax.swing.JTextArea historico;
+    private javax.swing.JScrollPane historicoCompleto;
     private javax.swing.JTextField idHis;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelHistorico;
+    private javax.swing.JLabel labelIdHis;
     // End of variables declaration//GEN-END:variables
 }
