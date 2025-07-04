@@ -268,12 +268,20 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem20.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem20.setText("Alterar existente");
-        jMenuItem20.setEnabled(false);
+        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreAlterarExtrato(evt);
+            }
+        });
         jMenu8.add(jMenuItem20);
 
         jMenuItem21.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem21.setText("Apagar existente");
-        jMenuItem21.setEnabled(false);
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreExcluirExtrato(evt);
+            }
+        });
         jMenu8.add(jMenuItem21);
 
         jMenuItem22.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -512,6 +520,22 @@ public class TelaMenu extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_abreExcluirAgencia
+
+    private void abreAlterarExtrato(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreAlterarExtrato
+        TelaCadastrarExtratoMovimentacao telaNovoExtratoMovimentacao = new TelaCadastrarExtratoMovimentacao("Alterar");
+        telaNovoExtratoMovimentacao.setVisible(true);   
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreAlterarExtrato
+
+    private void abreExcluirExtrato(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreExcluirExtrato
+        TelaCadastrarExtratoMovimentacao telaNovoExtratoMovimentacao = new TelaCadastrarExtratoMovimentacao("Excluir");
+        telaNovoExtratoMovimentacao.setVisible(true);   
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreExcluirExtrato
 
     /**
      * @param args the command line arguments
