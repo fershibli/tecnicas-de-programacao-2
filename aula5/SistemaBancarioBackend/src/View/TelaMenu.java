@@ -309,12 +309,20 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem23.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem23.setText("Alterar existente");
-        jMenuItem23.setEnabled(false);
+        jMenuItem23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreAlterarHistorico(evt);
+            }
+        });
         jMenu9.add(jMenuItem23);
 
         jMenuItem24.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem24.setText("Apagar existente");
-        jMenuItem24.setEnabled(false);
+        jMenuItem24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreExcluirHistorico(evt);
+            }
+        });
         jMenu9.add(jMenuItem24);
 
         jMenuItem25.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -391,7 +399,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_abreCadastrarExtrato
 
     private void abreCadastrarHistorico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreCadastrarHistorico
-        TelaCadastrarHistorico telaNovoHistorico = new TelaCadastrarHistorico();
+        TelaCadastrarHistorico telaNovoHistorico = new TelaCadastrarHistorico("Incluir");
         telaNovoHistorico.setVisible(true);
         
         this.setVisible(false);
@@ -536,6 +544,22 @@ public class TelaMenu extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_abreExcluirExtrato
+
+    private void abreAlterarHistorico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreAlterarHistorico
+        TelaCadastrarHistorico telaNovoHistorico = new TelaCadastrarHistorico("Alterar");
+        telaNovoHistorico.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreAlterarHistorico
+
+    private void abreExcluirHistorico(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreExcluirHistorico
+        TelaCadastrarHistorico telaNovoHistorico = new TelaCadastrarHistorico("Excluir");
+        telaNovoHistorico.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreExcluirHistorico
 
     /**
      * @param args the command line arguments
