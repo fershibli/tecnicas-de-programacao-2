@@ -154,7 +154,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem14.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem14.setText("Apagar existente");
-        jMenuItem14.setEnabled(false);
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreExcluirUsuario(evt);
+            }
+        });
         jMenu5.add(jMenuItem14);
 
         jMenuItem15.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -452,6 +456,14 @@ public class TelaMenu extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_abrirConsultarHistorico
+
+    private void abreExcluirUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreExcluirUsuario
+        TelaCadastrarUsuario telaNovoUsuario = new TelaCadastrarUsuario("Excluir");
+        telaNovoUsuario.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreExcluirUsuario
 
     /**
      * @param args the command line arguments
