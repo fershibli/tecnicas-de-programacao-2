@@ -24,8 +24,78 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         initComponents();
     }
     
+    String operacaoAtivaGlobal = "Nenhum";
+    
+    public TelaCadastrarExtratoMovimentacao(String operacaoAtiva) {
+        initComponents();
+        this.operacaoAtivaGlobal = operacaoAtiva;
+        if (this.operacaoAtivaGlobal.equals("Incluir")){
+            setAllVisible(true);
+            setAllEnabled(true);
+        }
+        
+        if (this.operacaoAtivaGlobal.equals("Alterar") || this.operacaoAtivaGlobal.equals("Excluir")){
+            this.setAllVisible(false);
+            labelIdHis.setVisible(true); 
+            idHis.setVisible(true);
+            
+            buttonCadastrar.setVisible(true);
+            buttonCadastrar.setText("Pesquisar");
+            buttonVoltar.setVisible(true);
+        }
+    }
+    
     ExtratoMovimentacao extratoMovimentacaoTela = new ExtratoMovimentacao();
 
+    private void setAllVisible(boolean isVisible){
+        labelIdHis.setVisible(isVisible);
+        idHis.setVisible(isVisible);
+        labelAgencia.setVisible(isVisible);
+        numAgencia.setVisible(isVisible);
+        labelConta.setVisible(isVisible);
+        numConta.setVisible(isVisible);
+        labelData.setVisible(isVisible);
+        dataMovimento.setVisible(isVisible);
+        labelDocumento.setVisible(isVisible);
+        documento.setVisible(isVisible);
+        labelTransacao.setVisible(isVisible);
+        meioTransacao.setVisible(isVisible);
+        labelValor.setVisible(isVisible);
+        valor.setVisible(isVisible);
+        labelSaldo.setVisible(isVisible);
+        saldo.setVisible(isVisible);
+        labelHistCompl.setVisible(isVisible);
+        histCompleto.setVisible(isVisible);
+        
+        buttonCadastrar.setVisible(isVisible);
+        buttonLimpar.setVisible(isVisible);
+    }
+    
+    
+    private void setAllEnabled(boolean isEnabled){
+        labelIdHis.setEnabled(isEnabled);
+        idHis.setEnabled(isEnabled);
+        labelAgencia.setEnabled(isEnabled);
+        numAgencia.setEnabled(isEnabled);
+        labelConta.setEnabled(isEnabled);
+        numConta.setEnabled(isEnabled);
+        labelData.setEnabled(isEnabled);
+        dataMovimento.setEnabled(isEnabled);
+        labelDocumento.setEnabled(isEnabled);
+        documento.setEnabled(isEnabled);
+        labelTransacao.setEnabled(isEnabled);
+        meioTransacao.setEnabled(isEnabled);
+        labelValor.setEnabled(isEnabled);
+        valor.setEnabled(isEnabled);
+        labelSaldo.setEnabled(isEnabled);
+        saldo.setEnabled(isEnabled);
+        labelHistCompl.setEnabled(isEnabled);
+        histCompleto.setEnabled(isEnabled);
+        
+        buttonCadastrar.setEnabled(isEnabled);
+        buttonLimpar.setEnabled(isEnabled);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,15 +105,15 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        labelConta = new javax.swing.JLabel();
+        labelAgencia = new javax.swing.JLabel();
+        labelIdHis = new javax.swing.JLabel();
+        labelData = new javax.swing.JLabel();
+        labelSaldo = new javax.swing.JLabel();
+        labelTransacao = new javax.swing.JLabel();
+        labelHistCompl = new javax.swing.JLabel();
+        labelDocumento = new javax.swing.JLabel();
+        labelValor = new javax.swing.JLabel();
         idHis = new javax.swing.JTextField();
         numAgencia = new javax.swing.JTextField();
         numConta = new javax.swing.JTextField();
@@ -54,29 +124,29 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         saldo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         histCompleto = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        buttonCadastrar = new javax.swing.JButton();
+        buttonLimpar = new javax.swing.JButton();
+        buttonVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Conta:");
+        labelConta.setText("Conta:");
 
-        jLabel2.setText("Agência:");
+        labelAgencia.setText("Agência:");
 
-        jLabel3.setText("ID Histórico:");
+        labelIdHis.setText("ID Histórico:");
 
-        jLabel4.setText("Data Movimento:");
+        labelData.setText("Data Movimento:");
 
-        jLabel5.setText("Saldo:");
+        labelSaldo.setText("Saldo:");
 
-        jLabel6.setText("Meio transação:");
+        labelTransacao.setText("Meio transação:");
 
-        jLabel7.setText("Histórico Completo:");
+        labelHistCompl.setText("Histórico Completo:");
 
-        jLabel8.setText("Documento:");
+        labelDocumento.setText("Documento:");
 
-        jLabel9.setText("Valor:");
+        labelValor.setText("Valor:");
 
         meioTransacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Débito", "Crédito" }));
 
@@ -90,24 +160,24 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         histCompleto.setRows(5);
         jScrollPane1.setViewportView(histCompleto);
 
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonCadastrar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonCadastrar.setText("Cadastrar");
+        buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2cadastrarActionPerformed(evt);
+                buttonCadastrarcadastrarActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton1.setText("Limpar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonLimpar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonLimpar.setText("Limpar");
+        buttonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1limparActionPerformed(evt);
+                buttonLimparlimparActionPerformed(evt);
             }
         });
 
-        jButton3.setText("← Voltar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonVoltar.setText("← Voltar");
+        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarTelaMenu(evt);
             }
@@ -123,86 +193,86 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(labelIdHis)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(idHis, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
+                                .addComponent(labelAgencia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(numAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)
+                                .addComponent(labelConta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(numConta))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(labelData)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dataMovimento, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
+                                .addComponent(labelDocumento)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(documento))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(labelTransacao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(meioTransacao, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
+                                .addComponent(labelValor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
+                                .addComponent(labelSaldo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(saldo))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(labelHistCompl)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane1))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(buttonCadastrar)
                                 .addGap(380, 380, 380)
-                                .addComponent(jButton1)))
+                                .addComponent(buttonLimpar)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(buttonVoltar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(buttonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
+                    .addComponent(labelIdHis)
+                    .addComponent(labelAgencia)
+                    .addComponent(labelConta)
                     .addComponent(idHis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dataMovimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8)
+                    .addComponent(labelData)
+                    .addComponent(labelDocumento)
                     .addComponent(documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(labelTransacao)
                     .addComponent(meioTransacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel5)
+                    .addComponent(labelValor)
+                    .addComponent(labelSaldo)
                     .addComponent(saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelHistCompl, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(buttonLimpar)
+                    .addComponent(buttonCadastrar))
                 .addContainerGap())
         );
 
@@ -213,7 +283,7 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_valorActionPerformed
 
-    private void jButton2cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2cadastrarActionPerformed
+    private void buttonCadastrarcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarcadastrarActionPerformed
         try {
             this.extratoMovimentacaoTela.setId_his(Integer.parseInt(this.idHis.getText()));
             this.extratoMovimentacaoTela.setNumAgencia(this.numAgencia.getText());
@@ -241,9 +311,9 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         telaMenu.setVisible(true);
         this.setVisible(false);
         this.dispose();
-    }//GEN-LAST:event_jButton2cadastrarActionPerformed
+    }//GEN-LAST:event_buttonCadastrarcadastrarActionPerformed
 
-    private void jButton1limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1limparActionPerformed
+    private void buttonLimparlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLimparlimparActionPerformed
         this.idHis.setText("");
         this.numAgencia.setText("");
         this.numConta.setText("");
@@ -253,7 +323,7 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         this.valor.setText("");
         this.saldo.setText("");
         this.histCompleto.setText("");
-    }//GEN-LAST:event_jButton1limparActionPerformed
+    }//GEN-LAST:event_buttonLimparlimparActionPerformed
 
     private void voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenu
         TelaMenu telaMenu = new TelaMenu();
@@ -299,23 +369,23 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCadastrar;
+    private javax.swing.JButton buttonLimpar;
+    private javax.swing.JButton buttonVoltar;
     private javax.swing.JTextField dataMovimento;
     private javax.swing.JTextField documento;
     private javax.swing.JTextArea histCompleto;
     private javax.swing.JTextField idHis;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelAgencia;
+    private javax.swing.JLabel labelConta;
+    private javax.swing.JLabel labelData;
+    private javax.swing.JLabel labelDocumento;
+    private javax.swing.JLabel labelHistCompl;
+    private javax.swing.JLabel labelIdHis;
+    private javax.swing.JLabel labelSaldo;
+    private javax.swing.JLabel labelTransacao;
+    private javax.swing.JLabel labelValor;
     private javax.swing.JComboBox<String> meioTransacao;
     private javax.swing.JTextField numAgencia;
     private javax.swing.JTextField numConta;
