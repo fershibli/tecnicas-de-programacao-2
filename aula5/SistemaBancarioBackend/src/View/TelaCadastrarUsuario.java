@@ -6,6 +6,10 @@ package View;
 
 import DAO.Usuario;
 import DAO.connectDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,7 +51,7 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
         
     }
     
-    Usuario novoUsuario = new Usuario();
+    Usuario usuarioTela = new Usuario();
     boolean senhasIguais = false;
 
     
@@ -236,30 +240,98 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        if (senhasIguais == false) {
-            JOptionPane.showMessageDialog(this, "As senhas precisam ser iguais");
+        if (operacaoAtivaGlobal.equals("Incluir")){
+            if (senhasIguais == false) {
+                JOptionPane.showMessageDialog(this, "As senhas precisam ser iguais");
+            }
+            try {
+                this.usuarioTela.setNumConta(this.contaCliente.getText());
+                this.usuarioTela.setNumAgencia(this.agenciaCliente.getText());
+                this.usuarioTela.setSenha(new String(this.senhaUsuario.getPassword()));
+                this.usuarioTela.setIdUsuario(this.idCliente.getText());
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.insereRegistroJFBD(this.usuarioTela);
+
+            } catch (IllegalArgumentException err) {        
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+
+            JOptionPane.showMessageDialog(this, "Usuário Cadastrado!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
         }
-        try {
-            this.novoUsuario.setNumConta(this.contaCliente.getText());
-            this.novoUsuario.setNumAgencia(this.agenciaCliente.getText());
-            this.novoUsuario.setSenha(new String(this.senhaUsuario.getPassword()));
-            this.novoUsuario.setIdCli(Integer.parseInt(this.idCliente.getText()));
-            
+        
+        if (operacaoAtivaGlobal.equals("Exclusão")) {
             connectDAO connDAO = new connectDAO();
             connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.novoUsuario);
+            connDAO.excluiRegistroJFBD(this.usuarioTela);
+            
+            JOptionPane.showMessageDialog(this, "Usuario Excluído!");
 
-        } catch (IllegalArgumentException err) {        
-            JOptionPane.showMessageDialog(this, err.getMessage());
-            return;
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
         }
-
-        JOptionPane.showMessageDialog(this, "Usuário Cadastrado!");
         
-        TelaMenu telaMenu = new TelaMenu();
-        telaMenu.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
+        if(operacaoAtivaGlobal.equals("Alteração")){
+            try {
+                this.usuarioTela.setNumConta(this.contaCliente.getText());
+                this.usuarioTela.setNumAgencia(this.agenciaCliente.getText());
+                this.usuarioTela.setSenha(new String(this.senhaUsuario.getPassword()));
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.alteraRegistroJFBD(this.usuarioTela);
+
+            } catch (IllegalArgumentException err) {        
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Usuário Alterado!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
+        if (operacaoAtivaGlobal.equals("Alterar") || operacaoAtivaGlobal.equals("Excluir")){
+            connectDAO connDAO = new connectDAO();
+            
+            this.usuarioTela.setIdUsuario(this.idCliente.getText());
+            
+            List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.usuarioTela);
+            
+            this.usuarioTela.importaSQLValues(dadosSQL);
+            
+            
+            this.contaCliente.setText(this.usuarioTela.getNumConta());
+            this.agenciaCliente.setText(this.usuarioTela.getNumAgencia());
+            this.senhaUsuario.setText(this.usuarioTela.getSenha());
+            this.confirmaSenha.setText(this.usuarioTela.getSenha());
+            this.idCliente.setText(String.valueOf(this.usuarioTela.getIdUsuario()) );
+            
+            
+            this.setAllVisible(true);
+            
+            if (operacaoAtivaGlobal.equals("Excluir")) {
+                buttonCadastrar.setText("Excluir");
+                operacaoAtivaGlobal = "Exclusão";
+                this.setAllEnabled(false);
+                this.buttonVoltar.setEnabled(true);
+                this.buttonCadastrar.setEnabled(true);
+            } else {
+                buttonCadastrar.setText("Alterar");
+                operacaoAtivaGlobal = "Alteração";
+            }
+        }
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void verificaSenha(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificaSenha
