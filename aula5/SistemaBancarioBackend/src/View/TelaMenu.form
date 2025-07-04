@@ -191,8 +191,10 @@
                   <Font name="Calibri" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Alterar existente"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abreAlterarAgencia"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem18">
               <Properties>
@@ -200,8 +202,10 @@
                   <Font name="Calibri" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Apagar existente"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abreExcluirAgencia"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem19">
               <Properties>
