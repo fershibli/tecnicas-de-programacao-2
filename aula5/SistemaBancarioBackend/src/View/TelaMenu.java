@@ -186,12 +186,20 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuItem11.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem11.setText("Alterar existente");
-        jMenuItem11.setEnabled(false);
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreAlterarContaCorrente(evt);
+            }
+        });
         jMenu6.add(jMenuItem11);
 
         jMenuItem16.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jMenuItem16.setText("Apagar existente");
-        jMenuItem16.setEnabled(false);
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abreExcluirContaCorrente(evt);
+            }
+        });
         jMenu6.add(jMenuItem16);
 
         jMenuItem17.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -464,6 +472,22 @@ public class TelaMenu extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_abreExcluirUsuario
+
+    private void abreAlterarContaCorrente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreAlterarContaCorrente
+        TelaCadastrarContaCorrente telaNovaContaCorrente = new TelaCadastrarContaCorrente("Alterar");
+        telaNovaContaCorrente.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreAlterarContaCorrente
+
+    private void abreExcluirContaCorrente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abreExcluirContaCorrente
+        TelaCadastrarContaCorrente telaNovaContaCorrente = new TelaCadastrarContaCorrente("Excluir");
+        telaNovaContaCorrente.setVisible(true);
+        
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_abreExcluirContaCorrente
 
     /**
      * @param args the command line arguments
