@@ -21,6 +21,56 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
         initComponents();
     }
     
+    String operacaoAtivaGlobal = "Nenhum";
+    
+    public TelaCadastrarContaCorrente(String operacaoAtiva) {
+        initComponents();
+        this.operacaoAtivaGlobal = operacaoAtiva;
+        if (this.operacaoAtivaGlobal.equals("Incluir")){
+            setAllVisible(true);
+            setAllEnabled(true);
+        }
+        
+        if (this.operacaoAtivaGlobal.equals("Alterar") || this.operacaoAtivaGlobal.equals("Excluir")){
+            this.setAllVisible(false);
+            labelIdCli.setVisible(true); 
+            idCli.setVisible(true);
+            
+            buttonCadastrar.setVisible(true);
+            buttonCadastrar.setText("Pesquisar");
+            buttonVoltar.setVisible(true);
+        }
+    }
+    
+    
+    private void setAllVisible(Boolean visible) {
+        this.idCli.setVisible(visible);
+        this.numAgencia.setVisible(visible);
+        this.numConta.setVisible(visible);
+        this.saldo.setVisible(visible);
+        this.buttonVoltar.setVisible(visible);
+        this.buttonCadastrar.setVisible(visible);
+        this.buttonLimpar.setVisible(visible);
+        this.jLabel1.setVisible(visible);
+        this.jLabel2.setVisible(visible);
+        this.labelIdCli.setVisible(visible);
+        this.jLabel4.setVisible(visible);
+    }
+
+    private void setAllEnabled(Boolean enabled) {
+        this.idCli.setEnabled(enabled);
+        this.numAgencia.setEnabled(enabled);
+        this.numConta.setEnabled(enabled);
+        this.saldo.setEnabled(enabled);
+        this.buttonVoltar.setEnabled(enabled);
+        this.buttonCadastrar.setEnabled(enabled);
+        this.buttonLimpar.setEnabled(enabled);
+        this.jLabel1.setEnabled(enabled);
+        this.jLabel2.setEnabled(enabled);
+        this.labelIdCli.setEnabled(enabled);
+        this.jLabel4.setEnabled(enabled);
+    }
+    
     ContaCorrente contaCorrenteTela = new ContaCorrente();
 
     /**
@@ -34,15 +84,15 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        labelIdCli = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         idCli = new javax.swing.JTextField();
         numAgencia = new javax.swing.JTextField();
         numConta = new javax.swing.JTextField();
         saldo = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        buttonCadastrar = new javax.swing.JButton();
+        buttonLimpar = new javax.swing.JButton();
+        buttonVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,28 +100,28 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
 
         jLabel2.setText("Agencia:");
 
-        jLabel3.setText("ID Cliente:");
+        labelIdCli.setText("ID Cliente:");
 
         jLabel4.setText("Saldo:");
 
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonCadastrar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonCadastrar.setText("Cadastrar");
+        buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2cadastrarActionPerformed(evt);
+                buttonCadastrarcadastrarActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton1.setText("Limpar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonLimpar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonLimpar.setText("Limpar");
+        buttonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1limparActionPerformed(evt);
+                buttonLimparlimparActionPerformed(evt);
             }
         });
 
-        jButton3.setText("← Voltar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonVoltar.setText("← Voltar");
+        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarTelaMenu(evt);
             }
@@ -85,7 +135,7 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(labelIdCli)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(idCli))
                     .addGroup(layout.createSequentialGroup()
@@ -103,10 +153,10 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(buttonCadastrar)
                                 .addGap(380, 380, 380)
-                                .addComponent(jButton1))
-                            .addComponent(jButton3))
+                                .addComponent(buttonLimpar))
+                            .addComponent(buttonVoltar))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -114,11 +164,11 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(buttonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(labelIdCli))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,42 +183,44 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(buttonLimpar)
+                    .addComponent(buttonCadastrar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2cadastrarActionPerformed
-        try {
-            this.contaCorrenteTela.setNumConta(this.numConta.getText());
-            this.contaCorrenteTela.setNumAgencia(this.numAgencia.getText());
-            this.contaCorrenteTela.setIdCli(Integer.parseInt(this.idCli.getText()));
-            this.contaCorrenteTela.setSaldo(Integer.parseInt(this.saldo.getText()));
-        
-            connectDAO connDAO = new connectDAO();
-            connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.contaCorrenteTela);
-} catch (IllegalArgumentException err) {        
-            JOptionPane.showMessageDialog(this, err.getMessage());
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Conta Corrente Cadastrada!");
-        
-        TelaMenu telaMenu = new TelaMenu();
-        telaMenu.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
-    }//GEN-LAST:event_jButton2cadastrarActionPerformed
+    private void buttonCadastrarcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarcadastrarActionPerformed
+        if (operacaoAtivaGlobal.equals("Incluir")){
+            try {
+                this.contaCorrenteTela.setNumConta(this.numConta.getText());
+                this.contaCorrenteTela.setNumAgencia(this.numAgencia.getText());
+                this.contaCorrenteTela.setIdCli(Integer.parseInt(this.idCli.getText()));
+                this.contaCorrenteTela.setSaldo(Integer.parseInt(this.saldo.getText()));
 
-    private void jButton1limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1limparActionPerformed
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.insereRegistroJFBD(this.contaCorrenteTela);
+            } catch (IllegalArgumentException err) {        
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Conta Corrente Cadastrada!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+    }//GEN-LAST:event_buttonCadastrarcadastrarActionPerformed
+
+    private void buttonLimparlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLimparlimparActionPerformed
         this.numConta.setText("");
         this.numAgencia.setText("");
         this.idCli.setText("");
         this.saldo.setText("");
-    }//GEN-LAST:event_jButton1limparActionPerformed
+    }//GEN-LAST:event_buttonLimparlimparActionPerformed
 
     private void voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenu
         TelaMenu telaMenu = new TelaMenu();
@@ -213,14 +265,14 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCadastrar;
+    private javax.swing.JButton buttonLimpar;
+    private javax.swing.JButton buttonVoltar;
     private javax.swing.JTextField idCli;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel labelIdCli;
     private javax.swing.JTextField numAgencia;
     private javax.swing.JTextField numConta;
     private javax.swing.JTextField saldo;
