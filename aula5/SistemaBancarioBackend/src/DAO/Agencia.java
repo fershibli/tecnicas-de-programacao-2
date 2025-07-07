@@ -109,7 +109,7 @@ public class Agencia implements BaseDAO {
 
     private boolean validaCnpj(String cnpj){
         return (
-            cnpj != null &&
+            cnpj == null ||
             cnpj.trim().replaceAll("[^0-9]", "").length() == 14
         );
     }
@@ -307,7 +307,9 @@ public class Agencia implements BaseDAO {
 
     @Override
     public void importaSQLValues(List<String> dados) {
-        if (dados.size() != 11) {
+        if (dados.size() != 10) {
+            System.out.println(dados);
+            System.out.println(dados.size());
             throw new IllegalArgumentException("Número de dados inválido");
         }
         this.setNumAgencia(dados.get(0));
@@ -319,7 +321,6 @@ public class Agencia implements BaseDAO {
         this.setCidade(dados.get(6));
         this.setUf(dados.get(7));
         this.setCep(dados.get(8));
-        this.setCnpj(dados.get(9));
-        this.setGerente(dados.get(10));
+        this.setTelefone(dados.get(9));
     }
 }
