@@ -24,6 +24,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
     String operacaoAtivaGlobal = "Nenhum";
     
     public TelaCadastrarAgencia(String operacaoAtiva) {
+        initComponents();
         operacaoAtivaGlobal = operacaoAtiva;
         
         String operacao = "Incluir";
@@ -38,6 +39,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
             labelCodAgencia.setVisible(true);
             codAgencia.setVisible(true);
             
+            buttonVoltar.setVisible(true);
             buttonCadastrar.setVisible(true);
             buttonCadastrar.setText("Pesquisar");
         }
@@ -67,8 +69,8 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         ufAgencia.setVisible(visible);
         telefoneAgencia.setVisible(visible);
         buttonCadastrar.setVisible(visible);
-        jButton1.setVisible(visible);
-        jButton3.setVisible(visible);
+        buttonLimpar.setVisible(visible);
+        buttonVoltar.setVisible(visible);
         jLabel11.setVisible(visible);
         complementoEndAgencia.setVisible(visible);
     }
@@ -93,8 +95,8 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         ufAgencia.setEnabled(enabled);
         telefoneAgencia.setEnabled(enabled);
         buttonCadastrar.setEnabled(enabled);
-        jButton1.setEnabled(enabled);
-        jButton3.setEnabled(enabled);
+        buttonLimpar.setEnabled(enabled);
+        buttonVoltar.setEnabled(enabled);
         jLabel11.setEnabled(enabled);
         complementoEndAgencia.setEnabled(enabled);
     }
@@ -127,8 +129,8 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         ufAgencia = new javax.swing.JComboBox<>();
         telefoneAgencia = new javax.swing.JTextField();
         buttonCadastrar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        buttonLimpar = new javax.swing.JButton();
+        buttonVoltar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         complementoEndAgencia = new javax.swing.JTextField();
 
@@ -183,16 +185,16 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton1.setText("Limpar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonLimpar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        buttonLimpar.setText("Limpar");
+        buttonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1limparActionPerformed(evt);
+                buttonLimparlimparActionPerformed(evt);
             }
         });
 
-        jButton3.setText("← Voltar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonVoltar.setText("← Voltar");
+        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarTelaMenu(evt);
             }
@@ -219,8 +221,8 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buttonCadastrar)
                                 .addGap(380, 380, 380)
-                                .addComponent(jButton1))
-                            .addComponent(jButton3))
+                                .addComponent(buttonLimpar))
+                            .addComponent(buttonVoltar))
                         .addGap(0, 6, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,7 +233,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelCodAgencia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(codAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(codAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -270,7 +272,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(buttonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCodAgencia)
@@ -303,7 +305,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(buttonLimpar)
                     .addComponent(buttonCadastrar))
                 .addContainerGap())
         );
@@ -346,7 +348,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_buttonCadastrarActionPerformed
 
-    private void jButton1limparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1limparActionPerformed
+    private void buttonLimparlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLimparlimparActionPerformed
         this.codAgencia.setText("");
         this.nomeAgencia.setText("");
         this.enderecoAgencia.setText("");
@@ -357,7 +359,7 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
         this.cepAgencia.setText("");
         this.telefoneAgencia.setText("");
         this.complementoEndAgencia.setText("");
-    }//GEN-LAST:event_jButton1limparActionPerformed
+    }//GEN-LAST:event_buttonLimparlimparActionPerformed
 
     private void voltarTelaMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaMenu
         TelaMenu telaMenu = new TelaMenu();
@@ -412,13 +414,13 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairroAgencia;
     private javax.swing.JButton buttonCadastrar;
+    private javax.swing.JButton buttonLimpar;
+    private javax.swing.JButton buttonVoltar;
     private javax.swing.JTextField cepAgencia;
     private javax.swing.JTextField cidadeAgencia;
     private javax.swing.JTextField codAgencia;
     private javax.swing.JTextField complementoEndAgencia;
     private javax.swing.JTextField enderecoAgencia;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
