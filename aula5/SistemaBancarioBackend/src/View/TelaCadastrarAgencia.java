@@ -5,6 +5,7 @@
 package View;
 import DAO.Agencia;
 import DAO.connectDAO;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
@@ -318,34 +319,72 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
     }//GEN-LAST:event_cidadeAgenciaActionPerformed
 
     private void buttonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarActionPerformed
-        try {
-            this.agenciaTela.setNumAgencia(this.codAgencia.getText());
-            this.agenciaTela.setNome(this.nomeAgencia.getText());
-            this.agenciaTela.setEndereco(this.enderecoAgencia.getText());
-            this.agenciaTela.setNumero(this.numeroEndAgencia.getText());
-            this.agenciaTela.setComplemento(this.complementoEndAgencia.getText());
-            this.agenciaTela.setBairro(this.bairroAgencia.getText());
-            this.agenciaTela.setCidade(this.cidadeAgencia.getText());
-            this.agenciaTela.setUf(this.ufAgencia.getSelectedItem().toString());
-            this.agenciaTela.setCep(this.cepAgencia.getText());
-            this.agenciaTela.setTelefone(this.telefoneAgencia.getText());
-            
-            connectDAO connDAO = new connectDAO();
-            connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.agenciaTela);
-        } catch (IllegalArgumentException err) {        
-            JOptionPane.showMessageDialog(this, err.getMessage());
-            return;
+        if (operacaoAtivaGlobal.equals("Incluir")){
+            try {
+                this.agenciaTela.setNumAgencia(this.codAgencia.getText());
+                this.agenciaTela.setNome(this.nomeAgencia.getText());
+                this.agenciaTela.setEndereco(this.enderecoAgencia.getText());
+                this.agenciaTela.setNumero(this.numeroEndAgencia.getText());
+                this.agenciaTela.setComplemento(this.complementoEndAgencia.getText());
+                this.agenciaTela.setBairro(this.bairroAgencia.getText());
+                this.agenciaTela.setCidade(this.cidadeAgencia.getText());
+                this.agenciaTela.setUf(this.ufAgencia.getSelectedItem().toString());
+                this.agenciaTela.setCep(this.cepAgencia.getText());
+                this.agenciaTela.setTelefone(this.telefoneAgencia.getText());
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.insereRegistroJFBD(this.agenciaTela);
+            } catch (IllegalArgumentException err) {        
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+
+
+
+            JOptionPane.showMessageDialog(this, "Agência Cadastrada!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
         }
         
-        
-        
-        JOptionPane.showMessageDialog(this, "Agência Cadastrada!");
-        
-        TelaMenu telaMenu = new TelaMenu();
-        telaMenu.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
+        if (operacaoAtivaGlobal.equals("Alterar") || operacaoAtivaGlobal.equals("Excluir")){
+            connectDAO connDAO = new connectDAO();
+            
+            this.agenciaTela.setNumAgencia(this.codAgencia.getText());
+            
+            List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.agenciaTela);
+            
+            this.agenciaTela.importaSQLValues(dadosSQL);
+            
+            this.codAgencia.setText(this.agenciaTela.getNumAgencia());
+            
+            this.nomeAgencia.setText(this.agenciaTela.getNome());
+            this.enderecoAgencia.setText(this.agenciaTela.getEndereco());
+            this.numeroEndAgencia.setText(this.agenciaTela.getNumero());
+            this.complementoEndAgencia.setText(this.agenciaTela.getComplemento());
+            this.bairroAgencia.setText(this.agenciaTela.getBairro());
+            this.cidadeAgencia.setText(this.agenciaTela.getCidade());
+            this.ufAgencia.setSelectedItem(this.agenciaTela.getUf());
+            this.cepAgencia.setText(this.agenciaTela.getCep());
+            this.telefoneAgencia.setText(this.agenciaTela.getTelefone());
+            
+            
+            this.setAllVisible(true);
+            
+            if (operacaoAtivaGlobal.equals("Excluir")) {
+                buttonCadastrar.setText("Excluir");
+                operacaoAtivaGlobal = "Exclusão";
+                this.setAllEnabled(false);
+                this.buttonVoltar.setEnabled(true);
+                this.buttonCadastrar.setEnabled(true);
+            } else {
+                buttonCadastrar.setText("Alterar");
+                operacaoAtivaGlobal = "Alteração";
+            }
+        }
     }//GEN-LAST:event_buttonCadastrarActionPerformed
 
     private void buttonLimparlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLimparlimparActionPerformed
