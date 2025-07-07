@@ -49,7 +49,7 @@ public class Agencia implements BaseDAO {
             return false;
         }
         String numAgenciaLimpo = numAgencia.trim().replaceAll("[^0-9]", "");
-        return numAgenciaLimpo.length() == 4 || numAgenciaLimpo.length() == 5;
+        return numAgenciaLimpo.length() > 0 && Integer.parseInt(numAgenciaLimpo) > 0;
     }
 
     private boolean validaNome(String nome){
