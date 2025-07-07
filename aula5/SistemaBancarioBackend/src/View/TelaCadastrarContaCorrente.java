@@ -52,10 +52,10 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
         this.buttonVoltar.setVisible(visible);
         this.buttonCadastrar.setVisible(visible);
         this.buttonLimpar.setVisible(visible);
-        this.jLabel1.setVisible(visible);
-        this.jLabel2.setVisible(visible);
+        this.labelConta.setVisible(visible);
+        this.labelAgencia.setVisible(visible);
         this.labelIdCli.setVisible(visible);
-        this.jLabel4.setVisible(visible);
+        this.labelSaldo.setVisible(visible);
     }
 
     private void setAllEnabled(Boolean enabled) {
@@ -66,10 +66,10 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
         this.buttonVoltar.setEnabled(enabled);
         this.buttonCadastrar.setEnabled(enabled);
         this.buttonLimpar.setEnabled(enabled);
-        this.jLabel1.setEnabled(enabled);
-        this.jLabel2.setEnabled(enabled);
+        this.labelConta.setEnabled(enabled);
+        this.labelAgencia.setEnabled(enabled);
         this.labelIdCli.setEnabled(enabled);
-        this.jLabel4.setEnabled(enabled);
+        this.labelSaldo.setEnabled(enabled);
     }
     
     ContaCorrente contaCorrenteTela = new ContaCorrente();
@@ -83,10 +83,10 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelConta = new javax.swing.JLabel();
+        labelAgencia = new javax.swing.JLabel();
         labelIdCli = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        labelSaldo = new javax.swing.JLabel();
         idCli = new javax.swing.JTextField();
         numAgencia = new javax.swing.JTextField();
         numConta = new javax.swing.JTextField();
@@ -97,13 +97,13 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Conta:");
+        labelConta.setText("Conta:");
 
-        jLabel2.setText("Agencia:");
+        labelAgencia.setText("Agencia:");
 
         labelIdCli.setText("ID Cliente:");
 
-        jLabel4.setText("Saldo:");
+        labelSaldo.setText("Saldo:");
 
         buttonCadastrar.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         buttonCadastrar.setText("Cadastrar");
@@ -140,15 +140,15 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(idCli))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(labelSaldo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saldo))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(labelAgencia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numAgencia))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(labelConta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numConta))
                     .addGroup(layout.createSequentialGroup()
@@ -173,15 +173,15 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(labelAgencia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(labelConta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(labelSaldo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonLimpar)
@@ -332,10 +332,10 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
     private javax.swing.JButton buttonLimpar;
     private javax.swing.JButton buttonVoltar;
     private javax.swing.JTextField idCli;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel labelAgencia;
+    private javax.swing.JLabel labelConta;
     private javax.swing.JLabel labelIdCli;
+    private javax.swing.JLabel labelSaldo;
     private javax.swing.JTextField numAgencia;
     private javax.swing.JTextField numConta;
     private javax.swing.JTextField saldo;
