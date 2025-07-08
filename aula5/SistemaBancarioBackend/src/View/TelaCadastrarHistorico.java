@@ -6,6 +6,7 @@ package View;
 
 import DAO.Historico;
 import DAO.connectDAO;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -172,24 +173,88 @@ public class TelaCadastrarHistorico extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarTelaMenu
 
     private void buttonCadastrarcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarcadastrarActionPerformed
-        try {
-            this.historicoTela.setId_his(Integer.parseInt(this.idHis.getText()));
-            this.historicoTela.setHistorico(this.historico.getText());
-            
+        if (operacaoAtivaGlobal.equals("Incluir")){
+            try {
+                this.historicoTela.setId_his(Integer.parseInt(this.idHis.getText()));
+                this.historicoTela.setHistorico(this.historico.getText());
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.insereRegistroJFBD(this.historicoTela);
+
+            } catch (IllegalArgumentException err) {
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Histórico Cadastrado!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
+        if (operacaoAtivaGlobal.equals("Alteração")){
+            try {
+                this.historicoTela.setId_his(Integer.parseInt(this.idHis.getText()));
+                this.historicoTela.setHistorico(this.historico.getText());
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.insereRegistroJFBD(this.historicoTela);
+
+            } catch (IllegalArgumentException err) {
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Histórico Alterado!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
+        if (operacaoAtivaGlobal.equals("Exclusão")) {
             connectDAO connDAO = new connectDAO();
             connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.historicoTela);
+            connDAO.excluiRegistroJFBD(this.historicoTela);
+            
+            JOptionPane.showMessageDialog(this, "Histórico Excluído!");
 
-        } catch (IllegalArgumentException err) {
-            JOptionPane.showMessageDialog(this, err.getMessage());
-            return;
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
         }
-        JOptionPane.showMessageDialog(this, "Histórico Cadastrado!");
-
-        TelaMenu telaMenu = new TelaMenu();
-        telaMenu.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
+        
+        if (operacaoAtivaGlobal.equals("Alterar") || operacaoAtivaGlobal.equals("Excluir")){
+            connectDAO connDAO = new connectDAO();
+            
+            this.historicoTela.setId_his(Integer.parseInt(this.idHis.getText()));
+            
+            List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.historicoTela);
+            
+            this.historicoTela.importaSQLValues(dadosSQL);
+            
+            
+            this.historico.setText(this.historicoTela.getHistorico());
+            
+            
+            this.setAllVisible(true);
+            
+            if (operacaoAtivaGlobal.equals("Excluir")) {
+                buttonCadastrar.setText("Excluir");
+                operacaoAtivaGlobal = "Exclusão";
+                this.setAllEnabled(false);
+                this.buttonVoltar.setEnabled(true);
+                this.buttonCadastrar.setEnabled(true);
+            } else {
+                buttonCadastrar.setText("Alterar");
+                operacaoAtivaGlobal = "Alteração";
+            }
+        }
+            
     }//GEN-LAST:event_buttonCadastrarcadastrarActionPerformed
 
     private void buttonLimparlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLimparlimparActionPerformed
