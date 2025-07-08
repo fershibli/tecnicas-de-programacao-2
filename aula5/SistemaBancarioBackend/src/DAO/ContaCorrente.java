@@ -133,7 +133,7 @@ public class ContaCorrente implements BaseDAO {
 
     @Override
     public String termoSQLWhereById() {
-        return "ID_CLI = " + this.getIdCli();
+        return "NUM_CC = " + this.getNumConta();
     }
 
     @Override
