@@ -69,13 +69,13 @@
               <Component id="buttonVoltar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="idCli" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelIdCli" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="numAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idCli" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelIdCli" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
