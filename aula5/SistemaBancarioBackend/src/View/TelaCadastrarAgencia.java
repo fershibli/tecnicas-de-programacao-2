@@ -350,6 +350,50 @@ public class TelaCadastrarAgencia extends javax.swing.JFrame {
             this.dispose();
         }
         
+        if (operacaoAtivaGlobal.equals("Alteração")){
+            try {
+                this.agenciaTela.setNumAgencia(this.codAgencia.getText());
+                this.agenciaTela.setNome(this.nomeAgencia.getText());
+                this.agenciaTela.setEndereco(this.enderecoAgencia.getText());
+                this.agenciaTela.setNumero(this.numeroEndAgencia.getText());
+                this.agenciaTela.setComplemento(this.complementoEndAgencia.getText());
+                this.agenciaTela.setBairro(this.bairroAgencia.getText());
+                this.agenciaTela.setCidade(this.cidadeAgencia.getText());
+                this.agenciaTela.setUf(this.ufAgencia.getSelectedItem().toString());
+                this.agenciaTela.setCep(this.cepAgencia.getText());
+                this.agenciaTela.setTelefone(this.telefoneAgencia.getText());
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.alteraRegistroJFBD(this.agenciaTela);
+            } catch (IllegalArgumentException err) {        
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+
+
+
+            JOptionPane.showMessageDialog(this, "Agência Atualizada!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
+        if (operacaoAtivaGlobal.equals("Exclusão")) {
+            connectDAO connDAO = new connectDAO();
+            connDAO.connectDB();
+            connDAO.excluiRegistroJFBD(this.agenciaTela);
+            
+            JOptionPane.showMessageDialog(this, "Agencia Excluída!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
         if (operacaoAtivaGlobal.equals("Alterar") || operacaoAtivaGlobal.equals("Excluir")){
             connectDAO connDAO = new connectDAO();
             
