@@ -15,13 +15,13 @@ public class ContaCorrente implements BaseDAO {
     private String numConta;
     private String numAgencia;
     private int idCli;
-    private int saldo;
+    private Float saldo;
 
     public ContaCorrente() {
         
     }
     
-    public ContaCorrente(String numConta, String numAgencia, int idCli, int saldo) {
+    public ContaCorrente(String numConta, String numAgencia, int idCli, Float saldo) {
         this.numConta = numConta;
         this.numAgencia = numAgencia;
         this.idCli = idCli;
@@ -99,11 +99,11 @@ public class ContaCorrente implements BaseDAO {
         this.idCli = idCli;
     }
 
-    public int getSaldo() {
+    public Float getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(Float saldo) {
         if (!validaSaldo(saldo)) {
             throw new IllegalArgumentException("Saldo inválido");
         }
@@ -133,7 +133,7 @@ public class ContaCorrente implements BaseDAO {
 
     @Override
     public String termoSQLWhereById() {
-        return "NUM_AGE = " + this.getNumAgencia();
+        return "ID_CLI = " + this.getIdCli();
     }
 
     @Override
@@ -149,6 +149,6 @@ public class ContaCorrente implements BaseDAO {
         this.setNumAgencia(dados.get(0));
         this.setNumConta(dados.get(1));
         this.setIdCli(Integer.parseInt(dados.get(2)));
-        this.setSaldo(Integer.parseInt(dados.get(3)));
+        this.setSaldo(Float.parseFloat(dados.get(3)));
     }
 }
