@@ -198,7 +198,7 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
                 this.contaCorrenteTela.setNumConta(this.numConta.getText());
                 this.contaCorrenteTela.setNumAgencia(this.numAgencia.getText());
                 this.contaCorrenteTela.setIdCli(Integer.parseInt(this.idCli.getText()));
-                this.contaCorrenteTela.setSaldo(Integer.parseInt(this.saldo.getText()));
+                this.contaCorrenteTela.setSaldo(Float.parseFloat(this.saldo.getText()));
 
                 connectDAO connDAO = new connectDAO();
                 connDAO.connectDB();
@@ -232,7 +232,7 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
             try {
                 this.contaCorrenteTela.setNumConta(this.numConta.getText());
                 this.contaCorrenteTela.setNumAgencia(this.numAgencia.getText());
-                this.contaCorrenteTela.setSaldo(Integer.parseInt(this.saldo.getText()));
+                this.contaCorrenteTela.setSaldo(Float.parseFloat(this.saldo.getText()));
 
                 connectDAO connDAO = new connectDAO();
                 connDAO.connectDB();
