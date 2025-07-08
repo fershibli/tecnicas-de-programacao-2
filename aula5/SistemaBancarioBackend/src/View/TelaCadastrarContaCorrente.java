@@ -34,8 +34,8 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
         
         if (this.operacaoAtivaGlobal.equals("Alterar") || this.operacaoAtivaGlobal.equals("Excluir")){
             this.setAllVisible(false);
-            labelAgencia.setVisible(true); 
-            numAgencia.setVisible(true);
+            labelConta.setVisible(true); 
+            numConta.setVisible(true);
             
             buttonCadastrar.setVisible(true);
             buttonCadastrar.setText("Pesquisar");
@@ -168,16 +168,16 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
                 .addComponent(buttonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelAgencia))
+                    .addComponent(numConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelConta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelIdCli))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelConta))
+                    .addComponent(numAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelAgencia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,7 +252,7 @@ public class TelaCadastrarContaCorrente extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals("Alterar") || operacaoAtivaGlobal.equals("Excluir")){
             connectDAO connDAO = new connectDAO();
             
-            this.contaCorrenteTela.setIdCli(Integer.parseInt(this.idCli.getText()));
+            this.contaCorrenteTela.setNumConta(this.numConta.getText());
             
             List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.contaCorrenteTela);
             
