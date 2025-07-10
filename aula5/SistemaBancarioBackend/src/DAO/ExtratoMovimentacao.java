@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -227,18 +230,23 @@ public class ExtratoMovimentacao implements BaseDAO {
 
     @Override
     public void importaSQLValues(List<String> dados) {
-        if (dados.size() != 9) {
-            throw new IllegalArgumentException("Número de dados inválido. Esperado 9 dados.");
+        try {
+            if (dados.size() != 9) {
+                throw new IllegalArgumentException("Número de dados inválido. Esperado 9 dados.");
+            }
+            SimpleDateFormat dateFormaterFromDB = new SimpleDateFormat("yyyy-MM-dd");
+
+            this.setNumAgencia(dados.get(0));
+            this.setNumConta(dados.get(1));
+            this.setDataMovimento(dateFormaterFromDB.parse(dados.get(2)));
+            this.setDocumento(dados.get(3));
+            this.setCreditoDebito(dados.get(4));
+            this.setId_his(Integer.parseInt(dados.get(5)));
+            this.setComplHist(dados.get(6));
+            this.setValor(Double.parseDouble(dados.get(7)));
+            this.setSaldo(Double.parseDouble(dados.get(8)));
+        } catch (ParseException ex) {
+            Logger.getLogger(ExtratoMovimentacao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        this.setNumAgencia(dados.get(0));
-        this.setNumConta(dados.get(1));
-        this.setDataMovimento(new Date(dados.get(2)));
-        this.setDocumento(dados.get(3));
-        this.setCreditoDebito(dados.get(4));
-        this.setId_his(Integer.parseInt(dados.get(5)));
-        this.setComplHist(dados.get(6));
-        this.setValor(Double.parseDouble(dados.get(7)));
-        this.setSaldo(Double.parseDouble(dados.get(8)));
     }
 }
