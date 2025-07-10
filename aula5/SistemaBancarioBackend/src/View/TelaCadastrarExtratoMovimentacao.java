@@ -9,6 +9,7 @@ import DAO.connectDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -287,33 +288,115 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
     }//GEN-LAST:event_valorActionPerformed
 
     private void buttonCadastrarcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarcadastrarActionPerformed
-        try {
-            this.extratoMovimentacaoTela.setId_his(Integer.parseInt(this.idHis.getText()));
-            this.extratoMovimentacaoTela.setNumAgencia(this.numAgencia.getText());
-            this.extratoMovimentacaoTela.setNumConta(this.numConta.getText());
-            SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
-            Date dataMovimentoFormatada = dateFormater.parse(this.dataMovimento.getText());
-            this.extratoMovimentacaoTela.setDataMovimento(dataMovimentoFormatada);
-            this.extratoMovimentacaoTela.setDocumento(this.documento.getText());
-            this.extratoMovimentacaoTela.setCreditoDebito(this.meioTransacao.getSelectedItem().toString().substring(0, 1));
-            this.extratoMovimentacaoTela.setValor(Integer.parseInt(this.valor.getText()));
-            this.extratoMovimentacaoTela.setSaldo(Integer.parseInt(this.saldo.getText()));
-            this.extratoMovimentacaoTela.setComplHist(this.histCompleto.getText());
-            
+        if (operacaoAtivaGlobal.equals("Incluir")){
+            try {
+                this.extratoMovimentacaoTela.setId_his(Integer.parseInt(this.idHis.getText()));
+                this.extratoMovimentacaoTela.setNumAgencia(this.numAgencia.getText());
+                this.extratoMovimentacaoTela.setNumConta(this.numConta.getText());
+                SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+                Date dataMovimentoFormatada = dateFormater.parse(this.dataMovimento.getText());
+                this.extratoMovimentacaoTela.setDataMovimento(dataMovimentoFormatada);
+                this.extratoMovimentacaoTela.setDocumento(this.documento.getText());
+                this.extratoMovimentacaoTela.setCreditoDebito(this.meioTransacao.getSelectedItem().toString().substring(0, 1));
+                this.extratoMovimentacaoTela.setValor(Integer.parseInt(this.valor.getText()));
+                this.extratoMovimentacaoTela.setSaldo(Integer.parseInt(this.saldo.getText()));
+                this.extratoMovimentacaoTela.setComplHist(this.histCompleto.getText());
+
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.insereRegistroJFBD(this.extratoMovimentacaoTela);
+
+            } catch (IllegalArgumentException | ParseException err) {
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Extrato de Movimentação Cadastrado!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
+        
+        if (operacaoAtivaGlobal.equals("Exclusão")) {
             connectDAO connDAO = new connectDAO();
             connDAO.connectDB();
-            connDAO.insereRegistroJFBD(this.extratoMovimentacaoTela);
+            connDAO.excluiRegistroJFBD(this.extratoMovimentacaoTela);
+            
+            JOptionPane.showMessageDialog(this, "Extrato Excluído!");
 
-        } catch (IllegalArgumentException | ParseException err) {
-            JOptionPane.showMessageDialog(this, err.getMessage());
-            return;
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
         }
-        JOptionPane.showMessageDialog(this, "Extrato de Movimentação Cadastrado!");
+        
+        if(operacaoAtivaGlobal.equals("Alteração")){
+            try {
+                this.extratoMovimentacaoTela.setId_his(Integer.parseInt(this.idHis.getText()));
+                this.extratoMovimentacaoTela.setNumAgencia(this.numAgencia.getText());
+                this.extratoMovimentacaoTela.setNumConta(this.numConta.getText());
+                SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+                Date dataMovimentoFormatada = dateFormater.parse(this.dataMovimento.getText());
+                this.extratoMovimentacaoTela.setDataMovimento(dataMovimentoFormatada);
+                this.extratoMovimentacaoTela.setDocumento(this.documento.getText());
+                this.extratoMovimentacaoTela.setCreditoDebito(this.meioTransacao.getSelectedItem().toString().substring(0, 1));
+                this.extratoMovimentacaoTela.setValor(Integer.parseInt(this.valor.getText()));
+                this.extratoMovimentacaoTela.setSaldo(Integer.parseInt(this.saldo.getText()));
+                this.extratoMovimentacaoTela.setComplHist(this.histCompleto.getText());
 
-        TelaMenu telaMenu = new TelaMenu();
-        telaMenu.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
+                connectDAO connDAO = new connectDAO();
+                connDAO.connectDB();
+                connDAO.alteraRegistroJFBD(this.extratoMovimentacaoTela);
+
+            } catch (IllegalArgumentException | ParseException err) {        
+                JOptionPane.showMessageDialog(this, err.getMessage());
+                return;
+            }
+            JOptionPane.showMessageDialog(this, "Usuário Alterado!");
+
+            TelaMenu telaMenu = new TelaMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
+        
+        if (operacaoAtivaGlobal.equals("Alterar") || operacaoAtivaGlobal.equals("Excluir")){
+            connectDAO connDAO = new connectDAO();
+            
+            this.extratoMovimentacaoTela.setDocumento(this.documento.getText());
+            
+            List<String> dadosSQL = connDAO.consultaRegistroJFBD(this.extratoMovimentacaoTela);
+            
+            this.extratoMovimentacaoTela.importaSQLValues(dadosSQL);
+            
+            
+            this.idHis.setText( String.valueOf(this.extratoMovimentacaoTela.getId_his()));
+            this.numAgencia.setText(this.extratoMovimentacaoTela.getNumAgencia());
+            this.numConta.setText(this.extratoMovimentacaoTela.getNumConta());
+            SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy");
+            String dataMovimentoFormatada = dateFormater.format(this.extratoMovimentacaoTela.getDataMovimento());
+            this.dataMovimento.setText(dataMovimentoFormatada);
+            this.documento.setText(this.extratoMovimentacaoTela.getDocumento());
+            this.meioTransacao.setSelectedItem(this.extratoMovimentacaoTela.getCreditoDebito());
+            this.valor.setText(String.valueOf(this.extratoMovimentacaoTela.getValor()));
+            this.saldo.setText(String.valueOf(this.extratoMovimentacaoTela.getSaldo()));
+            this.histCompleto.setText(this.extratoMovimentacaoTela.getComplHist());
+            
+            this.setAllVisible(true);
+            
+            if (operacaoAtivaGlobal.equals("Excluir")) {
+                buttonCadastrar.setText("Excluir");
+                operacaoAtivaGlobal = "Exclusão";
+                this.setAllEnabled(false);
+                this.buttonVoltar.setEnabled(true);
+                this.buttonCadastrar.setEnabled(true);
+            } else {
+                buttonCadastrar.setText("Alterar");
+                operacaoAtivaGlobal = "Alteração";
+            }
+        }
     }//GEN-LAST:event_buttonCadastrarcadastrarActionPerformed
 
     private void buttonLimparlimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLimparlimparActionPerformed
