@@ -26,6 +26,10 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="buttonVoltar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="17" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -40,15 +44,6 @@
                               <Component id="labelConta" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="numConta" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="labelData" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="dataMovimento" min="-2" pref="107" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="labelDocumento" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="documento" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="labelTransacao" min="-2" max="-2" attributes="0"/>
@@ -74,12 +69,17 @@
                               <EmptySpace min="380" pref="380" max="-2" attributes="0"/>
                               <Component id="buttonLimpar" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="labelDocumento" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="documento" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="labelData" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="dataMovimento" min="-2" pref="107" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="buttonVoltar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -92,19 +92,21 @@
               <Component id="buttonVoltar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="documento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Component id="dataMovimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelData" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelIdHis" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelConta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="idHis" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="numAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="numConta" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="dataMovimento" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelData" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="documento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">

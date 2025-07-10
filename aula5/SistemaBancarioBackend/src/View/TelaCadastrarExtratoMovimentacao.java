@@ -36,8 +36,8 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         
         if (this.operacaoAtivaGlobal.equals("Alterar") || this.operacaoAtivaGlobal.equals("Excluir")){
             this.setAllVisible(false);
-            labelIdHis.setVisible(true); 
-            idHis.setVisible(true);
+            labelDocumento.setVisible(true); 
+            documento.setVisible(true);
             
             buttonCadastrar.setVisible(true);
             buttonCadastrar.setText("Pesquisar");
@@ -66,6 +66,7 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         saldo.setVisible(isVisible);
         labelHistCompl.setVisible(isVisible);
         histCompleto.setVisible(isVisible);
+        jScrollPane1.setVisible(isVisible);
         
         buttonCadastrar.setVisible(isVisible);
         buttonLimpar.setVisible(isVisible);
@@ -91,6 +92,7 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
         saldo.setEnabled(isEnabled);
         labelHistCompl.setEnabled(isEnabled);
         histCompleto.setEnabled(isEnabled);
+        jScrollPane1.setEnabled(isEnabled);
         
         buttonCadastrar.setEnabled(isEnabled);
         buttonLimpar.setEnabled(isEnabled);
@@ -190,6 +192,9 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonVoltar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -204,14 +209,6 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
                                 .addComponent(labelConta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(numConta))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelData)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dataMovimento, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelDocumento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(documento))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelTransacao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -232,11 +229,16 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(buttonCadastrar)
                                 .addGap(380, 380, 380)
-                                .addComponent(buttonLimpar)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonVoltar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(buttonLimpar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelDocumento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(documento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelData)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dataMovimento, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,18 +247,19 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
                 .addComponent(buttonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDocumento)
+                    .addComponent(documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(dataMovimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelData)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelIdHis)
                     .addComponent(labelAgencia)
                     .addComponent(labelConta)
                     .addComponent(idHis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dataMovimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelData)
-                    .addComponent(labelDocumento)
-                    .addComponent(documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTransacao)
