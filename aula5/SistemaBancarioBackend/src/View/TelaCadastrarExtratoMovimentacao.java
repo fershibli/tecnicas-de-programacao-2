@@ -342,8 +342,8 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
                 this.extratoMovimentacaoTela.setDataMovimento(dataMovimentoFormatada);
                 this.extratoMovimentacaoTela.setDocumento(this.documento.getText());
                 this.extratoMovimentacaoTela.setCreditoDebito(this.meioTransacao.getSelectedItem().toString().substring(0, 1));
-                this.extratoMovimentacaoTela.setValor(Integer.parseInt(this.valor.getText()));
-                this.extratoMovimentacaoTela.setSaldo(Integer.parseInt(this.saldo.getText()));
+                this.extratoMovimentacaoTela.setValor(Double.parseDouble(this.valor.getText()));
+                this.extratoMovimentacaoTela.setSaldo(Double.parseDouble(this.saldo.getText()));
                 this.extratoMovimentacaoTela.setComplHist(this.histCompleto.getText());
 
                 connectDAO connDAO = new connectDAO();
