@@ -379,7 +379,11 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
             String dataMovimentoFormatada = dateFormater.format(this.extratoMovimentacaoTela.getDataMovimento());
             this.dataMovimento.setText(dataMovimentoFormatada);
             this.documento.setText(this.extratoMovimentacaoTela.getDocumento());
-            this.meioTransacao.setSelectedItem(this.extratoMovimentacaoTela.getCreditoDebito());
+            String creditoDebito = "Débito";
+            if (this.extratoMovimentacaoTela.getCreditoDebito().equals("C")) {
+                creditoDebito = "Crédito";
+            }
+            this.meioTransacao.setSelectedItem(creditoDebito);
             this.valor.setText(String.valueOf(this.extratoMovimentacaoTela.getValor()));
             this.saldo.setText(String.valueOf(this.extratoMovimentacaoTela.getSaldo()));
             this.histCompleto.setText(this.extratoMovimentacaoTela.getComplHist());
