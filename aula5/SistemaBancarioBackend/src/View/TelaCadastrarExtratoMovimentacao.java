@@ -354,7 +354,7 @@ public class TelaCadastrarExtratoMovimentacao extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, err.getMessage());
                 return;
             }
-            JOptionPane.showMessageDialog(this, "Usuário Alterado!");
+            JOptionPane.showMessageDialog(this, "Extrato Alterado!");
 
             TelaMenu telaMenu = new TelaMenu();
             telaMenu.setVisible(true);
