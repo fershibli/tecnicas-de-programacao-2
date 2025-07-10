@@ -217,7 +217,7 @@ public class ExtratoMovimentacao implements BaseDAO {
 
     @Override
     public String termoSQLWhereById() {
-        return "NUM_AGE = " + this.getNumAgencia();
+        return "NUM_DOCTO = '" + this.getDocumento() + "'";
     }
 
     @Override
